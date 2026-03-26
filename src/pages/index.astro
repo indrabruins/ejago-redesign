@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Hero from '../components/Hero';
+import TrustBar from '../components/TrustBar';
+import ServicesGrid from '../components/ServicesGrid';
+import HowItWorks from '../components/HowItWorks';
+import CaseStudySpotlight from '../components/CaseStudySpotlight';
+import ConvergenceEngine from '../components/ConvergenceEngine';
+import StatsBar from '../components/StatsBar';
+import Testimonials from '../components/Testimonials';
+import FAQAccordion from '../components/FAQAccordion';
+import BudgetCalculator from '../components/BudgetCalculator';
+import BigFooterCTA from '../components/BigFooterCTA';
+import Footer from '../components/Footer';
+import BackToTop from '../components/BackToTop';
+import ContactSection from '../components/ContactSection';
+import SectionDivider from '../components/SectionDivider';
+---
+
+<Layout>
+  <Header client:load />
+  <main>
+    <Hero client:load />
+    <SectionDivider client:load variant="glow" />
+    <TrustBar client:load />
+    <SectionDivider client:load variant="line" />
+    <ServicesGrid client:load />
+    <SectionDivider client:load variant="glow" />
+    <HowItWorks client:load />
+    <SectionDivider client:load variant="line" />
+    <CaseStudySpotlight client:load />
+    <SectionDivider client:load variant="glow" />
+    <ConvergenceEngine client:load />
+    <SectionDivider client:load variant="line" />
+    <StatsBar client:load />
+    <SectionDivider client:load variant="glow" />
+    <Testimonials client:load />
+    <SectionDivider client:load variant="line" />
+    <FAQAccordion client:load />
+    <SectionDivider client:load variant="glow" />
+    <BudgetCalculator client:load />
+  </main>
+  <BigFooterCTA client:load />
+  <ContactSection client:load />
+  <Footer client:load />
+  <BackToTop client:load />
+</Layout>

@@ -1,0 +1,260 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import BackToTop from '../components/BackToTop';
+
+const caseStudies = [
+  {
+    slug: "vela-naturals",
+    client: "Vela Naturals",
+    industry: "E-commerce / Beauty & Wellness",
+    services: ["Website Development", "Meta & TikTok Ads"],
+    challenge: "Generic Shopify theme converting at 1.1%. Meta campaigns burning $180K/year budget with no attributable revenue.",
+    approach: "Custom Shopify rebuild with mobile-first product discovery, Instagram checkout flows, and full-funnel Meta Advantage+ strategy.",
+    result: "+312% ROAS",
+    resultSub: "on Meta in 120 days",
+    metric1: "$1.4M attributed revenue",
+    metric2: "89% conversion rate lift",
+    color: "#10B981",
+  },
+  {
+    slug: "threadline",
+    client: "Threadline",
+    industry: "SaaS / B2B Workflow Software",
+    services: ["AI Automation", "Google Ads", "Website Development"],
+    challenge: "$340 CPL and 22% onboarding drop-off at Series A stage. Unsustainable unit economics.",
+    approach: "AI lead qualification bot (GPT-4) handling 62% of inbound inquiries. Restructured Google Ads with RLSA audiences and persona-specific landing pages.",
+    result: "-58% Cost Per Lead",
+    resultSub: "$340 → $143 CPL in 60 days",
+    metric1: "+310% qualified trial signups",
+    metric2: "$1.8M pipeline from Google",
+    color: "#7C3AED",
+  },
+  {
+    slug: "mesa-taco",
+    client: "Mesa Taco Group",
+    industry: "Food & Beverage / Local Restaurants",
+    services: ["Mobile App Development", "Meta & TikTok Ads"],
+    challenge: "DoorDash taking 27% commission per order. Zero digital ordering infrastructure across 6 locations.",
+    approach: "Branded iOS/Android ordering app with loyalty, geofenced TikTok launch with $0.99 first-order incentive.",
+    result: "38K App Downloads",
+    resultSub: "in first 90 days",
+    metric1: "$4.20 TikTok CAC vs $11.30 DoorDash",
+    metric2: "22% of orders via proprietary app",
+    color: "#F59E0B",
+  },
+  {
+    slug: "orion-data",
+    client: "Orion Data Systems",
+    industry: "Tech / B2B SaaS",
+    services: ["Custom Integrations", "AI Automation", "Website Development"],
+    challenge: "Fragmented 4-system stack. CFO had zero real-time ARR visibility. Ops team spending 30+ hrs/week on manual reconciliation.",
+    approach: "Custom middleware unifying Salesforce, HubSpot, custom ERP, and Snowflake data warehouse. GPT-4 CFO analytics agent answering natural language queries in 8 seconds.",
+    result: "91% → 107% NRR",
+    resultSub: "in one quarter",
+    metric1: "28hrs/week ops recovered",
+    metric2: "8-second CFO query response",
+    color: "#3B82F6",
+  },
+  {
+    slug: "kora-studios",
+    client: "Kora Studios",
+    industry: "Fashion & Apparel / D2C",
+    services: ["Website Development", "Google Ads"],
+    challenge: "Launching D2C with no owned digital presence, no email list, and $60K launch budget against well-funded incumbents.",
+    approach: "Editorial Shopify storefront with sustainability credentials. Three-phase Google strategy: brand defense, non-brand conquest, shopping campaigns with weekly negative keyword hygiene.",
+    result: "$890K D2C Revenue",
+    resultSub: "in first 8 months",
+    metric1: "8.4x Google Ads ROAS",
+    metric2: "$28 CAC vs $67 industry avg",
+    color: "#EC4899",
+  },
+  {
+    slug: "nourishrx",
+    client: "NourishRx",
+    industry: "Health & Wellness / Digital Health",
+    services: ["AI Automation", "Website Development", "Google Ads"],
+    challenge: "94% patient dropout before intake completion. Coach capacity maxed at 40 clients. MRR stagnating at $142K.",
+    approach: "AI intake automation with progress-saving and personalized nudges. GPT-4 health coach assistant handling 60% of tier-1 inquiries. Targeted Google Ads for high-intent health queries.",
+    result: "MRR $142K → $410K",
+    resultSub: "within 6 months",
+    metric1: "94% intake completion rate",
+    metric2: "3.1x increase in coach capacity",
+    color: "#10B981",
+  },
+];
+
+const industries = ["All", "E-commerce", "SaaS", "Health & Wellness", "Fashion & Apparel", "Food & Beverage", "Tech / B2B"];
+---
+
+<Layout
+  title="Our Work — Ejago | Case Studies & Results"
+  description="Real results for real businesses. See how Ejago delivers 240% ROAS, 85% cost reduction, and 12M impressions for clients across e-commerce, SaaS, and more."
+>
+  <Header client:load />
+  
+  <!-- Hero -->
+  <section class="min-h-[60vh] flex items-center pt-32 pb-20 relative overflow-hidden" style="background-color: var(--bg);">
+    <!-- Background mesh -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute -top-1/4 -right-1/4 w-[600px] h-[600px] rounded-full blur-3xl animate-mesh-1"
+           style="background: radial-gradient(circle, rgba(124,58,237,0.3) 0%, transparent 70%);" />
+      <div class="absolute -bottom-1/4 -left-1/4 w-[500px] h-[500px] rounded-full blur-3xl animate-mesh-2"
+           style="background: radial-gradient(circle, rgba(245,158,11,0.25) 0%, transparent 70%);" />
+    </div>
+    
+    <div class="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 w-full">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: var(--accent);">
+          Our Work
+        </p>
+        <h1 class="text-4xl md:text-6xl lg:text-7xl mb-6 leading-tight"
+            style="font-family: var(--font-display); color: var(--text);">
+          Work That<br/>
+          <span style="color: var(--accent);">Speaks for Itself.</span>
+        </h1>
+        <p class="text-lg md:text-xl"
+           style="color: var(--text-secondary); line-height: 1.7; max-width: 600px;">
+          Every project is a proof of concept. We don't just build — we measure. Here's what compounding AI + advertising actually delivers.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats bar -->
+  <section class="py-12 border-y" style="border-color: var(--border); background-color: var(--surface);">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        {[
+          { n: "60+", l: "Projects Delivered" },
+          { n: "240%", l: "Peak ROAS Achieved" },
+          { n: "$2.4M+", l: "Revenue Generated" },
+          { n: "98%", l: "Client Retention" },
+        ].map(s => (
+          <div>
+            <div class="text-3xl md:text-4xl font-bold mb-1" style="font-family: var(--font-mono); color: var(--accent);">{s.n}</div>
+            <div class="text-sm" style="color: var(--text-secondary);">{s.l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Grid -->
+  <section class="py-20 md:py-32" style="background-color: var(--bg);">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16">
+      <!-- Filter tabs -->
+      <div class="flex flex-wrap gap-3 mb-12">
+        {industries.map((ind, i) => (
+          <button
+            class={`px-4 py-2 rounded-full text-sm font-medium transition-all ${i === 0 ? '' : ''}`}
+            style={
+              i === 0
+                ? "background-color: var(--accent); color: white;"
+                : "background-color: var(--surface); color: var(--text-secondary); border: 1px solid var(--border);"
+            }
+            data-filter={ind}
+          >
+            {ind}
+          </button>
+        ))}
+      </div>
+
+      <!-- Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {caseStudies.map((cs, i) => (
+          <article
+            class="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2"
+            style={`background-color: var(--surface); border: 1px solid var(--border);`}
+            data-industry={cs.industry.split(' / ')[0]}
+          >
+            <!-- Card top color bar -->
+            <div class="h-2 w-full" style={`background-color: ${cs.color};`} />
+            
+            <div class="p-8">
+              <!-- Client + Industry -->
+              <div class="mb-6">
+                <h3 class="text-xl font-bold mb-1" style="color: var(--text); font-family: var(--font-display);">
+                  {cs.client}
+                </h3>
+                <p class="text-sm" style="color: var(--text-secondary);">{cs.industry}</p>
+              </div>
+
+              <!-- Services tags -->
+              <div class="flex flex-wrap gap-2 mb-6">
+                {cs.services.map(s => (
+                  <span class="px-3 py-1 rounded-full text-xs font-medium" style="background-color: rgba(124,58,237,0.1); color: var(--accent);">
+                    {s}
+                  </span>
+                ))}
+              </div>
+
+              <!-- Challenge -->
+              <p class="text-sm mb-6" style="color: var(--text-secondary); line-height: 1.6;">
+                {cs.challenge}
+              </p>
+
+              <!-- Big result -->
+              <div class="rounded-xl p-4 mb-4 text-center" style={`background-color: ${cs.color}15; border: 1px solid ${cs.color}40;`}>
+                <div class="text-3xl font-bold mb-1" style={`font-family: var(--font-mono); color: ${cs.color};`}>
+                  {cs.result}
+                </div>
+                <div class="text-xs font-medium" style={`color: ${cs.color};`}>{cs.resultSub}</div>
+              </div>
+
+              <!-- Metrics -->
+              <div class="grid grid-cols-2 gap-3 mb-6">
+                <div class="text-center p-3 rounded-lg" style="background-color: var(--surface-alt);">
+                  <div class="text-sm font-bold" style="color: var(--text);">{cs.metric1.split(' ')[0]}</div>
+                  <div class="text-xs" style="color: var(--text-secondary);">{cs.metric1.split(' ').slice(1).join(' ')}</div>
+                </div>
+                <div class="text-center p-3 rounded-lg" style="background-color: var(--surface-alt);">
+                  <div class="text-sm font-bold" style="color: var(--text);">{cs.metric2.split(' ')[0]}</div>
+                  <div class="text-xs" style="color: var(--text-secondary);">{cs.metric2.split(' ').slice(1).join(' ')}</div>
+                </div>
+              </div>
+
+              <!-- CTA -->
+              <a
+                href="#"
+                class="flex items-center gap-2 text-sm font-semibold transition-colors group-hover:gap-3"
+                style="color: var(--accent);"
+              >
+                View Case Study →
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Big CTA -->
+  <section class="py-24 md:py-32" style="background-color: var(--accent);">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 text-center">
+      <h2 class="text-3xl md:text-5xl mb-6" style="font-family: var(--font-display); color: white;">
+        Ready to Write Your Case Study?
+      </h2>
+      <p class="text-lg mb-10 max-w-2xl mx-auto" style="color: rgba(255,255,255,0.8);">
+        Every project starts with a discovery call. No pitch deck. No vague promises. Just an honest conversation about what growth looks like for you.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/#contact"
+           class="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-lg"
+           style="background-color: white; color: var(--accent);">
+          Start a Project →
+        </a>
+        <a href="https://calendly.com/indra-ejago"
+           target="_blank"
+           class="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-lg"
+           style="background-color: transparent; color: white; border: 2px solid white;">
+          Book a Call →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer client:load />
+  <BackToTop client:load />
+</Layout>
