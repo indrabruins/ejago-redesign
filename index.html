@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qubis - The Calorie Tracker Apple Would Have Built</title>
+    <meta name="description" content="Seamlessly integrated calorie tracking for Apple users. Native Apple Watch app, Health sync, and iOS widgets.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'qubis-blue': '#007AFF',
+                        'qubis-blue-light': '#5AC8FA',
+                        'qubis-blue-dark': '#0051D5',
+                        'qubis-gray': { 50: '#F5F5F7', 100: '#E8E8ED', 400: '#86868B', 900: '#1D1D1F' },
+                        'qubis-success': '#34C759',
+                        'qubis-warning': '#FF9500',
+                    },
+                    fontFamily: { sans: ['Inter', '-apple-system', 'sans-serif'] },
+                },
+            },
+        }
+    </script>
+    <style>
+        .scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.5s ease; }
+        .scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
+        .device-float { animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        .hero-text { opacity: 0; animation: fadeUp 0.6s ease forwards; }
+        .hero-text:nth-child(1) { animation-delay: 0.1s; }
+        .hero-text:nth-child(2) { animation-delay: 0.2s; }
+        .hero-text:nth-child(3) { animation-delay: 0.3s; }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="font-sans text-qubis-gray-900 bg-white">
+    <!-- Nav -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-qubis-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <span class="text-2xl font-bold text-qubis-blue">Qubis</span>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#features" class="text-qubis-gray-400 hover:text-qubis-gray-900">Features</a>
+                    <a href="#how-it-works" class="text-qubis-gray-400 hover:text-qubis-gray-900">How It Works</a>
+                    <a href="#testimonials" class="text-qubis-gray-400 hover:text-qubis-gray-900">Reviews</a>
+                </div>
+                <a href="#download" class="bg-qubis-blue text-white px-5 py-2 rounded-full font-medium">Get the App</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="relative min-h-screen flex items-center pt-16 bg-qubis-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left">
+                    <h1 class="hero-text text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">The calorie tracker <span class="text-qubis-blue">Apple</span> would have built</h1>
+                    <p class="hero-text mt-6 text-lg text-qubis-gray-400">Seamlessly integrated with your Apple Watch, Health app, and iPhone widgets.</p>
+                    <div class="hero-text mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#download" class="bg-qubis-blue text-white px-8 py-4 rounded-full font-semibold text-lg hover:scale-105 transition">Download on App Store</a>
+                    </div>
+                </div>
+                <div class="hero-text device-float">
+                    <img src="assets/images/hero-lifestyle.png" alt="Qubis on Apple Watch" class="rounded-3xl shadow-2xl w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="py-12 bg-white border-b border-qubis-gray-100">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-qubis-gray-400">Trusted by 50,000+ Apple users • 4.9★ on App Store • Featured on Apple Watch</p>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold">Everything you need</h2>
+                <p class="mt-4 text-xl text-qubis-gray-400">Designed for the Apple ecosystem.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-qubis-gray-50 rounded-3xl p-8">
+                    <div class="w-14 h-14 bg-qubis-blue/10 rounded-2xl flex items-center justify-center mb-6"><i data-lucide="watch" class="w-7 h-7 text-qubis-blue"></i></div>
+                    <h3 class="text-xl font-bold mb-3">Native Apple Watch App</h3>
+                    <p class="text-qubis-gray-400">Log calories directly from your wrist.</p>
+                </div>
+                <div class="bg-qubis-gray-50 rounded-3xl p-8">
+                    <div class="w-14 h-14 bg-qubis-success/10 rounded-2xl flex items-center justify-center mb-6"><i data-lucide="heart" class="w-7 h-7 text-qubis-success"></i></div>
+                    <h3 class="text-xl font-bold mb-3">Apple Health Integration</h3>
+                    <p class="text-qubis-gray-400">Bidirectional sync. Your data stays yours.</p>
+                </div>
+                <div class="bg-qubis-gray-50 rounded-3xl p-8">
+                    <div class="w-14 h-14 bg-qubis-warning/10 rounded-2xl flex items-center justify-center mb-6"><i data-lucide="layout-grid" class="w-7 h-7 text-qubis-warning"></i></div>
+                    <h3 class="text-xl font-bold mb-3">Home Screen Widgets</h3>
+                    <p class="text-qubis-gray-400">See progress at a glance.</p>
+                </div>
+                <div class="bg-qubis-gray-50 rounded-3xl p-8">
+                    <div class="w-14 h-14 bg-qubis-blue-light/10 rounded-2xl flex items-center justify-center mb-6"><i data-lucide="camera" class="w-7 h-7 text-qubis-blue-light"></i></div>
+                    <h3 class="text-xl font-bold mb-3">AI Photo Logging</h3>
+                    <p class="text-qubis-gray-400">Snap a photo. We calculate calories.</p>
+                </div>
+                <div class="bg-qubis-gray-50 rounded-3xl p-8">
+                    <div class="w-14 h-14 bg-qubis-blue-dark/10 rounded-2xl flex items-center justify-center mb-6"><i data-lucide="pie-chart" class="w-7 h-7 text-qubis-blue-dark"></i></div>
+                    <h3 class="text-xl font-bold mb-3">Smart Macro Tracking</h3>
+                    <p class="text-qubis-gray-400">Protein, carbs, fat tracked automatically.</p>
+                </div>
+                <div class="bg-qubis-gray-50 rounded-3xl p-8">
+                    <div class="w-14 h-14 bg-gray-200 rounded-2xl flex items-center justify-center mb-6"><i data-lucide="lock" class="w-7 h-7 text-gray-600"></i></div>
+                    <h3 class="text-xl font-bold mb-3">Privacy Built In</h3>
+                    <p class="text-qubis-gray-400">Data never leaves your devices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-24 bg-qubis-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold">How it works</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div>
+                    <div class="w-24 h-24 mx-auto bg-qubis-blue rounded-3xl flex items-center justify-center mb-6"><span class="text-4xl font-bold text-white">01</span></div>
+                    <h3 class="text-xl font-bold mb-3">Snap or Speak</h3>
+                    <p class="text-qubis-gray-400">Take a photo or use voice. Our AI does the rest.</p>
+                </div>
+                <div>
+                    <div class="w-24 h-24 mx-auto bg-qubis-success rounded-3xl flex items-center justify-center mb-6"><span class="text-4xl font-bold text-white">02</span></div>
+                    <h3 class="text-xl font-bold mb-3">Track Automatically</h3>
+                    <p class="text-qubis-gray-400">Calories calculated instantly. Synced to Watch.</p>
+                </div>
+                <div>
+                    <div class="w-24 h-24 mx-auto bg-qubis-warning rounded-3xl flex items-center justify-center mb-6"><span class="text-4xl font-bold text-white">03</span></div>
+                    <h3 class="text-xl font-bold mb-3">See Results</h3>
+                    <p class="text-qubis-gray-400">View progress on widgets and Health.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold">Loved by Apple users</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-qubis-gray-50 rounded-3xl p-8">
+                    <p class="text-qubis-gray-600 mb-6">"Finally, a calorie app that works with my Apple Watch. I can log meals without pulling out my phone."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="assets/images/avatar-sarah.png" alt="Sarah" class="w-12 h-12 rounded-full object-cover">
+                        <div><p class="font-semibold">Sarah Chen</p><p class="text-sm text-qubis-gray-400">Marathon Runner</p></div>
+                    </div>
+                </div>
+                <div class="bg-qubis-gray-50 rounded-3xl p-8">
+                    <p class="text-qubis-gray-600 mb-6">"The Health app integration is seamless. All my workout data and nutrition in one place."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="assets/images/avatar-marcus.png" alt="Marcus" class="w-12 h-12 rounded-full object-cover">
+                        <div><p class="font-semibold">Marcus Johnson</p><p class="text-sm text-qubis-gray-400">CrossFit Athlete</p></div>
+                    </div>
+                </div>
+                <div class="bg-qubis-gray-50 rounded-3xl p-8">
+                    <p class="text-qubis-gray-600 mb-6">"Lost 15 lbs in 2 months just by having my calories visible on my home screen widget."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="assets/images/avatar-emma.png" alt="Emma" class="w-12 h-12 rounded-full object-cover">
+                        <div><p class="font-semibold">Emma Rodriguez</p><p class="text-sm text-qubis-gray-400">Professional</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="download" class="py-24 bg-qubis-gray-50">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Start tracking today</h2>
+            <p class="text-xl text-qubis-gray-400 mb-8">Free to download. Premium features available.</p>
+            <a href="#" class="bg-qubis-blue text-white px-10 py-5 rounded-full font-semibold text-lg hover:scale-105 transition inline-flex items-center gap-3">
+                <i data-lucide="apple" class="w-6 h-6"></i>Get Qubis on the App Store
+            </a>
+            <p class="text-sm text-qubis-gray-400 mt-8">Requires iOS 16+ and Apple Watch Series 4 or later</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-white border-t border-qubis-gray-100">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <span class="text-2xl font-bold text-qubis-blue">Qubis</span>
+            <p class="mt-4 text-qubis-gray-400">© 2026 Qubis. Made for Apple users.</p>
+        </div>
+    </footer>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>
