@@ -7,31 +7,233 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0a0a0a; color: #fff; line-height: 1.6; }
-        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
-        h1 { font-size: 4rem; margin-bottom: 1rem; background: linear-gradient(90deg, #00d4ff, #7b2ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        a { color: inherit; text-decoration: none; }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0,212,255,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        h1 { font-size: 4rem; margin-bottom: 1rem; background: linear-gradient(90deg, #00d4ff, #9b59b6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .tagline { font-size: 1.5rem; color: #888; margin-bottom: 3rem; }
-        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
-        .service { background: #1a1a2e; padding: 2rem; border-radius: 16px; border: 1px solid #333; transition: transform 0.3s; }
-        .service:hover { transform: translateY(-5px); border-color: #00d4ff; }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        .service {
+            background: #1a1a2e;
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid #333;
+            transition: all 0.3s;
+        }
+        .service:hover { transform: translateY(-5px); border-color: #00d4ff; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
         .service h3 { color: #00d4ff; margin-bottom: 1rem; font-size: 1.3rem; }
         .service p { color: #aaa; font-size: 0.95rem; }
-        .cta { margin-top: 4rem; }
-        .btn { display: inline-block; padding: 1rem 3rem; background: linear-gradient(90deg, #00d4ff, #7b2ff); color: #fff; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 1.1rem; transition: transform 0.3s, box-shadow 0.3s; }
-        .btn:hover { transform: scale(1.05); box-shadow: 0 10px 40px rgba(0,212,255,0.3); }
+
+        .packages {
+            padding: 6rem 2rem;
+            background: #0f0f1a;
+        }
+        .packages-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .packages-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #00d4ff, #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .packages-header p { color: #888; font-size: 1.1rem; }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .pricing-card {
+            background: #1a1a2e;
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .pricing-card.featured {
+            border-color: #00d4ff;
+            transform: scale(1.05);
+        }
+        .pricing-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, #00d4ff, #9b59b6);
+            color: #fff;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .pricing-card:hover { border-color: #00d4ff; box-shadow: 0 20px 60px rgba(0,212,255,0.15); }
+        .pricing-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; color: #fff; }
+        .pricing-card .price { font-size: 3rem; font-weight: 700; margin: 1rem 0; color: #00d4ff; }
+        .pricing-card .price span { font-size: 1rem; color: #666; font-weight: 400; }
+        .pricing-card .description { color: #888; margin-bottom: 1.5rem; font-size: 0.9rem; }
+        .pricing-card ul { list-style: none; text-align: left; margin: 2rem 0; }
+        .pricing-card li { padding: 0.75rem 0; border-bottom: 1px solid #222; color: #aaa; font-size: 0.9rem; }
+        .pricing-card li::before { content: '✓ '; color: #00d4ff; font-weight: bold; }
+        .pricing-card .btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(90deg, #00d4ff, #9b59b6);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .pricing-card .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,212,255,0.3); }
+        .pricing-card.featured .btn { background: linear-gradient(90deg, #00d4ff, #00d4ff); }
+
+        .contact {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+        .contact-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .contact h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #00d4ff, #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .contact > p { text-align: center; color: #888; margin-bottom: 3rem; }
+
+        .contact-form {
+            background: #0a0a0a;
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 3rem;
+        }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; color: #aaa; font-size: 0.9rem; }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: #1a1a2e;
+            border: 1px solid #333;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus { border-color: #00d4ff; }
+        .form-group textarea { min-height: 120px; resize: vertical; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(90deg, #00d4ff, #9b59b6);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .form-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,212,255,0.3); }
+
+        .form-success {
+            display: none;
+            padding: 1.5rem;
+            background: rgba(0,212,255,0.1);
+            border: 1px solid #00d4ff;
+            border-radius: 10px;
+            color: #00d4ff;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
         .footer { padding: 2rem; text-align: center; color: #555; font-size: 0.9rem; }
+
+        .cta { margin-top: 3rem; }
+        .btn {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(90deg, #00d4ff, #9b59b6);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        .btn:hover { transform: scale(1.05); box-shadow: 0 10px 40px rgba(0,212,255,0.3); }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .tagline { font-size: 1.1rem; }
+            .pricing-card.featured { transform: scale(1); }
+            .form-row { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
     <div class="hero">
         <h1>Ejago</h1>
         <p class="tagline">AI Automation Agency - Build Faster, Scale Smarter</p>
-        
+
         <div class="cta">
             <a href="#contact" class="btn">Get Started</a>
         </div>
     </div>
-    
-    <div class="services">
+
+    <div class="services-grid">
         <div class="service">
             <h3>🤖 Workflow Automation</h3>
             <p>Automate repetitive tasks with intelligent AI agents that learn and adapt to your business processes.</p>
@@ -57,9 +259,142 @@
             <p>Infrastructure that grows with you. No servers to manage, no limits to worry about.</p>
         </div>
     </div>
-    
+
+    <section class="packages" id="packages">
+        <div class="packages-header">
+            <h2>Service Packages</h2>
+            <p>Choose the engagement model that fits your needs</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Starter</h3>
+                <div class="price">$2,500 <span>/project</span></div>
+                <p class="description">Perfect for small teams getting started with AI automation</p>
+                <ul>
+                    <li>Up to 3 workflow automations</li>
+                    <li>5 app integrations</li>
+                    <li>Basic AI chatbot (1,000 msgs/mo)</li>
+                    <li>Email support</li>
+                    <li>2 week delivery</li>
+                </ul>
+                <button class="btn" onclick="scrollToContact('Starter Package')">Get Started</button>
+            </div>
+            <div class="pricing-card featured">
+                <h3>Professional</h3>
+                <div class="price">$7,500 <span>/project</span></div>
+                <p class="description">For growing businesses ready to scale with AI</p>
+                <ul>
+                    <li>Up to 10 workflow automations</li>
+                    <li>20 app integrations</li>
+                    <li>Advanced AI chatbot (10,000 msgs/mo)</li>
+                    <li>Custom analytics dashboard</li>
+                    <li>Priority support</li>
+                    <li>4 week delivery</li>
+                </ul>
+                <button class="btn" onclick="scrollToContact('Professional Package')">Get Started</button>
+            </div>
+            <div class="pricing-card">
+                <h3>Enterprise</h3>
+                <div class="price">$25,000 <span>/project</span></div>
+                <p class="description">Full-scale AI transformation for enterprises</p>
+                <ul>
+                    <li>Unlimited workflow automations</li>
+                    <li>Unlimited integrations</li>
+                    <li>Custom AI agent swarm</li>
+                    <li>Real-time analytics & reporting</li>
+                    <li>Dedicated success manager</li>
+                    <li>8 week delivery</li>
+                </ul>
+                <button class="btn" onclick="scrollToContact('Enterprise Package')">Get Started</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-wrapper">
+            <h2>Start Your Project</h2>
+            <p>Tell us about your needs and we'll get back within 24 hours</p>
+            <form class="contact-form" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="company">Company</label>
+                    <input type="text" id="company" name="company">
+                </div>
+                <div class="form-group">
+                    <label for="package">Interested Package</label>
+                    <select id="package" name="package">
+                        <option value="">Select a package...</option>
+                        <option value="Starter">Starter - $2,500</option>
+                        <option value="Professional">Professional - $7,500</option>
+                        <option value="Enterprise">Enterprise - $25,000</option>
+                        <option value="Custom">Custom Requirements</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Tell us about your project</label>
+                    <textarea id="message" name="message" placeholder="Describe your automation needs, current challenges, and goals..." required></textarea>
+                </div>
+                <button type="submit" class="form-submit">Send Inquiry</button>
+                <div class="form-success" id="formSuccess">
+                    <strong>Message sent!</strong><br>
+                    We'll get back to you within 24 hours.
+                </div>
+            </form>
+        </div>
+    </section>
+
     <div class="footer">
         <p>© 2026 Ejago AI Automation. Built by AI, powered by humans.</p>
     </div>
+
+    <script>
+        function scrollToContact(package) {
+            document.getElementById('package').value = package;
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        const contactForm = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                company: document.getElementById('company').value,
+                package: document.getElementById('package').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toISOString()
+            };
+
+            // Store in localStorage
+            let inquiries = JSON.parse(localStorage.getItem('ejago_inquiries') || '[]');
+            inquiries.push(formData);
+            localStorage.setItem('ejago_inquiries', JSON.stringify(inquiries));
+
+            // Show success
+            contactForm.reset();
+            formSuccess.style.display = 'block';
+
+            setTimeout(() => {
+                formSuccess.style.display = 'none';
+            }, 5000);
+        });
+    </script>
 </body>
 </html>
