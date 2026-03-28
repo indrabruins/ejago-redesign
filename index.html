@@ -3,201 +3,868 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qubis - The Calorie Tracker Apple Would Have Built</title>
-    <meta name="description" content="Seamlessly integrated calorie tracking for Apple users. Native Apple Watch app, Health sync, and iOS widgets.">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'qubis-blue': '#007AFF',
-                        'qubis-blue-light': '#5AC8FA',
-                        'qubis-blue-dark': '#0051D5',
-                        'qubis-gray': { 50: '#F5F5F7', 100: '#E8E8ED', 400: '#86868B', 900: '#1D1D1F' },
-                        'qubis-success': '#34C759',
-                        'qubis-warning': '#FF9500',
-                    },
-                    fontFamily: { sans: ['Inter', '-apple-system', 'sans-serif'] },
-                },
-            },
-        }
-    </script>
+    <title>Qubis Fitness — Premium Print on Demand</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        .scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.5s ease; }
-        .scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
-        .device-float { animation: float 6s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-        .hero-text { opacity: 0; animation: fadeUp 0.6s ease forwards; }
-        .hero-text:nth-child(1) { animation-delay: 0.1s; }
-        .hero-text:nth-child(2) { animation-delay: 0.2s; }
-        .hero-text:nth-child(3) { animation-delay: 0.3s; }
-        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a24;
+            --bg-elevated: #22222e;
+            --text-primary: #f5f5f7;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --accent-glow: rgba(99, 102, 241, 0.3);
+            --border: #27272a;
+            --success: #22c55e;
+            --error: #ef4444;
+            --gradient-start: #6366f1;
+            --gradient-end: #8b5cf6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 160px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px var(--accent-glow);
+        }
+
+        /* Waitlist */
+        .waitlist {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+        }
+
+        .waitlist-box {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .waitlist h2 {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .waitlist p {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .waitlist-form {
+            display: flex;
+            gap: 12px;
+        }
+
+        .waitlist-form input {
+            flex: 1;
+            padding: 16px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .waitlist-form input:focus {
+            border-color: var(--accent);
+        }
+
+        .waitlist-form button {
+            padding: 16px 28px;
+            background: var(--accent);
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .waitlist-form button:hover {
+            background: var(--accent-hover);
+        }
+
+        .waitlist-success {
+            display: none;
+            padding: 20px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid var(--success);
+            border-radius: 12px;
+            color: var(--success);
+        }
+
+        /* Products */
+        .products {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 18px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .product-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-image {
+            aspect-ratio: 1;
+            background: var(--bg-elevated);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-category {
+            font-size: 12px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .product-price span {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 400;
+            text-decoration: line-through;
+            margin-left: 8px;
+        }
+
+        /* Features */
+        .features {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .feature-card {
+            padding: 32px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        /* Contact Form */
+        .contact {
+            padding: 100px 0;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+
+        .contact-detail span {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-card);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-form {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 15px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        .form-success {
+            display: none;
+            padding: 20px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid var(--success);
+            border-radius: 12px;
+            color: var(--success);
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Printful Integration Note */
+        .printful-note {
+            padding: 24px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px dashed var(--accent);
+            border-radius: 12px;
+            margin-top: 24px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .printful-note strong {
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .waitlist-form {
+                flex-direction: column;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--bg-elevated);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
     </style>
 </head>
-<body class="font-sans text-qubis-gray-900 bg-white">
-    <!-- Nav -->
-    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-qubis-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <span class="text-2xl font-bold text-qubis-blue">Qubis</span>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#features" class="text-qubis-gray-400 hover:text-qubis-gray-900">Features</a>
-                    <a href="#how-it-works" class="text-qubis-gray-400 hover:text-qubis-gray-900">How It Works</a>
-                    <a href="#testimonials" class="text-qubis-gray-400 hover:text-qubis-gray-900">Reviews</a>
-                </div>
-                <a href="#download" class="bg-qubis-blue text-white px-5 py-2 rounded-full font-medium">Get the App</a>
-            </div>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Qubis Fitness</div>
+            <ul class="nav-links">
+                <li><a href="#products">Products</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
     </nav>
 
     <!-- Hero -->
-    <section class="relative min-h-screen flex items-center pt-16 bg-qubis-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="text-center lg:text-left">
-                    <h1 class="hero-text text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">The calorie tracker <span class="text-qubis-blue">Apple</span> would have built</h1>
-                    <p class="hero-text mt-6 text-lg text-qubis-gray-400">Seamlessly integrated with your Apple Watch, Health app, and iPhone widgets.</p>
-                    <div class="hero-text mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <a href="#download" class="bg-qubis-blue text-white px-8 py-4 rounded-full font-semibold text-lg hover:scale-105 transition">Download on App Store</a>
-                    </div>
-                </div>
-                <div class="hero-text device-float">
-                    <img src="assets/images/hero-lifestyle.png" alt="Qubis on Apple Watch" class="rounded-3xl shadow-2xl w-full">
+    <section class="hero">
+        <div class="container">
+            <h1>Premium Fitness <span>Print on Demand</span></h1>
+            <p>High-quality athletic wear and fitness merchandise, designed for those who demand excellence. No inventory. No risk. Just results.</p>
+            <a href="#products" class="cta-button">
+                Browse Collection
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Waitlist -->
+    <section class="waitlist">
+        <div class="container">
+            <div class="waitlist-box">
+                <h2>Get Early Access</h2>
+                <p>Join the waitlist for exclusive launch discounts and early access to new designs.</p>
+                <form class="waitlist-form" id="waitlistForm">
+                    <input type="email" id="waitlistEmail" placeholder="Enter your email" required>
+                    <button type="submit">Join Waitlist</button>
+                </form>
+                <div class="waitlist-success" id="waitlistSuccess">
+                    <strong>You're on the list!</strong><br>
+                    We'll notify you when we launch.
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Social Proof -->
-    <section class="py-12 bg-white border-b border-qubis-gray-100">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-qubis-gray-400">Trusted by 50,000+ Apple users • 4.9★ on App Store • Featured on Apple Watch</p>
+    <!-- Products -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Collection</h2>
+                <p>Premium fitness apparel, designed for peak performance</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card fade-in">
+                    <div class="product-image">🏋️</div>
+                    <div class="product-info">
+                        <div class="product-category">T-Shirts</div>
+                        <div class="product-name">Iron Will Performance Tee</div>
+                        <div class="product-price">$34.99 <span>$49.99</span></div>
+                    </div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="product-image">💪</div>
+                    <div class="product-info">
+                        <div class="product-category">Hoodies</div>
+                        <div class="product-name">Gym Warrior Pullover</div>
+                        <div class="product-price">$54.99 <span>$74.99</span></div>
+                    </div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="product-image">🎯</div>
+                    <div class="product-info">
+                        <div class="product-category">Tank Tops</div>
+                        <div class="product-name">Athlete's Edge Tank</div>
+                        <div class="product-price">$29.99 <span>$44.99</span></div>
+                    </div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="product-image">⚡</div>
+                    <div class="product-info">
+                        <div class="product-category">Accessories</div>
+                        <div class="product-name">Power Gym Bag</div>
+                        <div class="product-price">$44.99 <span>$64.99</span></div>
+                    </div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="product-image">🔥</div>
+                    <div class="product-info">
+                        <div class="product-category">T-Shirts</div>
+                        <div class="product-name">No Excuses Legend Tee</div>
+                        <div class="product-price">$34.99 <span>$49.99</span></div>
+                    </div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="product-image">🏃</div>
+                    <div class="product-info">
+                        <div class="product-category">Shorts</div>
+                        <div class="product-name">Endurance Runner Shorts</div>
+                        <div class="product-price">$39.99 <span>$54.99</span></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Features -->
-    <section id="features" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold">Everything you need</h2>
-                <p class="mt-4 text-xl text-qubis-gray-400">Designed for the Apple ecosystem.</p>
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Qubis</h2>
+                <p>Quality, speed, and reliability you can count on</p>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-qubis-gray-50 rounded-3xl p-8">
-                    <div class="w-14 h-14 bg-qubis-blue/10 rounded-2xl flex items-center justify-center mb-6"><i data-lucide="watch" class="w-7 h-7 text-qubis-blue"></i></div>
-                    <h3 class="text-xl font-bold mb-3">Native Apple Watch App</h3>
-                    <p class="text-qubis-gray-400">Log calories directly from your wrist.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">✓</div>
+                    <h3>Premium Quality</h3>
+                    <p>Ethically sourced materials and state-of-the-art printing technology ensure every piece meets our high standards.</p>
                 </div>
-                <div class="bg-qubis-gray-50 rounded-3xl p-8">
-                    <div class="w-14 h-14 bg-qubis-success/10 rounded-2xl flex items-center justify-center mb-6"><i data-lucide="heart" class="w-7 h-7 text-qubis-success"></i></div>
-                    <h3 class="text-xl font-bold mb-3">Apple Health Integration</h3>
-                    <p class="text-qubis-gray-400">Bidirectional sync. Your data stays yours.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Fast Production</h3>
+                    <p>Most orders ship within 2-3 business days. Express shipping available worldwide.</p>
                 </div>
-                <div class="bg-qubis-gray-50 rounded-3xl p-8">
-                    <div class="w-14 h-14 bg-qubis-warning/10 rounded-2xl flex items-center justify-center mb-6"><i data-lucide="layout-grid" class="w-7 h-7 text-qubis-warning"></i></div>
-                    <h3 class="text-xl font-bold mb-3">Home Screen Widgets</h3>
-                    <p class="text-qubis-gray-400">See progress at a glance.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">💯</div>
+                    <h3>No Minimums</h3>
+                    <p>Order just one item or thousands. We handle fulfillment so you can focus on design.</p>
                 </div>
-                <div class="bg-qubis-gray-50 rounded-3xl p-8">
-                    <div class="w-14 h-14 bg-qubis-blue-light/10 rounded-2xl flex items-center justify-center mb-6"><i data-lucide="camera" class="w-7 h-7 text-qubis-blue-light"></i></div>
-                    <h3 class="text-xl font-bold mb-3">AI Photo Logging</h3>
-                    <p class="text-qubis-gray-400">Snap a photo. We calculate calories.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Easy Returns</h3>
+                    <p>Hassle-free 30-day return policy on all defective items. Your satisfaction is guaranteed.</p>
                 </div>
-                <div class="bg-qubis-gray-50 rounded-3xl p-8">
-                    <div class="w-14 h-14 bg-qubis-blue-dark/10 rounded-2xl flex items-center justify-center mb-6"><i data-lucide="pie-chart" class="w-7 h-7 text-qubis-blue-dark"></i></div>
-                    <h3 class="text-xl font-bold mb-3">Smart Macro Tracking</h3>
-                    <p class="text-qubis-gray-400">Protein, carbs, fat tracked automatically.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Custom Designs</h3>
+                    <p>Upload your own designs or work with our team to create exclusive merchandise for your brand.</p>
                 </div>
-                <div class="bg-qubis-gray-50 rounded-3xl p-8">
-                    <div class="w-14 h-14 bg-gray-200 rounded-2xl flex items-center justify-center mb-6"><i data-lucide="lock" class="w-7 h-7 text-gray-600"></i></div>
-                    <h3 class="text-xl font-bold mb-3">Privacy Built In</h3>
-                    <p class="text-qubis-gray-400">Data never leaves your devices.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works -->
-    <section id="how-it-works" class="py-24 bg-qubis-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold">How it works</h2>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8 text-center">
-                <div>
-                    <div class="w-24 h-24 mx-auto bg-qubis-blue rounded-3xl flex items-center justify-center mb-6"><span class="text-4xl font-bold text-white">01</span></div>
-                    <h3 class="text-xl font-bold mb-3">Snap or Speak</h3>
-                    <p class="text-qubis-gray-400">Take a photo or use voice. Our AI does the rest.</p>
-                </div>
-                <div>
-                    <div class="w-24 h-24 mx-auto bg-qubis-success rounded-3xl flex items-center justify-center mb-6"><span class="text-4xl font-bold text-white">02</span></div>
-                    <h3 class="text-xl font-bold mb-3">Track Automatically</h3>
-                    <p class="text-qubis-gray-400">Calories calculated instantly. Synced to Watch.</p>
-                </div>
-                <div>
-                    <div class="w-24 h-24 mx-auto bg-qubis-warning rounded-3xl flex items-center justify-center mb-6"><span class="text-4xl font-bold text-white">03</span></div>
-                    <h3 class="text-xl font-bold mb-3">See Results</h3>
-                    <p class="text-qubis-gray-400">View progress on widgets and Health.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Global Reach</h3>
+                    <p>Ship to over 100 countries. Multi-currency support and localized payment options.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section id="testimonials" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold">Loved by Apple users</h2>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-qubis-gray-50 rounded-3xl p-8">
-                    <p class="text-qubis-gray-600 mb-6">"Finally, a calorie app that works with my Apple Watch. I can log meals without pulling out my phone."</p>
-                    <div class="flex items-center gap-4">
-                        <img src="assets/images/avatar-sarah.png" alt="Sarah" class="w-12 h-12 rounded-full object-cover">
-                        <div><p class="font-semibold">Sarah Chen</p><p class="text-sm text-qubis-gray-400">Marathon Runner</p></div>
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h2>Get in Touch</h2>
+                    <p>Interested in bulk orders, custom designs, or partnership opportunities? We'd love to hear from you.</p>
+                    <div class="contact-detail">
+                        <span>📧</span>
+                        <span>orders@qubis.fitness</span>
                     </div>
-                </div>
-                <div class="bg-qubis-gray-50 rounded-3xl p-8">
-                    <p class="text-qubis-gray-600 mb-6">"The Health app integration is seamless. All my workout data and nutrition in one place."</p>
-                    <div class="flex items-center gap-4">
-                        <img src="assets/images/avatar-marcus.png" alt="Marcus" class="w-12 h-12 rounded-full object-cover">
-                        <div><p class="font-semibold">Marcus Johnson</p><p class="text-sm text-qubis-gray-400">CrossFit Athlete</p></div>
+                    <div class="contact-detail">
+                        <span>📍</span>
+                        <span>Los Angeles, CA</span>
                     </div>
-                </div>
-                <div class="bg-qubis-gray-50 rounded-3xl p-8">
-                    <p class="text-qubis-gray-600 mb-6">"Lost 15 lbs in 2 months just by having my calories visible on my home screen widget."</p>
-                    <div class="flex items-center gap-4">
-                        <img src="assets/images/avatar-emma.png" alt="Emma" class="w-12 h-12 rounded-full object-cover">
-                        <div><p class="font-semibold">Emma Rodriguez</p><p class="text-sm text-qubis-gray-400">Professional</p></div>
+                    <div class="contact-detail">
+                        <span>⏰</span>
+                        <span>Mon-Fri 9am-6pm PST</span>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- CTA -->
-    <section id="download" class="py-24 bg-qubis-gray-50">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Start tracking today</h2>
-            <p class="text-xl text-qubis-gray-400 mb-8">Free to download. Premium features available.</p>
-            <a href="#" class="bg-qubis-blue text-white px-10 py-5 rounded-full font-semibold text-lg hover:scale-105 transition inline-flex items-center gap-3">
-                <i data-lucide="apple" class="w-6 h-6"></i>Get Qubis on the App Store
-            </a>
-            <p class="text-sm text-qubis-gray-400 mt-8">Requires iOS 16+ and Apple Watch Series 4 or later</p>
+                    <div class="printful-note">
+                        <strong>Printful Integration:</strong> This store is powered by Printful for seamless order fulfillment.
+                        All orders are automatically processed and shipped directly to your customers.
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inquiryType">Inquiry Type</label>
+                            <select id="inquiryType" name="inquiryType">
+                                <option value="bulk">Bulk Order</option>
+                                <option value="custom">Custom Design</option>
+                                <option value="partnership">Partnership</option>
+                                <option value="support">Support</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your project or inquiry..." required></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Send Message</button>
+                        <div class="form-success" id="formSuccess">
+                            <strong>Message sent!</strong><br>
+                            We'll get back to you within 24 hours.
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 bg-white border-t border-qubis-gray-100">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <span class="text-2xl font-bold text-qubis-blue">Qubis</span>
-            <p class="mt-4 text-qubis-gray-400">© 2026 Qubis. Made for Apple users.</p>
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Qubis Fitness. All rights reserved. | Powered by <a href="https://www.printful.com" target="_blank">Printful</a></p>
         </div>
     </footer>
 
-    <script>lucide.createIcons();</script>
+    <script>
+        // Waitlist Form
+        const waitlistForm = document.getElementById('waitlistForm');
+        const waitlistSuccess = document.getElementById('waitlistSuccess');
+
+        waitlistForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('waitlistEmail').value;
+
+            // Store in localStorage
+            let waitlist = JSON.parse(localStorage.getItem('qubis_waitlist') || '[]');
+            if (!waitlist.includes(email)) {
+                waitlist.push(email);
+                localStorage.setItem('qubis_waitlist', JSON.stringify(waitlist));
+            }
+
+            // Show success
+            waitlistForm.style.display = 'none';
+            waitlistSuccess.style.display = 'block';
+        });
+
+        // Contact Form
+        const contactForm = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Gather form data
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                inquiryType: document.getElementById('inquiryType').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toISOString()
+            };
+
+            // Store in localStorage
+            let contacts = JSON.parse(localStorage.getItem('qubis_contacts') || '[]');
+            contacts.push(formData);
+            localStorage.setItem('qubis_contacts', JSON.stringify(contacts));
+
+            // Show success
+            contactForm.reset();
+            formSuccess.style.display = 'block';
+
+            setTimeout(() => {
+                formSuccess.style.display = 'none';
+            }, 5000);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
