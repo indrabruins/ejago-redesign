@@ -1,0 +1,140 @@
+---
+const headline = "Your Competitors Have Marketing. You Need Obsession.";
+const subheadline = "AI-Powered growth for DTC brands who refuse to be forgettable.";
+---
+
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="headline">{headline}</h1>
+    <p class="subheadline">{subheadline}</p>
+    <div class="hero-ctas">
+      <a href="/contact" class="btn-primary">Start a Project</a>
+      <a href="/work" class="btn-secondary">See Our Work</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="blob"></div>
+  </div>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 5v14M19 12l-7 7-7-7"/>
+    </svg>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 24px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-content {
+    max-width: 800px;
+    text-align: center;
+    z-index: 2;
+  }
+  .headline {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(36px, 6vw, 64px);
+    color: var(--text-primary);
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+  .subheadline {
+    font-size: 20px;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background: var(--accent-primary);
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.25s var(--ease-bounce);
+  }
+  .btn-primary:hover {
+    background: var(--accent-cta);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(249,115,22,0.35);
+  }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--border);
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+  }
+  .btn-secondary:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+  }
+  .hero-visual {
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%);
+    width: 400px;
+    height: 400px;
+    z-index: 1;
+    opacity: 0.6;
+  }
+  .blob {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    animation: blob 8s ease-in-out infinite;
+  }
+  @keyframes blob {
+    0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: scale(1); }
+    33% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+    66% { border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%; transform: scale(1.05); }
+  }
+  .scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 12px;
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+  @media (max-width: 768px) {
+    .hero-visual { display: none; }
+  }
+</style>

@@ -1,0 +1,92 @@
+---
+const metrics = [
+  { value: "$47M+", label: "Revenue Moved" },
+  { value: "64%", label: "Conversion Increase" },
+  { value: "12M+", label: "Impressions" },
+  { value: "50+", label: "AI Campaigns" },
+];
+
+const testimonials = [
+  { quote: "They don't just build marketing. They build obsession. Our conversion rate tripled.", author: "Sarah Chen", role: "CEO, Baltic Born" },
+  { quote: "We went from $2M to $8M ARR in 18 months. The site was just the beginning.", author: "Marcus Rivera", role: "Founder, Steelbone" },
+  { quote: "They found us opportunities we didn't even know existed.", author: "James Park", role: "Marketing Director, Nomad" },
+];
+---
+
+<section class="social-section">
+  <div class="container-main">
+    <!-- Metrics Bar -->
+    <div class="metrics-bar">
+      {metrics.map(m => (
+        <div class="metric">
+          <span class="metric-value">{m.value}</span>
+          <span class="metric-label">{m.label}</span>
+        </div>
+      ))}
+    </div>
+
+    <!-- Testimonials -->
+    <div class="testimonials">
+      <h3>What Founders Say</h3>
+      <div class="testimonial-grid">
+        {testimonials.map(t => (
+          <div class="testimonial-card">
+            <div class="quote-bubble">
+              <p>"{t.quote}"</p>
+            </div>
+            <div class="author">
+              <span class="author-name">{t.author}</span>
+              <span class="author-role">{t.role}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Authority Badges -->
+    <div class="badges">
+      <span class="badge">Google Partner</span>
+      <span class="badge">Shopify Plus</span>
+      <span class="badge">Meta Business</span>
+    </div>
+
+    <!-- Selective -->
+    <div class="selective">
+      <p class="selective-title">We're selective.</p>
+      <p>We work with 5-8 clients at a time for maximum attention.</p>
+      <p>Currently accepting: <strong>2 new clients</strong></p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .social-section { padding: 100px 0; background: var(--bg-primary); }
+  .container-main { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+  
+  .metrics-bar { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; padding: 48px 32px; background: var(--bg-surface); border: 1px solid var(--border); margin-bottom: 64px; }
+  @media (min-width: 768px) { .metrics-bar { grid-template-columns: repeat(4, 1fr); } }
+  .metric { text-align: center; }
+  .metric-value { display: block; font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 4vw, 40px); color: var(--accent-primary); margin-bottom: 8px; }
+  .metric-label { font-size: 14px; color: var(--text-muted); }
+  
+  .testimonials { margin-bottom: 64px; }
+  .testimonials h3 { text-align: center; font-family: var(--font-display); font-weight: 700; font-size: 24px; margin-bottom: 32px; }
+  .testimonial-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 24px; }
+  @media (min-width: 768px) { .testimonial-grid { grid-template-columns: repeat(3, 1fr); } }
+  
+  .testimonial-card { }
+  .quote-bubble { padding: 24px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 16px; position: relative; }
+  .quote-bubble::before { content: ""; position: absolute; top: -8px; left: 24px; width: 16px; height: 16px; background: var(--bg-elevated); border: 1px solid var(--border); transform: rotate(45deg); }
+  .quote-bubble p { font-size: 15px; line-height: 1.6; color: var(--text-secondary); }
+  .author { margin-top: 16px; padding-left: 8px; }
+  .author-name { display: block; font-weight: 600; color: var(--accent-primary); font-size: 14px; }
+  .author-role { display: block; font-size: 13px; color: var(--text-muted); }
+  
+  .badges { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 64px; }
+  .badge { padding: 8px 16px; border: 1px solid var(--border); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+  
+  .selective { text-align: center; padding: 48px; border: 1px solid var(--border); background: var(--bg-surface); }
+  .selective-title { font-family: var(--font-display); font-weight: 700; font-size: 24px; margin-bottom: 8px; }
+  .selective p { color: var(--text-secondary); font-size: 15px; }
+  .selective strong { color: var(--accent-secondary); }
+</style>

@@ -1,0 +1,104 @@
+---
+const services = [
+  {
+    title: "Brand Strategy",
+    outcome: "Turn anonymous into unforgettable",
+    price: "From $8,500/mo",
+    metric: "64% more conversions",
+    icon: "◇"
+  },
+  {
+    title: "Web & App",
+    outcome: "Sites so good they steal attention",
+    price: "From $25,000",
+    metric: "4x faster load",
+    icon: "◈"
+  },
+  {
+    title: "Growth Marketing",
+    outcome: "Revenue, not vanity metrics",
+    price: "From $8,500/mo",
+    metric: "$47M+ revenue moved",
+    icon: "◆"
+  },
+  {
+    title: "AI Consulting",
+    outcome: "AI that actually makes money",
+    price: "From $15,000",
+    metric: "3x ROI average",
+    icon: "◉"
+  },
+  {
+    title: "ERP Integration",
+    outcome: "The unsexy that makes millions",
+    price: "From $30,000",
+    metric: "90% efficiency",
+    icon: "▣"
+  },
+  {
+    title: "Development",
+    outcome: "Web, app, custom — built to scale",
+    price: "From $20,000",
+    metric: "99.9% uptime",
+    icon: "◫"
+  },
+];
+---
+
+<section id="services" class="services-section">
+  <div class="container-main">
+    <header class="section-header">
+      <p class="label">What We Do</p>
+      <h2 class="title">We don't do "digital marketing."<br/>We do customer acquisition engineering.</h2>
+    </header>
+    
+    <div class="services-grid">
+      {services.map((service, i) => (
+        <div class="service-card card-lift" style={`animation-delay: ${i * 100}ms`}>
+          <div class="service-icon">{service.icon}</div>
+          <h3 class="service-title">{service.title}</h3>
+          <p class="service-outcome">"{service.outcome}"</p>
+          <div class="service-metric">
+            <span class="metric-value">{service.metric}</span>
+          </div>
+          <p class="service-price">{service.price}</p>
+          <a href="/services" class="service-link">See Work →</a>
+        </div>
+      ))}
+    </div>
+
+    <div class="availability">
+      <span class="dot"></span>
+      Currently Accepting 2 New Clients
+    </div>
+
+    <p class="guarantee">Results-guaranteed. If you don't see improvement in 90 days, we keep working free until you do.</p>
+  </div>
+</section>
+
+<style>
+  .services-section { padding: 100px 0; background: var(--bg-primary); }
+  .container-main { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+  .section-header { text-align: center; margin-bottom: 64px; }
+  .label { font-family: var(--font-mono); font-size: 12px; color: var(--accent-primary); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+  .title { font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 4vw, 40px); line-height: 1.2; }
+  
+  .services-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 24px; }
+  @media (min-width: 768px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
+  
+  .service-card { padding: 32px; display: flex; flex-direction: column; gap: 12px; }
+  .service-icon { font-size: 28px; color: var(--accent-primary); }
+  .service-title { font-family: var(--font-display); font-weight: 700; font-size: 20px; }
+  .service-outcome { color: var(--text-secondary); font-size: 15px; font-style: italic; }
+  .service-metric { padding: 12px; background: rgba(99,102,241,0.08); border-radius: 8px; }
+  .metric-value { font-family: var(--font-mono); font-size: 14px; color: var(--accent-primary); font-weight: 600; }
+  .service-price { font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); }
+  .service-link { color: var(--accent-primary); text-decoration: none; font-weight: 500; font-size: 14px; margin-top: auto; }
+  
+  .availability { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 48px; font-size: 14px; color: var(--text-secondary); }
+  .dot { width: 8px; height: 8px; background: var(--accent-secondary); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+  
+  .guarantee { text-align: center; margin-top: 24px; padding: 20px; border: 1px solid var(--border); background: var(--bg-elevated); font-size: 14px; color: var(--text-secondary); max-width: 500px; margin-left: auto; margin-right: auto; }
+</style>

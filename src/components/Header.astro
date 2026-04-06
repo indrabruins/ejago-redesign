@@ -1,0 +1,82 @@
+---
+const navLinks = [
+  { label: "Work", href: "/work" },
+  { label: "Services", href: "/services" },
+  { label: "Process", href: "/process" },
+  { label: "Pricing", href: "/pricing" },
+];
+---
+
+<header class="header">
+  <div class="header-inner">
+    <a href="/" class="logo">EJAGO</a>
+    <nav class="nav">
+      {navLinks.map(link => (
+        <a href={link.href} class="nav-link">{link.label}</a>
+      ))}
+    </nav>
+    <a href="/contact" class="cta-btn">Let's Chat</a>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 20px 0;
+    transition: all 0.3s ease;
+  }
+  .header-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .nav {
+    display: none;
+    gap: 32px;
+  }
+  @media (min-width: 768px) {
+    .nav { display: flex; }
+  }
+  .nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  .nav-link:hover {
+    color: var(--accent-primary);
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--accent-cta);
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.25s var(--ease-bounce);
+  }
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(249,115,22,0.3);
+  }
+</style>

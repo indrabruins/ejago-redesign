@@ -1,0 +1,57 @@
+---
+---
+
+<section id="contact" class="cta-section">
+  <div class="container-main">
+    <div class="cta-content">
+      <h2>Curious? Let's Talk.</h2>
+      <div class="cta-buttons">
+        <a href="/contact" class="btn-primary">Book a Call</a>
+        <a href="/contact" class="btn-secondary">Let's Chat</a>
+      </div>
+    </div>
+    
+    <div class="cta-divider"></div>
+    
+    <div class="lead-magnet">
+      <h3>Not ready to talk?</h3>
+      <p>Get your free "DTC Growth Audit" — 11 checkpoints:</p>
+      <form class="lead-form">
+        <input type="email" placeholder="Your email" required />
+        <button type="submit">Send It →</button>
+      </form>
+      <p class="note">We'll evaluate your marketing and tell you what's holding you back. Free. No pitch.</p>
+    </div>
+    
+    <div class="availability">
+      <p>Our next available start: May 15, 2026</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-section { padding: 100px 0; background: var(--bg-primary); }
+  .container-main { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+  .cta-content { text-align: center; margin-bottom: 48px; }
+  .cta-content h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(32px, 5vw, 48px); margin-bottom: 32px; }
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary, .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; font-weight: 600; font-size: 15px; border-radius: 8px; text-decoration: none; transition: all 0.25s ease; }
+  .btn-primary { background: var(--accent-primary); color: white; }
+  .btn-primary:hover { background: var(--accent-cta); transform: translateY(-2px); }
+  .btn-secondary { background: transparent; color: var(--text-primary); border: 2px solid var(--border); }
+  .btn-secondary:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
+  
+  .cta-divider { height: 1px; background: linear-gradient(to right, transparent, var(--border), transparent); margin: 48px 0; }
+  
+  .lead-magnet { text-align: center; max-width: 450px; margin: 0 auto 48px; }
+  .lead-magnet h3 { font-family: var(--font-display); font-weight: 700; font-size: 20px; margin-bottom: 8px; }
+  .lead-magnet p { color: var(--text-secondary); margin-bottom: 16px; }
+  .lead-form { display: flex; gap: 8px; max-width: 350px; margin: 0 auto 16px; }
+  .lead-form input { flex: 1; padding: 12px 16px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; font-size: 15px; outline: none; }
+  .lead-form input:focus { border-color: var(--accent-primary); }
+  .lead-form button { padding: 12px 24px; background: var(--accent-secondary); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
+  .note { font-size: 12px; color: var(--text-muted); }
+  
+  .availability { text-align: center; padding: 16px; border: 1px solid var(--border); background: var(--bg-surface); max-width: 300px; margin: 0 auto; }
+  .availability p { font-family: var(--font-mono); font-size: 13px; color: var(--accent-secondary); }
+</style>

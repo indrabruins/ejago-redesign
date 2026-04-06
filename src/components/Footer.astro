@@ -1,0 +1,70 @@
+---
+const currentYear = new Date().getFullYear();
+const footerLinks = {
+  services: ["Brand Strategy", "Web & App", "Growth Marketing", "AI Consulting", "ERP Integration", "Development"],
+  company: ["About", "Work", "Services", "Contact"],
+};
+---
+
+<footer class="footer">
+  <div class="container-main">
+    <div class="ai-badge">
+      <span>🤖</span>
+      <div>
+        <strong>Built by AI agents.</strong>
+        <span>We practice what we preach.</span>
+      </div>
+    </div>
+    
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          {footerLinks.services.map(link => (
+            <li><a href="/services">{link}</a></li>
+          ))}
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          {footerLinks.company.map(link => (
+            <li><a href={`/${link.toLowerCase()}`}>{link}</a></li>
+          ))}
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:hello@ejago.com">hello@ejago.com</a></li>
+          <li><a href="tel:+15551234567">(555) 123-4567</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© {currentYear} Ejago. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer { padding: 64px 0 32px; background: var(--bg-surface); border-top: 1px solid var(--border); }
+  .container-main { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+  
+  .ai-badge { display: flex; align-items: center; gap: 12px; padding: 16px 24px; background: rgba(99,102,241,0.08); border: 1px solid var(--border); margin-bottom: 48px; max-width: 350px; }
+  .ai-badge span:first-child { font-size: 24px; }
+  .ai-badge strong { display: block; font-size: 14px; }
+  .ai-badge span:last-child { display: block; font-size: 12px; color: var(--text-muted); }
+  
+  .footer-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 32px; margin-bottom: 48px; }
+  @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(3, 1fr); } }
+  
+  .footer-col h4 { font-family: var(--font-display); font-weight: 700; font-size: 14px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .footer-col a { color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--accent-primary); }
+  
+  .footer-bottom { padding-top: 32px; border-top: 1px solid var(--border); text-align: center; }
+  .footer-bottom p { font-size: 12px; color: var(--text-muted); }
+</style>

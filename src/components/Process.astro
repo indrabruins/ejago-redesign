@@ -1,0 +1,56 @@
+---
+const phases = [
+  { number: "01", name: "Discovery", duration: "20 min", description: "A real conversation, not a questionnaire", trust: "No boring forms" },
+  { number: "02", name: "Strategy", duration: "2 weeks", description: "Your custom roadmap + creative direction", trust: "You'll know where we stand" },
+  { number: "03", name: "Build", duration: "4-8 weeks", description: "Weekly sprints, you see everything first", trust: "No surprises" },
+  { number: "04", name: "Grow", duration: "Ongoing", description: "Weekly reports, we optimize forever", trust: "Always transparent" },
+];
+---
+
+<section id="process" class="process-section">
+  <div class="container-main">
+    <header class="section-header">
+      <h2 class="title">Here's Exactly How We Work Together</h2>
+      <p class="subtitle">No surprises. No runaround. Just results.</p>
+    </header>
+    
+    <div class="process-timeline">
+      {phases.map((phase, i) => (
+        <div class="phase-card card-lift" style={`animation-delay: ${i * 150}ms`}>
+          <div class="phase-number">{phase.number}</div>
+          <h3 class="phase-name">{phase.name}</h3>
+          <span class="phase-duration">{phase.duration}</span>
+          <p class="phase-description">{phase.description}</p>
+          <p class="phase-trust">{phase.trust}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="risk-reverse">
+      <h3>Our Promise</h3>
+      <p>If we're not the right fit after our discovery call, we'll tell you and refer you to someone who is.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .process-section { padding: 100px 0; background: var(--bg-surface); }
+  .container-main { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+  .section-header { text-align: center; margin-bottom: 64px; }
+  .title { font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 4vw, 40px); margin-bottom: 12px; }
+  .subtitle { font-size: 18px; color: var(--text-secondary); }
+  
+  .process-timeline { display: grid; grid-template-columns: repeat(1, 1fr); gap: 24px; }
+  @media (min-width: 768px) { .process-timeline { grid-template-columns: repeat(4, 1fr); } }
+  
+  .phase-card { padding: 32px; position: relative; }
+  .phase-number { font-family: var(--font-display); font-weight: 800; font-size: 48px; color: var(--accent-primary); line-height: 1; margin-bottom: 16px; }
+  .phase-name { font-family: var(--font-display); font-weight: 700; font-size: 20px; margin-bottom: 4px; }
+  .phase-duration { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); text-transform: uppercase; }
+  .phase-description { color: var(--text-secondary); font-size: 15px; margin: 16px 0; line-height: 1.5; }
+  .phase-trust { padding-top: 16px; border-top: 1px solid var(--border); font-size: 13px; color: var(--accent-secondary); font-style: italic; }
+  
+  .risk-reverse { margin-top: 64px; text-align: center; padding: 32px; border: 1px solid var(--border); background: var(--bg-elevated); max-width: 500px; margin-left: auto; margin-right: auto; }
+  .risk-reverse h3 { font-family: var(--font-display); font-weight: 700; margin-bottom: 8px; }
+  .risk-reverse p { color: var(--text-secondary); font-size: 15px; }
+</style>
