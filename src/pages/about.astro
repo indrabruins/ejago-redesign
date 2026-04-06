@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const values = [
+  { title: "No Fluff", description: "We say what we mean. No jargon, no buzzwords." },
+  { title: "Results First", description: "We optimize for revenue, not vanity metrics." },
+  { title: "AI + Human", description: "The best of both worlds. Automation with strategy." },
+  { title: "Obsession", description: "We care about your growth like it's our own." },
+];
+
+const timeline = [
+  { year: "2023", event: "Founded — 2 founders, 1 garage" },
+  { year: "2024", event: "$10M client revenue moved" },
+  { year: "2025", event: "50+ campaigns launched" },
+  { year: "2026", event: "Team of 8, still hungry" },
+];
+---
+
+<Layout title="About | Ejago">
+  <Header />
+  <main class="pt-24">
+    <section class="about-hero">
+      <div class="container-main">
+        <h1>We're the agency for brands who refuse to blend in.</h1>
+        <p>Founded by ex-founders who've been in the trenches.</p>
+      </div>
+    </section>
+
+    <section class="values-section">
+      <div class="container-main">
+        <h2>Our Values</h2>
+        <div class="values-grid">
+          {values.map(v => (
+            <div class="value-card">
+              <h3>{v.title}</h3>
+              <p>{v.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="timeline-section">
+      <div class="container-main">
+        <h2>Our Journey</h2>
+        <div class="timeline">
+          {timeline.map(t => (
+            <div class="timeline-item">
+              <span class="year">{t.year}</span>
+              <span class="event">{t.event}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .pt-24 { padding-top: 120px; }
+  .about-hero { padding: 80px 0; text-align: center; background: var(--bg-surface); }
+  .about-hero h1 { font-family: var(--font-display); font-size: clamp(32px, 5vw, 48px); font-weight: 800; max-width: 800px; margin: 0 auto 24px; }
+  .about-hero p { font-size: 20px; color: var(--text-secondary); }
+  
+  .values-section { padding: 80px 0; }
+  .values-section h2 { text-align: center; font-family: var(--font-display); font-size: 32px; margin-bottom: 48px; }
+  .values-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  @media (max-width: 640px) { .values-grid { grid-template-columns: 1fr; } }
+  .value-card { padding: 32px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; }
+  .value-card h3 { font-family: var(--font-display); font-weight: 700; margin-bottom: 8px; }
+  .value-card p { color: var(--text-secondary); font-size: 15px; }
+  
+  .timeline-section { padding: 80px 0; background: var(--bg-surface); }
+  .timeline-section h2 { text-align: center; font-family: var(--font-display); font-size: 32px; margin-bottom: 48px; }
+  .timeline { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+  .timeline-item { text-align: center; }
+  .year { display: block; font-family: var(--font-display); font-size: 24px; font-weight: 800; color: var(--accent-primary); }
+  .event { font-size: 14px; color: var(--text-secondary); }
+</style>

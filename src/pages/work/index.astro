@@ -1,0 +1,94 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const caseStudies = [
+  { 
+    client: "Baltic Born", 
+    industry: "DTC Fashion", 
+    result: "+312% Revenue",
+    image: "fashion",
+    description: "From $2M to $8M ARR in 18 months. Complete brand overhaul + AI marketing engine."
+  },
+  { 
+    client: "Steelbone", 
+    industry: "Fitness", 
+    result: "+189% Conversions",
+    image: "fitness",
+    description: "Landing page redesign + growth automation for pre-order launch."
+  },
+  { 
+    client: "Nomad", 
+    industry: "Travel Tech", 
+    result: "+64% Conversion",
+    image: "travel",
+    description: "Website revamp + paid acquisition stack for B2B SaaS."
+  },
+];
+---
+
+<Layout title="Work | Ejago">
+  <Header />
+  <main class="pt-24">
+    <section class="page-header">
+      <div class="container-main">
+        <h1 class="page-title">Our Work</h1>
+        <p class="page-subtitle">Real results for real brands. No fluff, justROI.</p>
+      </div>
+    </section>
+
+    <section class="case-studies">
+      <div class="container-main">
+        {caseStudies.map((study, i) => (
+          <article class={`case-card scroll-reveal stagger-${i + 1}`}>
+            <div class="case-visual">
+              <span class="case-icon">{study.image[0].toUpperCase()}</span>
+            </div>
+            <div class="case-content">
+              <span class="case-industry">{study.industry}</span>
+              <h2>{study.client}</h2>
+              <p class="case-description">{study.description}</p>
+              <div class="case-result">
+                <span class="result-value">{study.result}</span>
+                <span class="result-label">Result</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container-main">
+        <h2>Ready to make waves?</h2>
+        <a href="/contact" class="btn-primary">Let's Talk</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .pt-24 { padding-top: 120px; }
+  .page-header { padding: 80px 0; text-align: center; background: var(--bg-surface); }
+  .page-title { font-family: var(--font-display); font-size: clamp(36px, 5vw, 56px); font-weight: 800; margin-bottom: 16px; }
+  .page-subtitle { font-size: 20px; color: var(--text-secondary); }
+  
+  .case-studies { padding: 80px 0; }
+  .case-card { display: grid; grid-template-columns: 1fr; gap: 32px; margin-bottom: 48px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  @media (min-width: 768px) { .case-card { grid-template-columns: 1fr 1fr; } }
+  
+  .case-visual { min-height: 300px; background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); display: flex; align-items: center; justify-content: center; }
+  .case-icon { font-size: 64px; color: white; font-weight: 800; }
+  .case-content { padding: 32px; }
+  .case-industry { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); text-transform: uppercase; }
+  .case-content h2 { font-family: var(--font-display); font-size: 28px; font-weight: 700; margin: 8px 0 16px; }
+  .case-description { color: var(--text-secondary); font-size: 15px; line-height: 1.6; margin-bottom: 24px; }
+  .case-result { padding: 16px; background: rgba(99,102,241,0.1); border-radius: 8px; }
+  .result-value { display: block; font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--accent-primary); }
+  .result-label { font-size: 12px; color: var(--text-muted); }
+  
+  .cta-section { padding: 80px 0; text-align: center; background: var(--bg-primary); }
+  .cta-section h2 { font-family: var(--font-display); font-size: 32px; font-weight: 700; margin-bottom: 24px; }
+</style>
