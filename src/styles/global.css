@@ -218,3 +218,191 @@
     transition-duration: 0.01ms !important;
   }
 }
+/* Phase 4: Enhanced Animations */
+
+/* Scroll Reveal */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger animations */
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+.stagger-5 { transition-delay: 0.5s; }
+.stagger-6 { transition-delay: 0.6s; }
+
+/* Counter animation keyframes */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.counter-animate {
+  animation: countUp 0.4s ease-out forwards;
+}
+
+/* Marquee strip */
+.marquee-container {
+  overflow: hidden;
+  background: var(--accent-primary);
+  padding: 16px 0;
+}
+
+.marquee-content {
+  display: flex;
+  animation: marquee 25s linear infinite;
+  white-space: nowrap;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 32px;
+  color: white;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Word scramble effect */
+.word-scramble {
+  display: inline-block;
+}
+
+/* Nav glass effect */
+.nav-glass {
+  background: rgba(250, 249, 246, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Card lift enhanced */
+.card-lift {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(99,102,241,0.15);
+  border-color: var(--border-accent);
+}
+
+/* Button bounce */
+.btn-bounce {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+             box-shadow 0.25s ease;
+}
+
+.btn-bounce:hover {
+  transform: scale(1.05);
+}
+
+/* Blob morph enhanced */
+.blob-morph {
+  animation: blob 8s ease-in-out infinite;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+}
+
+@keyframes blob {
+  0%, 100% { 
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; 
+    transform: scale(1) rotate(0deg);
+  }
+  25% { 
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; 
+    transform: scale(1.05) rotate(5deg);
+  }
+  50% { 
+    border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%; 
+    transform: scale(1.1) rotate(0deg);
+  }
+  75% { 
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; 
+    transform: scale(1.05) rotate(-5deg);
+  }
+}
+
+/* Testimonial bubble */
+.bubble-quote {
+  position: relative;
+  background: var(--bg-elevated);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid var(--border);
+}
+
+.bubble-quote::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 24px;
+  width: 20px;
+  height: 20px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  transform: rotate(45deg);
+}
+
+/* Mobile menu */
+.mobile-menu-btn {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.mobile-menu-btn span {
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .nav { display: none !important; }
+  .mobile-menu-btn { display: flex; }
+  
+  .mobile-menu-open .nav {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg-elevated);
+    padding: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+/* Pricing tier featured */
+.tier-featured {
+  border: 2px solid var(--accent-primary);
+  transform: scale(1.02);
+  box-shadow: 0 0 30px rgba(99,102,241,0.15);
+}
+
+.tier-featured:hover {
+  transform: scale(1.04);
+}

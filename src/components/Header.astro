@@ -7,17 +7,32 @@ const navLinks = [
 ];
 ---
 
-<header class="header">
+<header class="header" id="main-header">
   <div class="header-inner">
     <a href="/" class="logo">EJAGO</a>
-    <nav class="nav">
+    <nav class="nav" id="desktop-nav">
       {navLinks.map(link => (
         <a href={link.href} class="nav-link">{link.label}</a>
       ))}
     </nav>
-    <a href="/contact" class="cta-btn">Let's Chat</a>
+    <a href="/contact" class="cta-btn desktop-only">Let's Chat</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <nav class="mobile-nav">
+    {navLinks.map(link => (
+      <a href={link.href} class="mobile-nav-link">{link.label}</a>
+    ))}
+    <a href="/contact" class="mobile-cta">Let's Chat</a>
+  </nav>
+</div>
 
 <style>
   .header {
@@ -28,6 +43,14 @@ const navLinks = [
     z-index: 1000;
     padding: 20px 0;
     transition: all 0.3s ease;
+  }
+  .header.scrolled {
+    padding: 12px 0;
+    background: rgba(250, 249, 246, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
   }
   .header-inner {
     max-width: 1280px;
@@ -44,6 +67,7 @@ const navLinks = [
     color: var(--text-primary);
     text-decoration: none;
     letter-spacing: -0.02em;
+    z-index: 1001;
   }
   .nav {
     display: none;
@@ -79,4 +103,127 @@ const navLinks = [
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(249,115,22,0.3);
   }
+  .desktop-only { display: none; }
+  @media (min-width: 768px) {
+    .desktop-only { display: inline-flex; }
+  }
+
+  /* Hamburger */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 4px;
+  }
+  @media (min-width: 768px) {
+    .hamburger { display: none; }
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: all 0.3s var(--ease-smooth);
+  }
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Mobile Menu */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg-primary);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s var(--ease-smooth);
+  }
+  .mobile-menu.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+  .mobile-nav-link {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .mobile-nav-link:hover {
+    color: var(--accent-primary);
+  }
+  .mobile-cta {
+    margin-top: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background: var(--accent-cta);
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 8px;
+    text-decoration: none;
+  }
 </style>
+
+<script>
+  const header = document.getElementById('main-header');
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  // Scroll handler for frosted glass
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+  });
+
+  // Mobile menu toggle
+  hamburger?.addEventListener('click', () => {
+    const isActive = hamburger.classList.toggle('active');
+    mobileMenu?.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', String(isActive));
+    document.body.style.overflow = isActive ? 'hidden' : '';
+  });
+
+  // Close mobile menu on link click
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger?.classList.remove('active');
+      mobileMenu?.classList.remove('active');
+      hamburger?.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+</script>

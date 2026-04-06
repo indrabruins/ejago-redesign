@@ -5,7 +5,7 @@ interface Props {
 }
 const {
   title = "Ejago — We Build Obsession",
-  description = "AI-powered marketing for DTC brands who refuse to be forgettable. We build obsession, not just marketing."
+  description = "AI-powered marketing for DTC brands who refuse to be forgettable."
 } = Astro.props;
 ---
 <!doctype html>
@@ -23,11 +23,89 @@ const {
 <body>
   <slot />
   <script>
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.15 }
+    // Phase 4 Animation Scripts
+    
+    // 1. Scroll Reveal
+    const scrollObserver = new IntersectionObserver(
+      (entries) => entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      }),
+      { threshold: 0.15, rootMargin: '0px 0px -50px 0px' }
     );
-    document.querySelectorAll('.animate-fade-up').forEach(el => observer.observe(el));
+    document.querySelectorAll('.scroll-reveal').forEach(el => scrollObserver.observe(el));
+    
+    // 2. Counter Animation
+    const counterObserver = new IntersectionObserver(
+      (entries) => entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = el.getAttribute('data-count');
+          if (target) {
+            animateCounter(el, target);
+          }
+        }
+      }),
+      { threshold: 0.5 }
+    );
+    document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+    
+    function animateCounter(el, target) {
+      const duration = 2000;
+      const start = 0;
+      const isPercent = target.includes('%');
+      const isM = target.includes('M');
+      const isK = target.includes('+');
+      const num = parseInt(target.replace(/[^0-9]/g, ''));
+      const startTime = performance.now();
+      
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(num * easeOut);
+        
+        if (isPercent) el.textContent = current + '%';
+        else if (isM) el.textContent = '$' + current + 'M+';
+        else if (isK) el.textContent = current + '+';
+        else if (target.includes('.')) el.textContent = (num * easeOut).toFixed(1);
+        else el.textContent = current.toString();
+        
+        if (progress < 1) requestAnimationFrame(update);
+      }
+      requestAnimationFrame(update);
+    }
+    
+    // 3. Nav glass effect on scroll
+    const nav = document.querySelector('.header');
+    if (nav) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          nav.classList.add('nav-glass');
+        } else {
+          nav.classList.remove('nav-glass');
+        }
+      });
+    }
+    
+    // 4. Mobile menu toggle
+    const mobileBtn = document.querySelector('.mobile-menu-btn');
+    const header = document.querySelector('.header');
+    if (mobileBtn && header) {
+      mobileBtn.addEventListener('click', () => {
+        header.classList.toggle('mobile-menu-open');
+      });
+    }
+    
+    // 5. Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
   </script>
 </body>
 </html>
