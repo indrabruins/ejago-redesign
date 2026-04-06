@@ -1,0 +1,100 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const services = [
+  {
+    title: "Brand Strategy",
+    subtitle: "Turn anonymous into unforgettable",
+    price: "$8,500/mo",
+    features: ["Brand positioning", "Visual identity", "Messaging framework", "Brand guidelines"]
+  },
+  {
+    title: "Web & App", 
+    subtitle: "Sites so good they steal attention",
+    price: "$25,000 project",
+    features: ["Custom design", "Mobile-first", "CMS integration", "Performance optimization"]
+  },
+  {
+    title: "Growth Marketing",
+    subtitle: "Revenue, not vanity metrics",
+    price: "$8,500/mo",
+    features: ["Paid acquisition", "Email automation", "Conversion optimization", "Analytics dashboard"]
+  },
+  {
+    title: "AI Consulting",
+    subtitle: "AI that actually makes money",
+    price: "$15,000 project",
+    features: ["AI audit", "Tool selection", "Workflow automation", "Team training"]
+  },
+  {
+    title: "ERP Integration",
+    subtitle: "The unsexy that makes millions",
+    price: "$30,000 project",
+    features: ["System audit", "Data migration", "API development", "Process automation"]
+  },
+  {
+    title: "Development",
+    subtitle: "Web, app, custom — built to scale",
+    price: "$20,000 project",
+    features: ["Custom web apps", "Mobile apps", "API development", "Cloud infrastructure"]
+  },
+];
+---
+
+<Layout title="Services | Ejago">
+  <Header />
+  <main class="pt-24">
+    <section class="page-header">
+      <div class="container-main">
+        <h1>Services</h1>
+        <p>Full-stack growth capabilities. Pick your weapon.</p>
+      </div>
+    </section>
+
+    <section class="services-grid">
+      <div class="container-main">
+        {services.map((s, i) => (
+          <article class={`service-card scroll-reveal stagger-${i + 1}`}>
+            <h2>{s.title}</h2>
+            <p class="subtitle">"{s.subtitle}"</p>
+            <div class="price">{s.price}</div>
+            <ul class="features">
+              {s.features.map(f => (
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <a href="/contact" class="btn-service">Get Started</a>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .pt-24 { padding-top: 120px; }
+  .page-header { padding: 80px 0; text-align: center; background: var(--bg-surface); }
+  .page-header h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 56px); font-weight: 800; margin-bottom: 16px; }
+  .page-header p { font-size: 20px; color: var(--text-secondary); }
+  
+  .services-grid { padding: 80px 0; }
+  .services-grid .container-main { display: grid; grid-template-columns: repeat(1, 1fr); gap: 24px; }
+  @media (min-width: 768px) { .services-grid .container-main { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .services-grid .container-main { grid-template-columns: repeat(3, 1fr); } }
+  
+  .service-card { padding: 32px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 16px; display: flex; flex-direction: column; }
+  .service-card h2 { font-family: var(--font-display); font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+  .subtitle { color: var(--text-secondary); font-size: 15px; font-style: italic; margin-bottom: 16px; }
+  .price { font-family: var(--font-mono); font-size: 20px; font-weight: 600; color: var(--accent-primary); margin-bottom: 24px; }
+  .features { list-style: none; flex-grow: 1; margin-bottom: 24px; }
+  .features li { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-secondary); margin-bottom: 8px; }
+  .features svg { color: var(--accent-secondary); flex-shrink: 0; }
+  .btn-service { display: block; text-align: center; padding: 12px 24px; background: var(--accent-primary); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.25s ease; }
+  .btn-service:hover { background: var(--accent-cta); }
+</style>

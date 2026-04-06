@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Contact | Ejago">
+  <Header />
+  <main class="pt-24">
+    <section class="page-header">
+      <div class="container-main">
+        <h1>Let's Talk</h1>
+        <p>No hard sell. Just a conversation.</p>
+      </div>
+    </section>
+
+    <section class="contact-content">
+      <div class="container-main">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h2>Get in Touch</h2>
+            <p>Fill out the form or reach out directly.</p>
+            
+            <div class="contact-methods">
+              <a href="mailto:hello@ejago.com">
+                <strong>Email</strong>
+                <span>hello@ejago.com</span>
+              </a>
+              <a href="tel:+15551234567">
+                <strong>Phone</strong>
+                <span>(555) 123-4567</span>
+              </a>
+            </div>
+            
+            <div class="availability">
+              <h3>Availability</h3>
+              <p>Currently accepting <strong>2 new clients</strong></p>
+              <p>Next available start: May 15, 2026</p>
+            </div>
+          </div>
+          
+          <form class="contact-form" method="POST">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required placeholder="Your name" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required placeholder="you@company.com" />
+            </div>
+            <div class="form-group">
+              <label for="website">Website (optional)</label>
+              <input type="url" id="website" name="website" placeholder="https://your site.com" />
+            </div>
+            <div class="form-group">
+              <label for="budget">Budget</label>
+              <select id="budget" name="budget">
+                <option value="">Select your budget</option>
+                <option value="8k">$8,500/mo (Starter)</option>
+                <option value="15k">$15,000/mo (Growth)</option>
+                <option value="custom">$25k+ (Scale)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Tell us about your project</label>
+              <textarea id="message" name="message" rows="5" placeholder="What are you looking to accomplish?"></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .pt-24 { padding-top: 120px; }
+  .page-header { padding: 80px 0; text-align: center; background: var(--bg-surface); }
+  .page-header h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 56px); font-weight: 800; margin-bottom: 16px; }
+  .page-header p { font-size: 20px; color: var(--text-secondary); }
+  
+  .contact-content { padding: 80px 0; }
+  .contact-grid { display: grid; grid-template-columns: 1fr; gap: 48px; }
+  @media (min-width: 768px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+  
+  .contact-info h2 { font-family: var(--font-display); font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+  .contact-info > p { color: var(--text-secondary); margin-bottom: 32px; }
+  
+  .contact-methods { margin-bottom: 32px; }
+  .contact-methods a { display: block; text-decoration: none; padding: 16px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 12px; }
+  .contact-methods strong { display: block; color: var(--text-muted); font-size: 12px; }
+  .contact-methods span { color: var(--accent-primary); font-size: 16px; }
+  
+  .availability { padding: 24px; background: rgba(99,102,241,0.1); border-radius: 8px; }
+  .availability h3 { font-size: 14px; color: var(--text-muted); margin-bottom: 8px; }
+  .availability strong { color: var(--accent-secondary); }
+  
+  .contact-form { display: flex; flex-direction: column; gap: 20px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-group label { font-size: 14px; font-weight: 600; }
+  .form-group input, .form-group select, .form-group textarea { padding: 14px 16px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; font-size: 16px; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--accent-primary); }
+  .btn-submit { padding: 16px 32px; background: var(--accent-primary); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.25s ease; }
+  .btn-submit:hover { background: var(--accent-cta); }
+</style>
