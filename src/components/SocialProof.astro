@@ -1,92 +1,474 @@
 ---
+const logos = ["Baltic Born", "Steelbone", "Nomad Co.", "Axiom", "Verdant", "Fold"];
 const metrics = [
-  { value: "$47M+", label: "Revenue Moved" },
-  { value: "64%", label: "Conversion Increase" },
-  { value: "12M+", label: "Impressions" },
-  { value: "50+", label: "AI Campaigns" },
+  { value: "$47M+", label: "Revenue", sublabel: "Moved" },
+  { value: "64%", label: "Conversion", sublabel: "Increase" },
+  { value: "83%", label: "Sales", sublabel: "Increase" },
+  { value: "104%", label: "Traffic", sublabel: "Increase" },
 ];
-
 const testimonials = [
-  { quote: "They don't just build marketing. They build obsession. Our conversion rate tripled.", author: "Sarah Chen", role: "CEO, Baltic Born" },
-  { quote: "We went from $2M to $8M ARR in 18 months. The site was just the beginning.", author: "Marcus Rivera", role: "Founder, Steelbone" },
-  { quote: "They found us opportunities we didn't even know existed.", author: "James Park", role: "Marketing Director, Nomad" },
+  {
+    quote: "They don't just build marketing. They build obsession. Our competitors can't figure out how we're suddenly everywhere.",
+    name: "Marcus Rivera",
+    title: "Founder",
+    company: "Steelbone Fitness",
+    metric: "143% revenue increase in 90 days",
+  },
+  {
+    quote: "I hired Ejago because they were the only agency that could explain exactly what they'd do before doing it. That transparency continued throughout.",
+    name: "Sarah Chen",
+    title: "CEO",
+    company: "Baltic Born",
+    metric: "3.2× ROI in Q1",
+  },
+  {
+    quote: "They found $80K in wasted ad spend in the first two weeks. The audit alone was worth the engagement.",
+    name: "James Okafor",
+    title: "COO",
+    company: "Nomad Co.",
+    metric: "$80K recovered in 2 weeks",
+  },
 ];
 ---
 
-<section class="social-section">
-  <div class="container-main">
-    <!-- Metrics Bar -->
-    <div class="metrics-bar">
-      {metrics.map(m => (
-        <div class="metric">
-          <span class="metric-value">{m.value}</span>
-          <span class="metric-label">{m.label}</span>
+<section id="social-proof" class="social-proof-section">
+  <!-- Video background -->
+  <div class="section-video-bg" aria-hidden="true">
+    <video class="section-video" autoplay muted loop playsinline>
+      <source src="/assets/videos/socialproof.mp4" type="video/mp4" />
+    </video>
+    <div class="section-video-overlay"></div>
+  </div>
+  <div class="container">
+
+    <!-- Logo Marquee -->
+    <div class="marquee-strip scroll-reveal">
+      <p class="marquee-label">Trusted by brands who refused to be forgettable</p>
+      <div class="marquee-wrap">
+        <div class="marquee-track">
+          {[...logos, ...logos].map(logo => (
+            <span class="marquee-item">{logo}</span>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
 
-    <!-- Testimonials -->
-    <div class="testimonials">
-      <h3>What Founders Say</h3>
-      <div class="testimonial-grid">
-        {testimonials.map(t => (
-          <div class="testimonial-card">
-            <div class="quote-bubble">
-              <p>"{t.quote}"</p>
+    <!-- Metrics -->
+    <div class="metrics-bar scroll-reveal">
+      {metrics.map(m => (
+        <div class="metric-item">
+          <span class="metric-value counter" data-count={m.value}>{m.value}</span>
+          <span class="metric-label">{m.label}</span>
+          <span class="metric-sub">{m.sublabel}</span>
+        </div>
+      ))}
+      <p class="metrics-note">* for select clients</p>
+    </div>
+
+    <!-- Testimonial slider -->
+    <div class="testimonials scroll-reveal">
+      <h2 class="testimonials-title">What Founders Say</h2>
+      <div class="testimonial-slider" id="testimonial-slider">
+        {testimonials.map((t, i) => (
+          <div class={`testimonial-card ${i === 0 ? 'active' : ''}`} data-index={i}>
+            <div class="testimonial-quote">
+              <span class="quote-mark">"</span>
+              <p>{t.quote}</p>
             </div>
-            <div class="author">
-              <span class="author-name">{t.author}</span>
-              <span class="author-role">{t.role}</span>
+            <div class="testimonial-meta">
+              <div class="testimonial-avatar" aria-hidden="true">{t.name.split(' ').map(n => n[0]).join('')}</div>
+              <div>
+                <p class="testimonial-name">{t.name}</p>
+                <p class="testimonial-role">{t.title}, {t.company}</p>
+              </div>
+              <div class="testimonial-metric">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                {t.metric}
+              </div>
             </div>
           </div>
         ))}
       </div>
+      <div class="slider-controls">
+        <button class="slider-btn" id="slider-prev" aria-label="Previous testimonial">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <div class="slider-dots" id="slider-dots">
+          {testimonials.map((_, i) => (
+            <button class={`dot ${i === 0 ? 'active' : ''}`} data-index={i} aria-label={`Testimonial ${i + 1}`} />
+          ))}
+        </div>
+        <button class="slider-btn" id="slider-next" aria-label="Next testimonial">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
     </div>
 
-    <!-- Authority Badges -->
-    <div class="badges">
-      <span class="badge">Google Partner</span>
-      <span class="badge">Shopify Plus</span>
-      <span class="badge">Meta Business</span>
+    <!-- Authority badges -->
+    <div class="authority-badges scroll-reveal">
+      <p class="badges-label">Certified experts, not self-proclaimed</p>
+      <div class="badges">
+        <span class="badge-item">Google Partner</span>
+        <span class="badge-item">Shopify Plus Expert</span>
+        <span class="badge-item">Meta Business</span>
+      </div>
     </div>
 
-    <!-- Selective -->
-    <div class="selective">
-      <p class="selective-title">We're selective.</p>
-      <p>We work with 5-8 clients at a time for maximum attention.</p>
-      <p>Currently accepting: <strong>2 new clients</strong></p>
+    <!-- Selective block -->
+    <div class="selective-block scroll-reveal">
+      <p class="selective-title">We're not for everyone.</p>
+      <p class="selective-sub">We work with 5–8 clients at a time.</p>
+      <div class="selective-avail">
+        <span class="avail-dot"></span>
+        Currently accepting: 2 new clients
+      </div>
     </div>
   </div>
 </section>
 
 <style>
-  .social-section { padding: 100px 0; background: var(--bg-primary); }
-  .container-main { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-  
-  .metrics-bar { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; padding: 48px 32px; background: var(--bg-surface); border: 1px solid var(--border); margin-bottom: 64px; }
-  @media (min-width: 768px) { .metrics-bar { grid-template-columns: repeat(4, 1fr); } }
-  .metric { text-align: center; }
-  .metric-value { display: block; font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 4vw, 40px); color: var(--accent-primary); margin-bottom: 8px; }
-  .metric-label { font-size: 14px; color: var(--text-muted); }
-  
-  .testimonials { margin-bottom: 64px; }
-  .testimonials h3 { text-align: center; font-family: var(--font-display); font-weight: 700; font-size: 24px; margin-bottom: 32px; }
-  .testimonial-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 24px; }
-  @media (min-width: 768px) { .testimonial-grid { grid-template-columns: repeat(3, 1fr); } }
-  
-  .testimonial-card { }
-  .quote-bubble { padding: 24px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 16px; position: relative; }
-  .quote-bubble::before { content: ""; position: absolute; top: -8px; left: 24px; width: 16px; height: 16px; background: var(--bg-elevated); border: 1px solid var(--border); transform: rotate(45deg); }
-  .quote-bubble p { font-size: 15px; line-height: 1.6; color: var(--text-secondary); }
-  .author { margin-top: 16px; padding-left: 8px; }
-  .author-name { display: block; font-weight: 600; color: var(--accent-primary); font-size: 14px; }
-  .author-role { display: block; font-size: 13px; color: var(--text-muted); }
-  
-  .badges { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 64px; }
-  .badge { padding: 8px 16px; border: 1px solid var(--border); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
-  
-  .selective { text-align: center; padding: 48px; border: 1px solid var(--border); background: var(--bg-surface); }
-  .selective-title { font-family: var(--font-display); font-weight: 700; font-size: 24px; margin-bottom: 8px; }
-  .selective p { color: var(--text-secondary); font-size: 15px; }
-  .selective strong { color: var(--accent-secondary); }
+  .social-proof-section {
+    padding: 100px 0;
+    background: var(--bg-primary);
+    position: relative;
+    overflow: hidden;
+  }
+  .section-video-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .section-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.15;
+  }
+  .section-video-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--bg-primary);
+    opacity: 0.85;
+  }
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Marquee */
+  .marquee-strip { margin-bottom: 72px; }
+  .marquee-label {
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+  .marquee-wrap { overflow: hidden; background: var(--accent-primary); border-radius: 12px; padding: 16px 0; }
+  .marquee-track {
+    display: flex;
+    gap: 0;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+  }
+  .marquee-track:hover { animation-play-state: paused; }
+  .marquee-item {
+    padding: 0 48px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    color: white;
+    white-space: nowrap;
+    opacity: 0.85;
+  }
+  .marquee-item::after {
+    content: '✦';
+    margin-left: 48px;
+    opacity: 0.4;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Metrics */
+  .metrics-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    text-align: center;
+    padding: 48px 32px;
+    background: var(--bg-surface);
+    border-radius: 20px;
+    margin-bottom: 72px;
+    position: relative;
+  }
+  @media (max-width: 768px) { .metrics-bar { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .metrics-bar { grid-template-columns: 1fr; } }
+
+  .metric-item { display: flex; flex-direction: column; gap: 4px; }
+  .metric-value {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(32px, 4vw, 52px);
+    color: var(--accent-primary);
+    line-height: 1;
+  }
+  .metric-label {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--text-primary);
+  }
+  .metric-sub { font-size: 14px; color: var(--text-muted); }
+  .metrics-note {
+    position: absolute;
+    bottom: 12px;
+    right: 20px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  /* Testimonials */
+  .testimonials { margin-bottom: 72px; }
+  .testimonials-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(28px, 3vw, 40px);
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .testimonial-slider {
+    position: relative;
+    max-width: 760px;
+    margin: 0 auto;
+    min-height: 280px;
+  }
+  .testimonial-card {
+    position: absolute;
+    inset: 0;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 400ms ease, transform 400ms ease;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .testimonial-card.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+    position: relative;
+  }
+  .quote-mark {
+    font-family: var(--font-display);
+    font-size: 80px;
+    line-height: 0.5;
+    color: var(--accent-primary);
+    opacity: 0.3;
+    display: block;
+    margin-bottom: 16px;
+  }
+  .testimonial-quote p {
+    font-size: 18px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-style: italic;
+  }
+  .testimonial-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .testimonial-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .testimonial-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--text-primary);
+  }
+  .testimonial-role { font-size: 14px; color: var(--text-muted); }
+  .testimonial-metric {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent-secondary);
+    padding: 6px 12px;
+    background: rgba(16,185,129,0.08);
+    border-radius: 8px;
+  }
+  @media (max-width: 640px) { .testimonial-metric { margin-left: 0; } }
+
+  /* Slider controls */
+  .slider-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .slider-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--bg-elevated);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    transition: border-color 200ms ease, background 200ms ease;
+  }
+  .slider-btn:hover { border-color: var(--accent-primary); background: var(--bg-tint); }
+  .slider-dots { display: flex; gap: 8px; }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+    border: none;
+    cursor: pointer;
+    transition: background 200ms ease, transform 200ms ease;
+  }
+  .dot.active { background: var(--accent-primary); transform: scale(1.3); }
+
+  /* Authority */
+  .authority-badges { text-align: center; margin-bottom: 64px; }
+  .badges-label {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  .badges { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .badge-item {
+    padding: 10px 20px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 9999px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  /* Selective */
+  .selective-block { text-align: center; }
+  .selective-title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(28px, 4vw, 48px);
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  .selective-sub { font-size: 18px; color: var(--text-muted); margin-bottom: 20px; }
+  .selective-avail {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--accent-secondary);
+    padding: 10px 20px;
+    background: rgba(16,185,129,0.08);
+    border: 1px solid rgba(16,185,129,0.25);
+    border-radius: 9999px;
+  }
+  .avail-dot {
+    width: 9px;
+    height: 9px;
+    background: var(--accent-secondary);
+    border-radius: 50%;
+    animation: avail-pulse 2s ease-in-out infinite;
+  }
+  @keyframes avail-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* Scroll reveal */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 600ms cubic-bezier(0.16,1,0.3,1), transform 600ms cubic-bezier(0.16,1,0.3,1);
+  }
+  .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+    .scroll-reveal { opacity: 1; transform: none; transition: none; }
+    .testimonial-card { transition: none; }
+  }
 </style>
+
+<script>
+  // Testimonial slider
+  const slider = document.getElementById('testimonial-slider');
+  const cards = slider?.querySelectorAll('.testimonial-card');
+  const dots = document.querySelectorAll('.dot');
+  let current = 0;
+  let autoplay: ReturnType<typeof setInterval>;
+
+  function show(idx: number) {
+    cards?.forEach((c, i) => {
+      (c as HTMLElement).style.opacity = i === idx ? '1' : '0';
+      (c as HTMLElement).style.transform = i === idx ? 'translateX(0)' : 'translateX(20px)';
+      (c as HTMLElement).style.pointerEvents = i === idx ? 'auto' : 'none';
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    current = idx;
+  }
+
+  document.getElementById('slider-prev')?.addEventListener('click', () => {
+    show((current - 1 + (cards?.length ?? 0)) % (cards?.length ?? 1));
+    resetAutoplay();
+  });
+  document.getElementById('slider-next')?.addEventListener('click', () => {
+    show((current + 1) % (cards?.length ?? 1));
+    resetAutoplay();
+  });
+  dots.forEach(d => d.addEventListener('click', () => {
+    show(parseInt((d as HTMLElement).dataset.index ?? '0'));
+    resetAutoplay();
+  }));
+
+  function resetAutoplay() {
+    clearInterval(autoplay);
+    autoplay = setInterval(() => show((current + 1) % (cards?.length ?? 1)), 5000);
+  }
+  resetAutoplay();
+  slider?.addEventListener('mouseenter', () => clearInterval(autoplay));
+  slider?.addEventListener('mouseleave', resetAutoplay);
+</script>

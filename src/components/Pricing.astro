@@ -1,71 +1,336 @@
 ---
 const tiers = [
-  { name: "Starter", price: "$8,500", period: "/mo", anchor: "$106/hr", featured: false, features: ["2 Channels", "Strategy", "Monthly Reports", "Email Support"] },
-  { name: "Growth", price: "$15,000", period: "/mo", anchor: "$94/hr", featured: true, label: "Most Popular", features: ["4 Channels", "Dedicated Strategist", "Weekly Standups", "Priority Support", "CRM Setup"] },
-  { name: "Scale", price: "Custom", period: "", anchor: "", featured: false, label: "For Enterprise", features: ["All Channels", "Dedicated Team", "AI Tools", "ERP Integration", "24/7 Support", "White-Glove Service"] },
+  {
+    name: "Starter",
+    price: "$8,500",
+    period: "/mo",
+    anchor: "$106/hr",
+    featured: false,
+    label: null,
+    features: ["2 Channels", "Strategy", "Monthly Reports", "Email Support"],
+    cta: "Start a Project",
+    ctaHref: "/contact",
+  },
+  {
+    name: "Growth",
+    price: "$15,000",
+    period: "/mo",
+    anchor: "$94/hr (vs $125/hr at Starter)",
+    featured: true,
+    label: "Most Popular",
+    features: ["4 Channels", "Dedicated Strategist", "Weekly Standups", "Priority Support", "CRM Setup"],
+    cta: "Start a Project",
+    ctaHref: "/contact",
+    ctaSecondary: "Book a Call",
+    ctaSecondaryHref: "/contact",
+  },
+  {
+    name: "Scale",
+    price: "Custom",
+    period: "",
+    anchor: "Full-stack. Everything.",
+    featured: false,
+    label: null,
+    features: ["All Growth features", "Web & App Development", "ERP Integration", "AI Consulting", "Dedicated Team", "White-Glove Support"],
+    cta: "Book a Call",
+    ctaHref: "/contact",
+  },
 ];
 ---
 
 <section id="pricing" class="pricing-section">
-  <div class="container-main">
-    <header class="section-header">
+  <!-- Video background -->
+  <div class="section-video-bg" aria-hidden="true">
+    <video class="section-video" autoplay muted loop playsinline>
+      <source src="/assets/videos/pricing-cta.mp4" type="video/mp4" />
+    </video>
+    <div class="section-video-overlay"></div>
+  </div>
+  <div class="container">
+    <header class="section-header scroll-reveal">
       <h2 class="title">Choose Your Engagement</h2>
+      <p class="subtitle">Transparent pricing. No hidden fees. Month-to-month after month 1.</p>
     </header>
-    
+
     <div class="pricing-grid">
-      {tiers.map(tier => (
-        <div class={`pricing-card card-lift ${tier.featured ? 'featured' : ''}`}>
-          {tier.label && <span class="tier-label">{tier.label}</span>}
+      {tiers.map((tier, i) => (
+        <div class={`pricing-card card-float scroll-reveal stagger-${i + 1} ${tier.featured ? 'featured' : ''}`}>
+          {tier.label && <div class="tier-label">{tier.label}</div>}
           <h3 class="tier-name">{tier.name}</h3>
           <div class="tier-price">
             <span class="price">{tier.price}</span>
-            <span class="period">{tier.period}</span>
+            {tier.period && <span class="period">{tier.period}</span>}
           </div>
-          <p class="tier-anchor">{tier.anchor}</p>
+          {tier.anchor && <p class="tier-anchor">{tier.anchor}</p>}
+
           <ul class="tier-features">
             {tier.features.map(f => (
               <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                 {f}
               </li>
             ))}
           </ul>
-          <a href="/contact" class={`tier-cta ${tier.featured ? 'btn-primary' : 'btn-secondary'}`}>
-            Book a Call
-          </a>
+
+          <div class="tier-ctas">
+            <a href={tier.ctaHref} class={`tier-cta ${tier.featured ? 'btn-primary' : 'btn-ghost'}`}>
+              {tier.cta}
+            </a>
+            {tier.ctaSecondary && (
+              <a href={tier.ctaSecondaryHref} class="tier-cta btn-ghost-secondary">
+                {tier.ctaSecondary}
+              </a>
+            )}
+          </div>
         </div>
       ))}
     </div>
 
-    <div class="risk">
-      <p>No hidden costs. Fixed fees. Month-to-month.</p>
-      <p>You can pause or adjust anytime.</p>
+    <!-- Risk reversal + self-selection -->
+    <div class="pricing-footer scroll-reveal">
+      <div class="risk-box">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <p>No hidden costs. Fixed fees. Month-to-month. <strong>You can pause or adjust anytime.</strong></p>
+      </div>
+      <p class="self-select">
+        Not sure which fits? <a href="/contact">Tell us about your project →</a>
+      </p>
     </div>
   </div>
 </section>
 
 <style>
-  .pricing-section { padding: 100px 0; background: var(--bg-surface); }
-  .container-main { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+  .pricing-section {
+    padding: 100px 0;
+    background: var(--bg-surface);
+    position: relative;
+    overflow: hidden;
+  }
+  .section-video-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .section-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.15;
+  }
+  .section-video-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--bg-surface);
+    opacity: 0.88;
+  }
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
   .section-header { text-align: center; margin-bottom: 64px; }
-  .title { font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 4vw, 40px); }
-  
-  .pricing-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; }
-  @media (min-width: 768px) { .pricing-grid { grid-template-columns: repeat(3, 1fr); } }
-  
-  .pricing-card { padding: 32px; display: flex; flex-direction: column; position: relative; }
-  .pricing-card.featured { border-color: var(--accent-primary); transform: scale(1.02); }
-  .tier-label { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent-primary); color: white; padding: 4px 12px; font-size: 11px; font-weight: 600; text-transform: uppercase; border-radius: 4px; }
-  .tier-name { font-family: var(--font-display); font-weight: 700; font-size: 20px; margin-bottom: 8px; }
-  .tier-price { margin-bottom: 4px; }
-  .price { font-family: var(--font-display); font-weight: 800; font-size: 36px; }
-  .period { font-size: 16px; color: var(--text-secondary); }
-  .tier-anchor { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); margin-bottom: 24px; }
-  .tier-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; flex-grow: 1; }
-  .tier-features li { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-secondary); }
+  .title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(32px, 4vw, 52px);
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+  .subtitle { font-size: 17px; color: var(--text-muted); }
+
+  /* Grid */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+  @media (max-width: 1024px) { .pricing-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; } }
+
+  /* Card */
+  .pricing-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+    position: relative;
+    transition: box-shadow 300ms ease, transform 300ms ease;
+  }
+  .pricing-card.featured {
+    border: 2px solid var(--accent-primary);
+    box-shadow: 0 0 24px rgba(99,102,241,0.18);
+    transform: scale(1.02);
+  }
+
+  /* Float animation */
+  @keyframes card-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  .card-float:nth-child(1) { animation: card-float 4000ms ease-in-out infinite; }
+  .card-float:nth-child(2) { animation: card-float 4000ms ease-in-out infinite 1300ms; transform: scale(1.02); }
+  .card-float:nth-child(2).featured { transform: scale(1.02); }
+  .card-float:nth-child(3) { animation: card-float 4000ms ease-in-out infinite 2600ms; }
+  @media (prefers-reduced-motion: reduce) {
+    .card-float { animation: none; }
+    .pricing-card.featured { transform: scale(1.02); }
+  }
+
+  /* Most Popular badge */
+  .tier-label {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent-primary);
+    color: white;
+    padding: 5px 16px;
+    border-radius: 9999px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    animation: badge-pop 400ms cubic-bezier(0.34,1.56,0.64,1) both, badge-pulse 3000ms ease-in-out 400ms infinite;
+  }
+  @keyframes badge-pop {
+    from { transform: translateX(-50%) scale(0); }
+    to { transform: translateX(-50%) scale(1); }
+  }
+  @keyframes badge-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(99,102,241,0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(99,102,241,0); }
+  }
+
+  .tier-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  .tier-price {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+  .price {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 40px;
+    color: var(--text-primary);
+  }
+  .period { font-size: 16px; color: var(--text-muted); }
+  .tier-anchor {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tier-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 28px;
+    flex: 1;
+  }
+  .tier-features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
   .tier-features svg { color: var(--accent-secondary); flex-shrink: 0; }
-  .tier-cta { width: 100%; text-align: center; text-decoration: none; margin-top: auto; }
-  
-  .risk { text-align: center; margin-top: 48px; padding: 24px; border: 1px solid var(--border); background: var(--bg-elevated); max-width: 500px; margin-left: auto; margin-right: auto; }
-  .risk p { color: var(--accent-primary); font-weight: 500; }
+
+  .tier-ctas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .tier-cta {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding: 13px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: transform 200ms cubic-bezier(0.34,1.56,0.64,1), box-shadow 200ms ease;
+  }
+  .btn-primary {
+    background: var(--accent-cta);
+    color: white;
+    box-shadow: 0 8px 24px rgba(249,115,22,0.25);
+  }
+  .btn-primary:hover {
+    transform: scale(1.02) translateY(-2px);
+    box-shadow: 0 12px 32px rgba(249,115,22,0.35);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--border);
+  }
+  .btn-ghost:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
+  .btn-ghost-secondary {
+    background: transparent;
+    color: var(--accent-primary);
+    border: none;
+    font-size: 13px;
+    padding: 4px;
+    font-weight: 500;
+  }
+
+  /* Footer */
+  .pricing-footer {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .risk-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    max-width: 500px;
+  }
+  .risk-box svg { color: var(--accent-primary); flex-shrink: 0; }
+  .risk-box p { font-size: 14px; color: var(--text-secondary); }
+  .risk-box strong { color: var(--accent-primary); }
+  .self-select { font-size: 14px; color: var(--text-muted); }
+  .self-select a { color: var(--accent-primary); font-weight: 500; }
+
+  /* Scroll reveal */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 600ms cubic-bezier(0.16,1,0.3,1), transform 600ms cubic-bezier(0.16,1,0.3,1);
+  }
+  .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+  .stagger-1 { transition-delay: 0ms; }
+  .stagger-2 { transition-delay: 100ms; }
+  .stagger-3 { transition-delay: 200ms; }
+
+  @media (max-width: 640px) {
+    .pricing-card.featured { transform: none; }
+    .card-float:nth-child(2) { animation: none; }
+  }
 </style>

@@ -1,0 +1,95 @@
+---
+---
+
+<section class="manifesto" aria-label="Brand statement">
+  <!-- Vertical video background -->
+  <div class="manifesto-video-bg" aria-hidden="true">
+    <video
+      class="manifesto-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      poster="/assets/manifesto-bg.jpg"
+    >
+      <source src="/assets/videos/manifesto.mp4" type="video/mp4" />
+    </video>
+    <div class="manifesto-video-overlay"></div>
+  </div>
+
+  <div class="manifesto-inner">
+    <h2 class="manifesto-text">
+      We don't build marketing.<br />
+      <span class="accent">We build obsession.</span>
+    </h2>
+  </div>
+</section>
+
+<style>
+  .manifesto {
+    background: var(--accent-primary);
+    padding: 80px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Video background — centered, cover, 9:16 strip */
+  .manifesto-video-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .manifesto-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+  }
+  .manifesto-video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(99,102,241,0.85) 0%,
+      rgba(99,102,241,0.60) 50%,
+      rgba(99,102,241,0.80) 100%
+    );
+  }
+
+  .manifesto-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .manifesto-text {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(32px, 5vw, 60px);
+    color: white;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    animation: clip-reveal 900ms cubic-bezier(0.76,0,0.24,1) both;
+  }
+  .accent {
+    color: #f97316; /* coral — contrasting against indigo */
+  }
+  @keyframes clip-reveal {
+    from { clip-path: inset(0 100% 0 0); }
+    to { clip-path: inset(0 0% 0 0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .manifesto-text { animation: none; clip-path: none; }
+  }
+  @media (max-width: 640px) {
+    .manifesto { padding: 64px 24px; }
+    .manifesto-video { object-position: center; }
+  }
+</style>

@@ -1,56 +1,319 @@
 ---
 const phases = [
-  { number: "01", name: "Discovery", duration: "20 min", description: "A real conversation, not a questionnaire", trust: "No boring forms" },
-  { number: "02", name: "Strategy", duration: "2 weeks", description: "Your custom roadmap + creative direction", trust: "You'll know where we stand" },
-  { number: "03", name: "Build", duration: "4-8 weeks", description: "Weekly sprints, you see everything first", trust: "No surprises" },
-  { number: "04", name: "Grow", duration: "Ongoing", description: "Weekly reports, we optimize forever", trust: "Always transparent" },
+  {
+    num: "01",
+    name: "Discovery",
+    duration: "20 minutes",
+    headline: "A real conversation, not a questionnaire",
+    bullets: ["We learn your brand, goals, challenges", "You know exactly where we stand", "No hard sell — honest assessment"],
+  },
+  {
+    num: "02",
+    name: "Strategy",
+    duration: "2 weeks",
+    headline: "Your custom roadmap + creative direction",
+    bullets: ["Full brand + channel audit", "Positioning strategy", "Creative direction before a single pixel"],
+  },
+  {
+    num: "03",
+    name: "Build",
+    duration: "4–8 weeks",
+    headline: "Weekly sprints, you see everything first",
+    bullets: ["Full design + development sprints", "Weekly demos, no surprises", "Your feedback, continuous"],
+  },
+  {
+    num: "04",
+    name: "Grow",
+    duration: "Ongoing",
+    headline: "Weekly reports, we optimize forever",
+    bullets: ["Monthly performance reports", "Continuous A/B testing", "Always-on optimization"],
+  },
 ];
 ---
 
 <section id="process" class="process-section">
-  <div class="container-main">
-    <header class="section-header">
+  <!-- Video background -->
+  <div class="section-video-bg" aria-hidden="true">
+    <video class="section-video" autoplay muted loop playsinline>
+      <source src="/assets/videos/process-timeline.mp4" type="video/mp4" />
+    </video>
+    <div class="section-video-overlay"></div>
+  </div>
+  <div class="container">
+    <header class="section-header scroll-reveal">
       <h2 class="title">Here's Exactly How We Work Together</h2>
       <p class="subtitle">No surprises. No runaround. Just results.</p>
     </header>
-    
-    <div class="process-timeline">
-      {phases.map((phase, i) => (
-        <div class="phase-card card-lift" style={`animation-delay: ${i * 150}ms`}>
-          <div class="phase-number">{phase.number}</div>
-          <h3 class="phase-name">{phase.name}</h3>
-          <span class="phase-duration">{phase.duration}</span>
-          <p class="phase-description">{phase.description}</p>
-          <p class="phase-trust">{phase.trust}</p>
-        </div>
-      ))}
+
+    <!-- Timeline -->
+    <div class="timeline">
+      <!-- SVG connecting line -->
+      <svg class="timeline-svg" viewBox="0 0 1200 4" preserveAspectRatio="none" aria-hidden="true">
+        <line x1="0" y1="2" x2="1200" y2="2" stroke="var(--accent-primary)" stroke-width="2" stroke-dasharray="1200" stroke-dashoffset="1200" class="timeline-line" />
+      </svg>
+
+      <div class="phases">
+        {phases.map((phase, i) => (
+          <div class={`phase-card scroll-reveal stagger-${i + 1}`} data-phase={i}>
+            <div class="phase-num">{phase.num}</div>
+            <h3 class="phase-name">{phase.name}</h3>
+            <p class="phase-duration">{phase.duration}</p>
+            <p class="phase-headline">"{phase.headline}"</p>
+            <ul class="phase-bullets">
+              {phase.bullets.map(b => (
+                <li>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  {b}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
     </div>
 
-    <div class="risk-reverse">
-      <h3>Our Promise</h3>
-      <p>If we're not the right fit after our discovery call, we'll tell you and refer you to someone who is.</p>
+    <!-- After launch -->
+    <div class="after-launch scroll-reveal">
+      <p class="after-title">What happens after your site launches?</p>
+      <div class="after-items">
+        <span>Monthly Reports</span>
+        <span class="sep">·</span>
+        <span>Weekly Standups</span>
+        <span class="sep">·</span>
+        <span>Quarterly Reviews</span>
+        <span class="sep">·</span>
+        <span>Dedicated Slack</span>
+      </div>
+    </div>
+
+    <!-- Risk reversal -->
+    <div class="risk-box scroll-reveal">
+      <div class="risk-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div>
+        <p class="risk-title">Our Promise</p>
+        <p class="risk-text">If we're not the right fit after our discovery call, we'll tell you and refer you to someone who is.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
-  .process-section { padding: 100px 0; background: var(--bg-surface); }
-  .container-main { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-  .section-header { text-align: center; margin-bottom: 64px; }
-  .title { font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 4vw, 40px); margin-bottom: 12px; }
-  .subtitle { font-size: 18px; color: var(--text-secondary); }
-  
-  .process-timeline { display: grid; grid-template-columns: repeat(1, 1fr); gap: 24px; }
-  @media (min-width: 768px) { .process-timeline { grid-template-columns: repeat(4, 1fr); } }
-  
-  .phase-card { padding: 32px; position: relative; }
-  .phase-number { font-family: var(--font-display); font-weight: 800; font-size: 48px; color: var(--accent-primary); line-height: 1; margin-bottom: 16px; }
-  .phase-name { font-family: var(--font-display); font-weight: 700; font-size: 20px; margin-bottom: 4px; }
-  .phase-duration { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); text-transform: uppercase; }
-  .phase-description { color: var(--text-secondary); font-size: 15px; margin: 16px 0; line-height: 1.5; }
-  .phase-trust { padding-top: 16px; border-top: 1px solid var(--border); font-size: 13px; color: var(--accent-secondary); font-style: italic; }
-  
-  .risk-reverse { margin-top: 64px; text-align: center; padding: 32px; border: 1px solid var(--border); background: var(--bg-elevated); max-width: 500px; margin-left: auto; margin-right: auto; }
-  .risk-reverse h3 { font-family: var(--font-display); font-weight: 700; margin-bottom: 8px; }
-  .risk-reverse p { color: var(--text-secondary); font-size: 15px; }
+  .process-section {
+    padding: 100px 0;
+    background: var(--bg-surface);
+    position: relative;
+    overflow: hidden;
+  }
+  .section-video-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .section-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.12;
+  }
+  .section-video-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--bg-surface);
+    opacity: 0.90;
+  }
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .section-header { text-align: center; margin-bottom: 72px; }
+  .title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(28px, 4vw, 48px);
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+  .subtitle { font-size: 17px; color: var(--text-muted); }
+
+  /* Timeline */
+  .timeline { position: relative; margin-bottom: 64px; }
+  .timeline-svg {
+    position: absolute;
+    top: 44px;
+    left: calc(100% / 12);
+    width: calc(100% - 100% / 6);
+    height: 4px;
+    overflow: visible;
+  }
+  .timeline-line {
+    transition: stroke-dashoffset 1200ms cubic-bezier(0.16,1,0.3,1);
+  }
+  .timeline-line.drawn { stroke-dashoffset: 0; }
+
+  .phases {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    position: relative;
+  }
+  @media (max-width: 1024px) { .phases { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .phases { grid-template-columns: 1fr; } }
+
+  /* Phase card */
+  .phase-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    position: relative;
+    transition: box-shadow 300ms ease, transform 300ms ease;
+  }
+  .phase-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+  }
+
+  .phase-num {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 36px;
+    color: var(--accent-primary);
+    line-height: 1;
+    margin-bottom: 12px;
+    opacity: 0.25;
+  }
+  .phase-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .phase-duration {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  .phase-headline {
+    font-size: 15px;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+  .phase-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .phase-bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+  .phase-bullets svg { color: var(--accent-secondary); flex-shrink: 0; margin-top: 2px; }
+
+  /* After launch */
+  .after-launch {
+    text-align: center;
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+  .after-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+  }
+  .after-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+  .sep { color: var(--accent-primary); }
+
+  /* Risk box */
+  .risk-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 24px 32px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .risk-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(99,102,241,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-primary);
+    flex-shrink: 0;
+  }
+  .risk-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .risk-text { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+
+  /* Scroll reveal */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 600ms cubic-bezier(0.16,1,0.3,1), transform 600ms cubic-bezier(0.16,1,0.3,1);
+  }
+  .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+  .stagger-1 { transition-delay: 0ms; }
+  .stagger-2 { transition-delay: 120ms; }
+  .stagger-3 { transition-delay: 240ms; }
+  .stagger-4 { transition-delay: 360ms; }
+
+  @media (max-width: 640px) {
+    .risk-box { flex-direction: column; }
+    .phases { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-reveal { opacity: 1; transform: none; transition: none; }
+    .timeline-line { transition: none; stroke-dashoffset: 0; }
+  }
 </style>
+
+<script>
+  // Animate timeline line on scroll
+  const line = document.querySelector('.timeline-line') as SVGLineElement | null;
+  if (line) {
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { line.classList.add('drawn'); obs.disconnect(); }
+    }, { threshold: 0.2 });
+    const timeline = document.querySelector('.timeline');
+    if (timeline) obs.observe(timeline);
+  }
+</script>

@@ -22,13 +22,13 @@ import Footer from '../components/Footer.astro';
             <p>Fill out the form or reach out directly.</p>
             
             <div class="contact-methods">
-              <a href="mailto:hello@ejago.com">
+              <a href="mailto:info@ejago.com">
                 <strong>Email</strong>
-                <span>hello@ejago.com</span>
+                <span>info@ejago.com</span>
               </a>
-              <a href="tel:+15551234567">
+              <a href="tel:+14242568828">
                 <strong>Phone</strong>
-                <span>(555) 123-4567</span>
+                <span>(424) 256-8828</span>
               </a>
             </div>
             
@@ -39,7 +39,7 @@ import Footer from '../components/Footer.astro';
             </div>
           </div>
           
-          <form class="contact-form" method="POST">
+          <form class="contact-form">
             <div class="form-group">
               <label for="name">Name</label>
               <input type="text" id="name" name="name" required placeholder="Your name" />
@@ -104,3 +104,46 @@ import Footer from '../components/Footer.astro';
   .btn-submit { padding: 16px 32px; background: var(--accent-primary); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.25s ease; }
   .btn-submit:hover { background: var(--accent-cta); }
 </style>
+
+<script>
+  const form = document.querySelector('.contact-form');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('.btn-submit');
+      const data = new FormData(form);
+      const origText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(Object.fromEntries(data))
+        });
+        if (res.ok) {
+          btn.textContent = '✓ Sent!';
+          btn.style.background = 'var(--accent-secondary)';
+          form.reset();
+          setTimeout(() => {
+            btn.disabled = false;
+            btn.textContent = origText;
+            btn.style.background = '';
+          }, 3000);
+        } else {
+          throw new Error('Server error');
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = origText;
+        // Fall back to pre-filled mailto
+        const name = data.get('name');
+        const email = data.get('email');
+        const message = data.get('message');
+        const subject = encodeURIComponent('New Contact from Ejago Website');
+        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+        window.location.href = `mailto:info@ejago.com?subject=${subject}&body=${body}`;
+      }
+    });
+  }
+</script>
