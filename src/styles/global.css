@@ -149,7 +149,8 @@
   }
 
   .container-main {
-    max-width: 1280px;
+    width: 85%;
+    max-width: 1440px;
     margin: 0 auto;
     padding: 0 24px;
   }
