@@ -209,4 +209,14 @@
     mobileNav?.classList.toggle('open', isOpen);
     mobileNav?.setAttribute('aria-hidden', String(!isOpen));
   });
+
+  // Close mobile menu when clicking a link
+  mobileNav?.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileBtn?.classList.remove('open');
+      mobileNav?.classList.remove('open');
+      mobileBtn?.setAttribute('aria-expanded', 'false');
+      mobileNav?.setAttribute('aria-hidden', 'true');
+    });
+  });
 </script>
