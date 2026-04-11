@@ -106,6 +106,7 @@ import Footer from '../components/Footer.astro';
 </style>
 
 <script>
+  const FORMSPREE_ID = import.meta.env.PUBLIC_FORMSPREE_ID || 'YOUR_FORM_ID_HERE';
   const form = document.querySelector('.contact-form');
   if (form) {
     form.addEventListener('submit', async (e) => {
@@ -116,8 +117,7 @@ import Footer from '../components/Footer.astro';
       btn.disabled = true;
       btn.textContent = 'Sending...';
       try {
-        // TODO: Replace YOUR_FORM_ID with your actual Formspree form ID
-        const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify(Object.fromEntries(data))
