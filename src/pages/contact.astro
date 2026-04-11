@@ -116,9 +116,10 @@ import Footer from '../components/Footer.astro';
       btn.disabled = true;
       btn.textContent = 'Sending...';
       try {
-        const res = await fetch('/api/contact', {
+        // TODO: Replace YOUR_FORM_ID with your actual Formspree form ID
+        const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify(Object.fromEntries(data))
         });
         if (res.ok) {

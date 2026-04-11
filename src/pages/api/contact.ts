@@ -1,3 +1,6 @@
+// DEPRECATED: This endpoint only works with SSR hosting (Node.js server).
+// GitHub Pages does not support server-side code, so this endpoint will never run in production.
+// Use Formspree AJAX submission in contact.astro instead.
 import type { APIRoute } from 'astro';
 
 export const POST: APIRoute = async ({ request }) => {
