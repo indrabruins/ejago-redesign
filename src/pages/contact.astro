@@ -106,7 +106,10 @@ import Footer from '../components/Footer.astro';
 </style>
 
 <script>
-  const FORMSPREE_ID = import.meta.env.PUBLIC_FORMSPREE_ID || 'YOUR_FORM_ID_HERE';
+  // Web3Forms — works on GitHub Pages (static), no backend needed.
+  // Get your free access key at https://web3forms.com
+  // Then set PUBLIC_WEB3FORMS_KEY=<your-key> in .env
+  const WEB3FORMS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY || 'YOUR_WEB3FORMS_KEY_HERE';
   const form = document.querySelector('.contact-form');
   if (form) {
     form.addEventListener('submit', async (e) => {
@@ -117,12 +120,24 @@ import Footer from '../components/Footer.astro';
       btn.disabled = true;
       btn.textContent = 'Sending...';
       try {
-        const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        const payload = {
+          access_key: WEB3FORMS_KEY,
+          name: data.get('name'),
+          email: data.get('email'),
+          website: data.get('website'),
+          budget: data.get('budget'),
+          message: data.get('message'),
+          subject: 'New Contact from Ejago Website',
+          replyto: data.get('email'),
+          redirect: '',
+        };
+        const res = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(Object.fromEntries(data))
+          body: JSON.stringify(payload),
         });
-        if (res.ok) {
+        const json = await res.json();
+        if (json.success || res.ok) {
           btn.textContent = '✓ Sent!';
           btn.style.background = 'var(--accent-secondary)';
           form.reset();

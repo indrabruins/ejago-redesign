@@ -55,10 +55,9 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(
-      135deg,
-      rgba(99,102,241,0.85) 0%,
-      rgba(99,102,241,0.60) 50%,
-      rgba(99,102,241,0.80) 100%
+      rgba(99,102,241,0.50) 0%,
+      rgba(99,102,241,0.35) 50%,
+      rgba(99,102,241,0.50) 100%
     );
   }
 
@@ -76,7 +75,7 @@
     color: white;
     line-height: 1.2;
     letter-spacing: -0.02em;
-    animation: clip-reveal 900ms cubic-bezier(0.76,0,0.24,1) both;
+    /* clip-reveal animation is handled by GSAP in Layout.astro — do not duplicate */
   }
   .accent {
     color: #f97316; /* coral — contrasting against indigo */

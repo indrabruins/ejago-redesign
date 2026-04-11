@@ -1,0 +1,1 @@
+import{g as e,S as r}from"./ScrollTrigger.B2uKOqL4.js";e.registerPlugin(r);const t=document.querySelector(".manifesto-text");t&&e.fromTo(t,{clipPath:"inset(0 100% 0 0)"},{clipPath:"inset(0 0% 0 0)",duration:.9,ease:"power3.inOut",scrollTrigger:{trigger:t,start:"top 80%",once:!0}});

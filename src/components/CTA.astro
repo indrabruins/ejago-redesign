@@ -59,7 +59,7 @@
       <div class="avail-items">
         <div class="avail-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Next available start: <strong>May 15, 2026</strong>
+          Next available start: <strong class="avail-date-dynamic">May 15, 2026</strong>
         </div>
         <div class="avail-sep">·</div>
         <div class="avail-item">
@@ -333,6 +333,15 @@
 </style>
 
 <script>
+  // Dynamic availability date — 2 weeks from today
+  const nextDate = new Date();
+  nextDate.setDate(nextDate.getDate() + 14);
+  const month = nextDate.toLocaleString('default', { month: 'long' });
+  const day = nextDate.getDate();
+  const year = nextDate.getFullYear();
+  const availDateEl = document.querySelector('.avail-date-dynamic');
+  if (availDateEl) availDateEl.textContent = `${month} ${day}, ${year}`;
+
   // Magnetic buttons
   document.querySelectorAll('.magnetic-btn').forEach(btn => {
     btn.addEventListener('mousemove', e => {

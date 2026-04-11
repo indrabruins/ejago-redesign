@@ -146,6 +146,7 @@ const testimonials = [
     height: 100%;
     object-fit: cover;
     opacity: 0.15;
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
   }
   .section-video-overlay {
     position: absolute;
@@ -256,7 +257,7 @@ const testimonials = [
   }
   .testimonial-card {
     position: absolute;
-    inset: 0;
+    top: 0; left: 0; width: 100%;
     background: var(--bg-elevated);
     border: 1px solid var(--border);
     border-radius: 20px;
@@ -273,7 +274,6 @@ const testimonials = [
     opacity: 1;
     transform: translateX(0);
     pointer-events: auto;
-    position: relative;
   }
   .quote-mark {
     font-family: var(--font-display);
