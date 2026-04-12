@@ -52,9 +52,9 @@ export default function Header() {
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <a href="#" className="flex items-center">
+            <a href="/" className="flex items-center">
               <img
-                src="/ejago-dark-calligraphy.png"
+                src="/ejago-dark-calligraphy-fixed.png"
                 alt="eJago"
                 className="h-12 md:h-16 w-auto object-contain"
               />
