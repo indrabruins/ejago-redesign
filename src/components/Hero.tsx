@@ -153,11 +153,7 @@ export default function Hero() {
               color: "var(--text)",
             }}
           >
-            We Build.
-            <br />
-            <span style={{ color: "var(--accent)" }}>We Scale.</span>
-            <br />
-            We Automate.
+            240% Avg ROAS. We Build. <span style={{ color: "var(--accent)" }}>We Scale.</span> We Automate.
           </h1>
 
           {/* Subheadline */}
