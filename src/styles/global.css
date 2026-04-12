@@ -246,3 +246,137 @@ textarea:focus-visible {
     color: var(--text) !important;
   }
 
+
+
+  /* Fix light mode: ensure text stays readable when gradients become transparent */
+  .light .stats-gradient-top,
+  .light .stats-gradient-bottom {
+    background: rgba(255,255,255,0.95) !important; /* subtle white tint for contrast */
+  }
+
+  /* Light mode: stat values must be dark */
+  .light .stat-value,
+  .light .stat-number {
+    color: #111111 !important;
+  }
+
+  /* Light mode: stat labels must be readable */
+  .light .stat-label {
+    color: #374151 !important;
+  }
+
+  /* Light mode: hero overlay badges */
+  .light [style*="--text-muted"],
+  .light .hero-trust-text {
+    color: #374151 !important;
+  }
+
+  /* Light mode: full-width dark sections need readable text */
+  .light [style*="--surface-alt"],
+  .light .bg-\[var\(--surface-alt\)\] {
+    background-color: #F5F4F0;
+  }
+
+
+  /* CSS variable: dark overlay in dark mode, transparent in light mode */
+  :root, .dark {
+    --gradient-overlay: rgba(10,10,14,0.6);
+  }
+  .light {
+    --gradient-overlay: rgba(0,0,0,0);
+  }
+
+  /* Trust bar text: readable in both modes */
+  .trust-item,
+  .trust-item span,
+  .trust-item svg {
+    color: var(--text);
+  }
+
+  /* Light mode trust bar: use dark overlay so text pops */
+  .light .trust-gradient-top,
+  .light .trust-gradient-bottom {
+    background: rgba(17,17,17,0.85) !important;
+  }
+
+  .light .trust-item {
+    color: white !important;
+  }
+
+  /* Stats bar light mode fix */
+  .light .stats-gradient-top,
+  .light .stats-gradient-bottom {
+    background: rgba(17,17,17,0.85) !important;
+  }
+
+  .light .stat-value { color: white !important; }
+  .light .stat-label { color: rgba(255,255,255,0.8) !important; }
+
+
+  /* Light mode: hero stats on white/dark bg need dark text */
+  .light .stitch-fade-up {
+    color: var(--text) !important;
+    text-shadow: none !important;
+  }
+
+  /* Trust bar items in light mode */
+  .light .trust-item,
+  .light .trust-item svg {
+    color: white !important;
+  }
+
+
+  /* TrustBar: always dark background so text is readable in both modes */
+  .trust-bar-container,
+  [class*="trust-bar"],
+  .trust-section {
+    background-color: var(--surface-alt) !important;
+  }
+
+  /* Trust bar gradient fix: always dark enough */
+  .trust-gradient-top,
+  .trust-gradient-bottom {
+    background: rgba(10,10,14,0.85) !important;
+  }
+
+  /* Force trust items to be visible — high specificity override */
+  body.light .trust-bar-container,
+  body.light [class*="trust-bar"] {
+    background-color: #141418 !important;
+  }
+
+  /* Trust bar items: white text on dark background */
+  .trust-item,
+  .trust-item span,
+  .trust-bar-item {
+    color: rgba(255,255,255,0.85) !important;
+  }
+
+  /* Trust items with icons */
+  .trust-item svg {
+    color: rgba(255,255,255,0.7) !important;
+    fill: rgba(255,255,255,0.7) !important;
+  }
+
+  /* StatsBar: always readable */
+  .stats-gradient-top,
+  .stats-gradient-bottom {
+    background: rgba(10,10,14,0.75) !important;
+  }
+
+  body.light .stats-gradient-top,
+  body.light .stats-gradient-bottom {
+    background: rgba(10,10,14,0.85) !important;
+  }
+
+  /* Stat values: white in dark mode, dark in light mode (on dark bg both work) */
+  .stat-value,
+  .stat-label {
+    color: white !important;
+  }
+
+  /* Hero stat badges: white with text shadow for readability */
+  .hero-stats-wrapper [style*="var(--text-secondary)"] {
+    color: white !important;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.4) !important;
+  }

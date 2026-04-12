@@ -228,7 +228,8 @@ export default function Hero() {
                 key={item}
                 className="flex items-center gap-2 text-sm stitch-fade-up"
                 style={{
-                  color: "var(--text-secondary)",
+                  color: "white",
+                  textShadow: "0 1px 2px rgba(0,0,0,0.5)",
                   transitionDelay: `${0.9 + i * 0.1}s`,
                 }}
               >

@@ -22,16 +22,16 @@ export default function TrustBar() {
     >
       {/* Gradient fade at top — blends from hero dark */}
       <div
-        className="absolute top-0 left-0 right-0 h-16 pointer-events-none"
+        className="absolute top-0 left-0 right-0 h-16 pointer-events-none trust-gradient-top"
         style={{
-          background: "linear-gradient(to bottom, rgba(10,10,14,0.6), transparent)",
+          background: "linear-gradient(to bottom, var(--gradient-overlay, transparent), transparent)",
         }}
       />
       {/* Gradient fade at bottom — blends into next section */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none trust-gradient-bottom"
         style={{
-          background: "linear-gradient(to top, rgba(10,10,14,0.6), transparent)",
+          background: "linear-gradient(to top, var(--gradient-overlay, transparent), transparent)",
         }}
       />
 
@@ -57,7 +57,7 @@ export default function TrustBar() {
             <div
               key={index}
               aria-hidden={index >= trustItems.length}
-              className="flex items-center gap-3 px-8 whitespace-nowrap"
+              className="flex items-center gap-3 px-8 whitespace-nowrap trust-item"
             >
               <item.icon
                 size={24}
