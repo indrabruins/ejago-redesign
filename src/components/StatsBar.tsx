@@ -104,8 +104,8 @@ export default function StatsBar() {
       <div className="absolute top-0 left-0 right-0 h-16 pointer-events-none" style={{background:"linear-gradient(to bottom, rgba(28,28,34,0.9), transparent)"}} />
       {/* Bottom gradient fade */}
       <div className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none" style={{background:"linear-gradient(to top, rgba(28,28,34,0.9), transparent)"}} />
-      <div className="max-w-[1400px] mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-4">
+      <div className="max-w-[85vw] mx-auto px-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
           {stats.map((stat, index) => (
             <StatCard
               key={stat.label}

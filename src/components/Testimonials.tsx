@@ -50,7 +50,7 @@ export default function Testimonials() {
       className="py-24 md:py-32"
       style={{ backgroundColor: "var(--bg)" }}
     >
-      <div className="max-w-[1400px] mx-auto px-6">
+      <div className="max-w-[85vw] mx-auto px-6">
         {/* Section header */}
         <motion.div
           className="text-center mb-16"

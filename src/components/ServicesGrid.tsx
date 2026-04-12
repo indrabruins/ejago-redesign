@@ -63,7 +63,7 @@ export default function ServicesGrid() {
       {/* Bottom gradient bleed into next section */}
       <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none" style={{background:"linear-gradient(to top, rgba(28,28,34,1), rgba(10,10,14,0.3), transparent)"}} />
 
-      <div className="max-w-[1400px] mx-auto px-6">
+      <div className="max-w-[85vw] mx-auto px-6">
         {/* Section header */}
         <motion.div
           className="text-center mb-16"

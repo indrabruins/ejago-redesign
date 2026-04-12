@@ -36,7 +36,7 @@ export default function Footer() {
       className="pt-20 pb-8"
       style={{ backgroundColor: "var(--bg)", borderTop: "1px solid var(--border)" }}
     >
-      <div className="max-w-[1400px] mx-auto px-6">
+      <div className="max-w-[85vw] mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
           {/* Logo & description */}
           <div className="col-span-2 md:col-span-1">

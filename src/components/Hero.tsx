@@ -116,7 +116,7 @@ export default function Hero() {
       </div>
 
       {/* ── Hero Content ── */}
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 text-center">
+      <div className="relative z-10 w-full max-w-[85vw] mx-auto px-6 md:px-10 lg:px-16 text-center">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -147,7 +147,7 @@ export default function Hero() {
 
           {/* Main Headline */}
           <h1
-            className="text-5xl md:text-7xl lg:text-[96px] mb-8 leading-[1.05] tracking-tight stitch-fade-up stitch-delay-2"
+            className="text-4xl md:text-6xl lg:text-[80px] mb-8 leading-[1.05] tracking-tight stitch-fade-up stitch-delay-2"
             style={{
               fontFamily: "var(--font-display)",
               color: "var(--text)",

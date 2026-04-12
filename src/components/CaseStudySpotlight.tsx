@@ -11,7 +11,7 @@ export default function CaseStudySpotlight() {
       className="py-24 md:py-32"
       style={{ backgroundColor: "var(--surface-alt)" }}
     >
-      <div className="max-w-[1400px] mx-auto px-6">
+      <div className="max-w-[85vw] mx-auto px-6">
         <motion.div
           className="relative overflow-hidden rounded-3xl p-12 md:p-16"
           style={{

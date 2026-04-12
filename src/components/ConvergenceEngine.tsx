@@ -75,7 +75,7 @@ export default function ConvergenceEngine() {
         }}
       />
 
-      <div className="max-w-[1400px] mx-auto px-6 relative z-10">
+      <div className="max-w-[85vw] mx-auto px-6 relative z-10">
         {/* Section header */}
         <motion.div
           className="text-center mb-16"

@@ -38,7 +38,7 @@ const faqs = [
 ];
 
 export default function FAQAccordion() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -57,7 +57,7 @@ export default function FAQAccordion() {
       className="py-24 md:py-32"
       style={{ backgroundColor: "var(--surface-alt)" }}
     >
-      <div className="max-w-3xl mx-auto px-6">
+      <div className="max-w-[85vw] mx-auto px-6">
         {/* Section header */}
         <motion.div
           className="text-center mb-16"

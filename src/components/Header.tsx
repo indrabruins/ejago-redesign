@@ -49,7 +49,7 @@ export default function Header() {
           borderBottom: isScrolled ? "1px solid var(--border)" : "none",
         }}
       >
-        <div className="max-w-[1400px] mx-auto px-6">
+        <div className="max-w-[85vw] mx-auto px-6">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <a href="/" className="flex items-center">

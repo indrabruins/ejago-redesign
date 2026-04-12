@@ -74,11 +74,11 @@ export default function BudgetCalculator() {
 
   return (
     <section
-      id="contact"
+      id="budget"
       className="py-24 md:py-32"
       style={{ backgroundColor: "var(--surface-alt)" }}
     >
-      <div className="max-w-[1400px] mx-auto px-6">
+      <div className="max-w-[85vw] mx-auto px-6">
         <motion.div
           className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
           initial={{ opacity: 0, y: 30 }}
