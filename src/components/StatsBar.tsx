@@ -101,9 +101,9 @@ export default function StatsBar() {
       style={{ backgroundColor: "var(--surface)" }}
     >
       {/* Top gradient fade */}
-      <div className="absolute top-0 left-0 right-0 h-16 pointer-events-none" style={{background:"linear-gradient(to bottom, rgba(28,28,34,0.9), transparent)"}} />
+      <div className="absolute top-0 left-0 right-0 h-16 pointer-events-none stats-gradient-top" style={{background:"linear-gradient(to bottom, var(--gradient-overlay, transparent), transparent)"}} />
       {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none" style={{background:"linear-gradient(to top, rgba(28,28,34,0.9), transparent)"}} />
+      <div className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none stats-gradient-bottom" style={{background:"linear-gradient(to top, var(--gradient-overlay, transparent), transparent)"}} />
       <div className="max-w-[85vw] mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
           {stats.map((stat, index) => (

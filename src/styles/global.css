@@ -217,3 +217,32 @@ textarea:focus-visible {
     transition-duration: 0.01ms !important;
   }
 }
+  /* Light mode stats gradient fix */
+  .light {
+    --bg: #FAFAF8;
+    --surface: #FFFFFF;
+    --surface-alt: #F5F4F0;
+    --text: #111111;
+    --text-secondary: #4B5563;
+    --accent: #7C3AED;
+    --accent-hover: #6D28D9;
+    --border: #E5E7EB;
+  }
+
+  /* Use transparent gradient in light mode to avoid text hiding */
+  .light .stats-gradient-top,
+  .light .stats-gradient-bottom {
+    background: transparent !important;
+  }
+
+  .light .services-gradient-top,
+  .light .services-gradient-bottom {
+    background: transparent !important;
+  }
+
+  /* Ensure stat values are readable in light mode */
+  .light .stat-value,
+  .light .stat-label {
+    color: var(--text) !important;
+  }
+
