@@ -22,7 +22,7 @@ const caseStudies = [
     client: "Nomad",
     industry: "Travel Tech",
     result: "+64% Conversion",
-    image: "",
+    image: "/assets/manifesto-poster.jpg",
     description: "Website revamp + paid acquisition stack for B2B SaaS."
   },
 ];
@@ -43,12 +43,18 @@ const caseStudies = [
         {caseStudies.map((study, i) => (
           <article class={`case-card scroll-reveal stagger-${i + 1}`}>
             <div class="case-visual">
-              <img
-                src={study.image}
-                alt={`${study.client} case study`}
-                class="case-img"
-                loading="lazy"
-              />
+              {study.image ? (
+                <img
+                  src={study.image}
+                  alt={`${study.client} case study`}
+                  class="case-img"
+                  loading="lazy"
+                />
+              ) : (
+                <div class="case-img-placeholder" style="background: linear-gradient(135deg, #1e1b4b, #312e81); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                  <span style="color: #6366f1; font-size: 3rem; font-family: 'Playfair Display', serif;">{study.client[0]}</span>
+                </div>
+              )}
             </div>
             <div class="case-content">
               <span class="case-industry">{study.industry}</span>

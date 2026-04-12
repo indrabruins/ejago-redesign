@@ -1,17 +1,8 @@
 ---
-const services = [
-  { label: "Brand Strategy", href: "/services" },
-  { label: "Web & App", href: "/services" },
-  { label: "Growth Marketing", href: "/services" },
-  { label: "AI Consulting", href: "/services" },
-  { label: "ERP Integration", href: "/services" },
-  { label: "Development", href: "/services" },
-];
-const company = [
+const quickLinks = [
   { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
   { label: "Work", href: "/work" },
-  { label: "Blog", href: "#" },
-  { label: "Careers", href: "#" },
   { label: "Contact", href: "/contact" },
 ];
 ---
@@ -20,19 +11,11 @@ const company = [
   <div class="footer-inner">
     <div class="footer-grid">
 
-      <!-- Col 1: Services -->
+      <!-- Col 1: Navigation -->
       <div class="footer-col">
-        <h3 class="col-title">Services</h3>
+        <h3 class="col-title">Navigate</h3>
         <ul class="col-links">
-          {services.map(s => <li><a href={s.href}>{s.label}</a></li>)}
-        </ul>
-      </div>
-
-      <!-- Col 2: Company -->
-      <div class="footer-col">
-        <h3 class="col-title">Company</h3>
-        <ul class="col-links">
-          {company.map(c => <li><a href={c.href}>{c.label}</a></li>)}
+          {quickLinks.map(l => <li><a href={l.href}>{l.label}</a></li>)}
         </ul>
       </div>
 

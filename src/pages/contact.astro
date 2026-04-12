@@ -35,7 +35,7 @@ import Footer from '../components/Footer.astro';
             <div class="availability">
               <h3>Availability</h3>
               <p>Currently accepting <strong>2 new clients</strong></p>
-              <p>Next available start: May 15, 2026</p>
+              <p>Next available start: <strong class="avail-date-dynamic" id="avail-date-root"></strong></p>
             </div>
           </div>
           
@@ -73,6 +73,16 @@ import Footer from '../components/Footer.astro';
   </main>
   <Footer />
 </Layout>
+
+<script>
+  const nextDate = new Date();
+  nextDate.setDate(nextDate.getDate() + 14);
+  const month = nextDate.toLocaleString('default', { month: 'long' });
+  const day = nextDate.getDate();
+  const year = nextDate.getFullYear();
+  const availDateEl = document.querySelector('.avail-date-dynamic');
+  if (availDateEl) availDateEl.textContent = `${month} ${day}, ${year}`;
+</script>
 
 <style>
   .pt-24 { padding-top: 120px; }
