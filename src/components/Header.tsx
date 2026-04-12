@@ -135,18 +135,10 @@ export default function Header() {
               <ThemeToggle />
               <a
                 href="#contact"
-                className="hidden md:block px-5 py-2.5 rounded-lg text-sm font-semibold transition-all cursor-pointer"
+                className="hidden md:block px-5 py-2.5 rounded-lg text-sm font-semibold transition-all cursor-pointer stitch-spring-btn stitch-nav-cta"
                 style={{
                   backgroundColor: "var(--accent)",
                   color: "white",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "var(--accent-hover)";
-                  e.currentTarget.style.transform = "translateY(-2px)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "var(--accent)";
-                  e.currentTarget.style.transform = "translateY(0)";
                 }}
               >
                 Start a Project
