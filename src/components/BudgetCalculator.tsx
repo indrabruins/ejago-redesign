@@ -56,7 +56,7 @@ export default function BudgetCalculator() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        // TODO: Replace YOUR_NEW_KEY with actual key from web3forms.com/dashboard
+        
         access_key: import.meta.env.PUBLIC_WEB3FORMS_KEY,
         email,
         spend,
