@@ -1,0 +1,177 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import BackToTop from '../../components/BackToTop';
+
+const capabilities = [
+  { title: "iOS Development", desc: "Native Swift apps that perform flawlessly on every iPhone and iPad." },
+  { title: "Android Development", desc: "Kotlin-built apps with material design and pixel-perfect UX." },
+  { title: "React Native & Flutter", desc: "Cross-platform apps with near-native performance — one codebase, both platforms." },
+  { title: "E-commerce Mobile", desc: "Shopify and custom store apps that convert on small screens." },
+  { title: "SaaS Mobile Apps", desc: "Companion apps for your web product — dashboard, notifications, on-the-go." },
+  { title: "App Store Optimization", desc: "Keyword strategy, screenshots, and descriptions that actually rank." },
+];
+
+const process = [
+  { step: "01", title: "UX Research", desc: "We map the user journey on actual devices. Every tap, every swipe — optimized." },
+  { step: "02", title: "Design Sprint", desc: "High-fidelity prototypes in 5 days. You see it, you feel it, you approve it." },
+  { step: "03", title: "Build", desc: "Clean code, tested on real devices, deployed to TestFlight/Play Store Beta." },
+  { step: "04", title: "Launch & Support", desc: "App Store submission handled for you. Ongoing maintenance available." },
+];
+---
+
+<Layout
+  title="Mobile App Development — Ejago | iOS, Android, React Native Apps"
+  description="Custom mobile app development for iOS and Android. We build apps that users actually keep — fast, beautiful, and built to convert."
+>
+  <Header client:load />
+
+  <!-- Hero -->
+  <section class="min-h-[70vh] flex items-center pt-32 pb-20 relative overflow-hidden" style="background-color: var(--bg);">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute top-0 right-0 w-[700px] h-[700px] rounded-full blur-3xl animate-mesh-1"
+           style="background: radial-gradient(circle, rgba(59,130,246,0.3) 0%, transparent 70%);" />
+      <div class="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full blur-3xl animate-mesh-3"
+           style="background: radial-gradient(circle, rgba(124,58,237,0.25) 0%, transparent 70%);" />
+    </div>
+    <div class="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 w-full">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+             style="background-color: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.25);">
+          <span class="text-sm font-medium" style="color: #3B82F6;">📱 Mobile Apps</span>
+        </div>
+        <h1 class="text-4xl md:text-6xl lg:text-7xl mb-6 leading-tight" style="font-family: var(--font-display); color: var(--text);">
+          Your Users.<br/>
+          <span style="color: #3B82F6;">In Their Pocket.</span>
+        </h1>
+        <p class="text-lg md:text-xl" style="color: var(--text-secondary); line-height: 1.7; max-width: 650px;">
+          Mobile isn't an add-on — it's how your customers live. We build iOS and Android apps that people keep on their home screen, not in a folder they forget exists. Fast, native-feeling, and designed to convert.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 mt-10">
+          <a href="/#contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-lg"
+             style="background-color: #3B82F6; color: white;">
+            Build My App →
+          </a>
+          <a href="https://calendly.com/indra-ejago" target="_blank"
+             class="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-lg"
+             style="background-color: transparent; color: var(--text); border: 2px solid var(--border);">
+            Book a Call →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="py-16 border-y" style="border-color: var(--border); background-color: var(--surface);">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        {[
+          { n: "50+", l: "Apps Launched" },
+          { n: "4.7★", l: "Avg. App Store Rating" },
+          { n: "21 Days", l: "Avg. Time to App Store" },
+          { n: "68%", l: "User Retention at 30 Days" },
+        ].map(s => (
+          <div>
+            <div class="text-3xl md:text-4xl font-bold mb-1" style="font-family: var(--font-mono); color: #3B82F6;">{s.n}</div>
+            <div class="text-sm" style="color: var(--text-secondary);">{s.l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities -->
+  <section class="py-20 md:py-28" style="background-color: var(--bg);">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16">
+      <div class="text-center mb-16">
+        <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: #3B82F6;">What We Build</p>
+        <h2 class="text-3xl md:text-5xl mb-4" style="font-family: var(--font-display); color: var(--text);">
+          Apps People Actually Use
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: var(--text-secondary);">
+          We don't ship apps into the void. Every project starts with user research and ends with a launch strategy — because an unlaunched app is just a very expensive prototype.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {capabilities.map(c => (
+          <div class="p-8 rounded-2xl" style="background-color: var(--surface); border: 1px solid var(--border);">
+            <h3 class="text-lg font-bold mb-3" style="font-family: var(--font-display); color: var(--text);">{c.title}</h3>
+            <p class="text-sm" style="color: var(--text-secondary); line-height: 1.6;">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="py-20 md:py-28" style="background-color: var(--surface);">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16">
+      <div class="text-center mb-16">
+        <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: #3B82F6;">Process</p>
+        <h2 class="text-3xl md:text-5xl mb-4" style="font-family: var(--font-display); color: var(--text);">
+          From Idea to App Store — Fast
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {process.map(p => (
+          <div>
+            <div class="text-5xl font-bold mb-4" style="font-family: var(--font-display); color: rgba(59,130,246,0.2);">{p.step}</div>
+            <h3 class="text-xl font-bold mb-3" style="font-family: var(--font-display); color: var(--text);">{p.title}</h3>
+            <p class="text-sm" style="color: var(--text-secondary); line-height: 1.7;">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 md:py-28" style="background-color: var(--bg);">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-16">
+          <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: #3B82F6;">FAQ</p>
+          <h2 class="text-3xl md:text-5xl" style="font-family: var(--font-display); color: var(--text);">Mobile App Questions</h2>
+        </div>
+        <div class="space-y-6">
+          {[
+            { q: "Native or cross-platform?", a: "It depends on your goals. Native (Swift/Kotlin) gives the best performance and UX. Cross-platform (React Native/Flutter) gets you iOS + Android from one codebase — faster and cheaper. We help you make the right call based on your goals and budget." },
+            { q: "How long does it take?", a: "A typical consumer app takes 6-10 weeks. A complex SaaS app or marketplace can take 12-16 weeks. We give you a realistic timeline upfront — not a sales estimate that gets revised later." },
+            { q: "What about app store approval?", a: "We handle the entire submission process — writing descriptions, creating screenshots, setting up developer accounts, and responding to reviewer feedback. Most apps are approved within 24-48 hours." },
+            { q: "Do you do ongoing maintenance?", a: "Yes. We offer monthly maintenance plans that cover bug fixes, iOS/Android OS updates, and feature additions. Most clients start with a launch plan and transition to maintenance after go-live." },
+          ].map(f => (
+            <details class="p-6 rounded-xl" style="background-color: var(--surface); border: 1px solid var(--border);">
+              <summary class="flex items-center justify-between cursor-pointer list-none font-semibold" style="color: var(--text);">
+                {f.q}
+                <span style="color: #3B82F6;">+</span>
+              </summary>
+              <p class="mt-4 text-sm" style="color: var(--text-secondary); line-height: 1.7;">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 md:py-32" style="background-color: #3B82F6;">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 text-center">
+      <h2 class="text-3xl md:text-5xl mb-6" style="font-family: var(--font-display); color: white;">
+        Ready to Launch?
+      </h2>
+      <p class="text-lg mb-10 max-w-2xl mx-auto" style="color: rgba(255,255,255,0.85);">
+        Book a free discovery call. We'll scope your app, give you a realistic timeline, and tell you exactly what it would cost — no fluff.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/#contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-lg"
+           style="background-color: white; color: #3B82F6;">Start My App →</a>
+        <a href="/services" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-lg"
+           style="background-color: transparent; color: white; border: 2px solid white;">See All Services →</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer client:load />
+  <BackToTop client:load />
+</Layout>

@@ -1,0 +1,207 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import BackToTop from '../../components/BackToTop';
+
+const automations = [
+  { title: "Customer Service AI", desc: "Chatbots that actually resolve tickets — not just collect email addresses." },
+  { title: "Lead Qualification", desc: "Score and route leads automatically based on behavior, not just form fields." },
+  { title: "Document Processing", desc: "Extract, classify, and route contracts, invoices, and forms without manual data entry." },
+  { title: "Email Triage & Response", desc: "AI reads, categorizes, and drafts responses — human reviews and approves." },
+  { title: "Sales Pipeline Automation", desc: "Auto-update CRM, trigger follow-ups, and surface hot leads based on engagement." },
+  { title: "Reporting & Dashboards", desc: "Weekly performance summaries generated and delivered automatically — no manual pulls." },
+  { title: "Appointment Scheduling", desc: "AI-powered booking that handles rescheduling, reminders, and no-shows." },
+  { title: "Inventory & Supply Chain", desc: "Predictive restocking alerts based on sales velocity and seasonality." },
+];
+
+const process = [
+  { step: "01", title: "Discovery", desc: "We map every manual process in your business and score them by time-wasted vs. automation potential." },
+  { step: "02", title: "AI Design", desc: "We design a multi-agent workflow — not a single chatbot, but a system of specialized AI agents." },
+  { step: "03", title: "Build & Integrate", desc: "We build the AI workflows and connect them to your existing tools via API or no-code integrations." },
+  { step: "04", title: "Launch & Optimize", desc: "We deploy, measure time saved vs. promised, and iterate until the AI is doing the job reliably." },
+];
+---
+
+<Layout
+  title="AI Automation Services — Ejago | AI Agents, Workflow Automation, Business AI"
+  description="AI automation that actually replaces manual work. We build multi-agent AI systems that handle customer service, lead qualification, document processing, and more."
+>
+  <Header client:load />
+
+  <!-- Hero -->
+  <section class="min-h-[70vh] flex items-center pt-32 pb-20 relative overflow-hidden" style="background-color: var(--bg);">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute top-0 right-0 w-[700px] h-[700px] rounded-full blur-3xl animate-mesh-1"
+           style="background: radial-gradient(circle, rgba(16,185,129,0.3) 0%, transparent 70%);" />
+      <div class="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full blur-3xl animate-mesh-3"
+           style="background: radial-gradient(circle, rgba(124,58,237,0.25) 0%, transparent 70%);" />
+    </div>
+    <div class="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 w-full">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+             style="background-color: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3);">
+          <span class="text-sm font-medium" style="color: #10B981;">🧠 AI Automation</span>
+        </div>
+        <h1 class="text-4xl md:text-6xl lg:text-7xl mb-6 leading-tight" style="font-family: var(--font-display); color: var(--text);">
+          Automate the Work<br/>
+          <span style="color: #10B981;">That Kills Your Momentum.</span>
+        </h1>
+        <p class="text-lg md:text-xl" style="color: var(--text-secondary); line-height: 1.7; max-width: 650px;">
+          Not a chatbot. Not a template. We build AI agents that actually do the work — handle customer service, qualify leads, process documents, update your CRM — and free your team to focus on what only humans can do.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 mt-10">
+          <a href="/#contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-lg"
+             style="background-color: #10B981; color: white;">
+            Automate My Business →
+          </a>
+          <a href="https://calendly.com/indra-ejago" target="_blank"
+             class="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-lg"
+             style="background-color: transparent; color: var(--text); border: 2px solid var(--border);">
+            Book a Call →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="py-16 border-y" style="border-color: var(--border); background-color: var(--surface);">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        {[
+          { n: "60%+", l: "Time Saved on Manual Tasks" },
+          { n: "85%", l: "Reduction in Response Time" },
+          { n: "24/7", l: "AI Coverage Without Headcount" },
+          { n: "14 Days", l: "Average Time to First AI Agent Live" },
+        ].map(s => (
+          <div>
+            <div class="text-3xl md:text-4xl font-bold mb-1" style="font-family: var(--font-mono); color: #10B981;">{s.n}</div>
+            <div class="text-sm" style="color: var(--text-secondary);">{s.l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What we automate -->
+  <section class="py-20 md:py-28" style="background-color: var(--bg);">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16">
+      <div class="text-center mb-16">
+        <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: #10B981;">What We Automate</p>
+        <h2 class="text-3xl md:text-5xl mb-4" style="font-family: var(--font-display); color: var(--text);">
+          Real AI That Does Real Work
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: var(--text-secondary);">
+          These aren't hypothetical use cases. We've built all of these for clients. Here's what AI automation actually looks like when it's done right.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {automations.map(a => (
+          <div class="p-6 rounded-xl" style="background-color: var(--surface); border: 1px solid var(--border);">
+            <h3 class="text-base font-bold mb-3" style="color: var(--text);">{a.title}</h3>
+            <p class="text-sm" style="color: var(--text-secondary); line-height: 1.6;">{a.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="py-20 md:py-28" style="background-color: var(--surface);">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16">
+      <div class="text-center mb-16">
+        <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: #10B981;">Our Process</p>
+        <h2 class="text-3xl md:text-5xl mb-4" style="font-family: var(--font-display); color: var(--text);">
+          How We Build AI That Actually Works
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {process.map(p => (
+          <div>
+            <div class="text-5xl font-bold mb-4" style="font-family: var(--font-display); color: rgba(16,185,129,0.2);">{p.step}</div>
+            <h3 class="text-xl font-bold mb-3" style="font-family: var(--font-display); color: var(--text);">{p.title}</h3>
+            <p class="text-sm" style="color: var(--text-secondary); line-height: 1.7;">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech stack -->
+  <section class="py-20 md:py-28" style="background-color: var(--bg);">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: #10B981;">Tech Stack</p>
+          <h2 class="text-3xl md:text-5xl mb-6" style="font-family: var(--font-display); color: var(--text);">
+            Built on Proven AI Infrastructure
+          </h2>
+          <p class="text-base mb-8" style="color: var(--text-secondary); line-height: 1.8;">
+            We don't use proprietary "magic" AI. We use the best models for each job — OpenAI GPT, Anthropic Claude, Google Gemini — connected via robust infrastructure that you actually own and can export.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            {["OpenAI API", "Claude API", "LangChain", "Make.com", "Zapier", "Custom Python", "Vercel AI SDK", "Pinecone"].map(t => (
+              <span class="px-4 py-2 rounded-full text-sm font-medium" style="background-color: var(--surface); border: 1px solid var(--border); color: var(--text-secondary);">{t}</span>
+            ))}
+          </div>
+        </div>
+        <div class="rounded-2xl overflow-hidden h-80 relative" style="border: 1px solid var(--border);">
+          <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80" alt="AI neural network visualization" class="w-full h-full object-cover" />
+          <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(10,10,14,0.5) 0%, transparent 60%);" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 md:py-28" style="background-color: var(--surface);">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-16">
+          <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: #10B981;">FAQ</p>
+          <h2 class="text-3xl md:text-5xl" style="font-family: var(--font-display); color: var(--text);">
+            Questions About AI Automation
+          </h2>
+        </div>
+        <div class="space-y-6">
+          {[
+            { q: "What if we already tried AI and it didn't work?", a: "Most failed AI implementations fail because they were single-agent systems trying to do everything. We build multi-agent systems where each agent has a specific, narrow job. That specificity is what makes it work." },
+            { q: "How long does it take to get an AI agent live?", a: "Most clients have their first AI agent live within 14 days. Complex, multi-agent systems take 4-6 weeks. We work fast because we've done this many times before." },
+            { q: "Will AI agents actually represent our brand well?", a: "Yes — we train them on your brand voice, product knowledge, and customer personas. They're not generic. They know your business, your tone, and your customers." },
+            { q: "What happens when the AI makes a mistake?", a: "We build human-in-the-loop checkpoints for high-stakes decisions. The AI handles 80% of volume; edge cases escalate to a human. Over time, the AI learns from those escalations." },
+          ].map(f => (
+            <details class="p-6 rounded-xl group" style="background-color: var(--bg); border: 1px solid var(--border);">
+              <summary class="flex items-center justify-between cursor-pointer list-none font-semibold" style="color: var(--text);">
+                {f.q}
+                <span class="text-xl" style="color: #10B981;">+</span>
+              </summary>
+              <p class="mt-4 text-sm" style="color: var(--text-secondary); line-height: 1.7;">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 md:py-32" style="background-color: #10B981;">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 text-center">
+      <h2 class="text-3xl md:text-5xl mb-6" style="font-family: var(--font-display); color: white;">
+        Ready to Automate?
+      </h2>
+      <p class="text-lg mb-10 max-w-2xl mx-auto" style="color: rgba(255,255,255,0.85);">
+        Tell us your most time-consuming process. We'll map it out and show you exactly how AI could handle it — free, no commitment.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/#contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-lg"
+           style="background-color: white; color: #10B981;">Start with a Discovery Call →</a>
+        <a href="/services" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-lg"
+           style="background-color: transparent; color: white; border: 2px solid white;">See All Services →</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer client:load />
+  <BackToTop client:load />
+</Layout>

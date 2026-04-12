@@ -1,0 +1,322 @@
+/* ============================================
+   Google Stitch Animation System - eJago v2
+   Cinematic scroll-triggered animations
+   ============================================ */
+
+/* ── Motion Curves ── */
+:root {
+  --stitch-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --stitch-ease-in: cubic-bezier(0, 0, 0.2, 1);
+  --stitch-ease-out: cubic-bezier(0.4, 0, 1, 1);
+  --stitch-ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --stitch-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --stitch-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ── Entrance Animations ── */
+.stitch-fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s var(--stitch-ease-out), transform 0.7s var(--stitch-ease-out);
+}
+.stitch-fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stitch-fade-down {
+  opacity: 0;
+  transform: translateY(-40px);
+  transition: opacity 0.7s var(--stitch-ease-out), transform 0.7s var(--stitch-ease-out);
+}
+.stitch-fade-down.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stitch-fade-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s var(--stitch-ease-out), transform 0.7s var(--stitch-ease-out);
+}
+.stitch-fade-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.stitch-fade-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s var(--stitch-ease-out), transform 0.7s var(--stitch-ease-out);
+}
+.stitch-fade-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.stitch-scale-in {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.6s var(--stitch-ease-out), transform 0.6s var(--stitch-spring);
+}
+.stitch-scale-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── Stagger Delays ── */
+.stitch-delay-1 { transition-delay: 0.1s; }
+.stitch-delay-2 { transition-delay: 0.2s; }
+.stitch-delay-3 { transition-delay: 0.3s; }
+.stitch-delay-4 { transition-delay: 0.4s; }
+.stitch-delay-5 { transition-delay: 0.5s; }
+.stitch-delay-6 { transition-delay: 0.6s; }
+.stitch-delay-7 { transition-delay: 0.7s; }
+.stitch-delay-8 { transition-delay: 0.8s; }
+
+/* ── Continuous Animations ── */
+.stitch-float {
+  animation: stitch-float 6s ease-in-out infinite;
+}
+@keyframes stitch-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+.stitch-pulse-glow {
+  animation: stitch-pulse-glow 3s ease-in-out infinite;
+}
+@keyframes stitch-pulse-glow {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(124, 58, 237, 0.4)); }
+  50% { filter: drop-shadow(0 0 24px rgba(124, 58, 237, 0.8)); }
+}
+
+.stitch-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.stitch-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  animation: stitch-shimmer-slide 3s ease-in-out infinite;
+}
+@keyframes stitch-shimmer-slide {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+.stitch-breathe {
+  animation: stitch-breathe 4s ease-in-out infinite;
+}
+@keyframes stitch-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+/* ── Blob Morph Animation ── */
+.stitch-blob-1 {
+  animation: stitch-blob-morph-1 12s ease-in-out infinite;
+}
+@keyframes stitch-blob-morph-1 {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  50% { border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%; }
+  75% { border-radius: 60% 40% 60% 30% / 70% 30% 50% 60%; }
+}
+
+.stitch-blob-2 {
+  animation: stitch-blob-morph-2 15s ease-in-out infinite;
+}
+@keyframes stitch-blob-morph-2 {
+  0%, 100% { border-radius: 40% 60% 70% 30% / 60% 40% 60% 40%; }
+  33% { border-radius: 60% 40% 30% 60% / 40% 70% 30% 60%; }
+  66% { border-radius: 30% 70% 60% 40% / 60% 30% 70% 40%; }
+}
+
+.stitch-blob-3 {
+  animation: stitch-blob-morph-3 10s ease-in-out infinite;
+}
+@keyframes stitch-blob-morph-3 {
+  0%, 100% { border-radius: 50% 50% 40% 60% / 40% 50% 60% 50%; }
+  50% { border-radius: 35% 65% 55% 45% / 65% 35% 45% 55%; }
+}
+
+/* ── Gradient Shift (Hero BG) ── */
+.stitch-gradient-shift {
+  animation: stitch-gradient-shift 20s ease infinite;
+}
+@keyframes stitch-gradient-shift {
+  0%, 100% { opacity: 0.5; transform: scale(1) translate(0, 0); }
+  25% { opacity: 0.4; transform: scale(1.1) translate(2%, 3%); }
+  50% { opacity: 0.6; transform: scale(1.05) translate(-2%, 1%); }
+  75% { opacity: 0.35; transform: scale(1.15) translate(1%, -2%); }
+}
+
+/* ── Hover Interactions ── */
+.stitch-hover-lift {
+  transition: transform 0.3s var(--stitch-spring), box-shadow 0.3s var(--stitch-ease);
+}
+.stitch-hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.stitch-hover-glow {
+  transition: filter 0.3s var(--stitch-ease), transform 0.3s var(--stitch-spring);
+}
+.stitch-hover-glow:hover {
+  filter: drop-shadow(0 0 20px rgba(124, 58, 237, 0.6));
+  transform: scale(1.02);
+}
+
+.stitch-hover-scale {
+  transition: transform 0.25s var(--stitch-spring);
+}
+.stitch-hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.stitch-hover-border-glow {
+  transition: border-color 0.3s var(--stitch-ease), box-shadow 0.3s var(--stitch-ease);
+}
+.stitch-hover-border-glow:hover {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.2);
+}
+
+/* ── CTA Button Spring ── */
+.stitch-spring-btn {
+  transition: transform 0.25s var(--stitch-spring), box-shadow 0.25s var(--stitch-ease);
+}
+.stitch-spring-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 16px 48px rgba(124, 58, 237, 0.45);
+}
+.stitch-spring-btn:active {
+  transform: translateY(0px) scale(0.98);
+  transition-duration: 0.1s;
+}
+
+/* ── Nav link animations ── */
+.stitch-nav-link {
+  position: relative;
+}
+.stitch-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s var(--stitch-ease-out);
+  border-radius: 1px;
+}
+.stitch-nav-link:hover::after {
+  width: 100%;
+}
+
+/* ── Section dividers ── */
+.stitch-divider-glow {
+  position: relative;
+}
+.stitch-divider-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+  opacity: 0.4;
+}
+
+/* ── Stats counter animation ── */
+.stitch-counter {
+  transition: transform 0.3s var(--stitch-spring);
+}
+.stitch-counter.counted {
+  animation: stitch-counter-pop 0.4s var(--stitch-spring);
+}
+@keyframes stitch-counter-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* ── Testimonial card ── */
+.stitch-card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.5s var(--stitch-ease-emphasized);
+}
+.stitch-card-3d:hover {
+  transform: rotateY(-4deg) rotateX(2deg) translateY(-4px);
+}
+
+/* ── Marquee ── */
+.stitch-marquee {
+  display: flex;
+  animation: stitch-marquee-scroll 30s linear infinite;
+  width: max-content;
+}
+@keyframes stitch-marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.stitch-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ── Scroll indicator bounce ── */
+.stitch-chevron-bounce {
+  animation: stitch-chevron-bounce 2s ease-in-out infinite;
+}
+@keyframes stitch-chevron-bounce {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(8px); opacity: 1; }
+}
+
+/* ── Line draw animation ── */
+.stitch-line-draw {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  transition: stroke-dashoffset 2s var(--stitch-ease-out);
+}
+.stitch-line-draw.visible {
+  stroke-dashoffset: 0;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .stitch-float,
+  .stitch-pulse-glow,
+  .stitch-shimmer,
+  .stitch-breathe,
+  .stitch-blob-1,
+  .stitch-blob-2,
+  .stitch-blob-3,
+  .stitch-gradient-shift,
+  .stitch-marquee,
+  .stitch-chevron-bounce {
+    animation: none !important;
+  }
+  .stitch-fade-up,
+  .stitch-fade-down,
+  .stitch-fade-left,
+  .stitch-fade-right,
+  .stitch-scale-in {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .stitch-line-draw {
+    stroke-dashoffset: 0 !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import BigFooterCTA from '../components/BigFooterCTA';
+---
+
+<Layout title="Terms of Service | Ejago" description="Ejago's terms of service and client agreement.">
+  <Header client:load />
+  <main class="container mx-auto px-4 py-16">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl font-bold mb-4">Terms of Service</h1>
+      <p class="text-sm text-gray-500 mb-8">Last updated: March 25, 2026</p>
+      
+      <div class="prose prose-lg max-w-none">
+        <h2>Agreement to Terms</h2>
+        <p>By accessing or using Ejago's website and services, you agree to be bound by these Terms of Service and all applicable laws and regulations.</p>
+        
+        <h2>Services Provided</h2>
+        <p>Ejago provides digital agency services including but not limited to: web design and development, AI automation, mobile app development, and performance marketing.</p>
+        
+        <h2>Client Responsibilities</h2>
+        <p>Clients are responsible for providing timely feedback, required materials, and ensuring they have the rights to any content or materials provided to Ejago.</p>
+        
+        <h2>Intellectual Property</h2>
+        <p>Upon full payment, clients retain ownership of final deliverables. Ejago retains ownership of pre-existing tools, frameworks, and methodologies.</p>
+        
+        <h2>Payment Terms</h2>
+        <p>Payment terms are outlined in individual project proposals. Generally, a deposit is required before work begins, with the balance due upon project completion.</p>
+        
+        <h2>Limitation of Liability</h2>
+        <p>Ejago's liability is limited to the amount paid for the specific service in question. We are not liable for indirect, incidental, or consequential damages.</p>
+        
+        <h2>Contact</h2>
+        <p>Questions about these Terms? Contact us at legal@ejago.com.</p>
+      </div>
+    </div>
+  </main>
+  <BigFooterCTA client:load />
+  <Footer client:load />
+</Layout>
