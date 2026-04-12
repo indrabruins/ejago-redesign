@@ -156,7 +156,9 @@ export default function Header() {
               <button
                 className="md:hidden w-10 h-10 flex items-center justify-center rounded-lg cursor-pointer"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                style={{ 
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="mobile-menu"
+                style={{
                   color: "var(--text)",
                   backgroundColor: isScrolled ? "var(--surface)" : "transparent",
                   border: isScrolled ? "1px solid var(--border)" : "1px solid transparent"
@@ -173,6 +175,7 @@ export default function Header() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
+            id="mobile-menu"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

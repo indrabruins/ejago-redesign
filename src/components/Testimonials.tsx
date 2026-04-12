@@ -7,26 +7,26 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const testimonials = [
   {
     quote:
-      "Ejago transformed our entire digital presence in just 6 weeks. The AI automation they built saves us 20+ hours per week. Our ROAS went from 1.2x to 3.8x within the first quarter.",
-    name: "Sarah Chen",
+      "The team delivered a fully functional app in 6 weeks. Their AI integration cut our customer service load by 40%. We recouped the investment in the first month.",
+    name: "Marcus Chen",
     title: "CEO",
     company: "Bloom Botanics",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
-  },
-  {
-    quote:
-      "The convergence of website development, AI automation, and performance marketing under one roof is a game-changer. No more juggling multiple agencies — Ejago is our single strategic partner.",
-    name: "Marcus Johnson",
-    title: "Founder",
-    company: "Elevate Fitness",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
   },
   {
     quote:
-      "We tried three other agencies before finding Ejago. The difference? They actually understand both technology and business outcomes. Our customer acquisition cost dropped 60% in 90 days.",
-    name: "Emily Rodriguez",
-    title: "VP Marketing",
-    company: "TechFlow Solutions",
+      "We went from struggling with disconnected tools to having one cohesive system. Ejago's automation pipeline saved us 20+ hours per week.",
+    name: "Sarah Mitchell",
+    title: "COO",
+    company: "Meridian Capital",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
+  },
+  {
+    quote:
+      "240% ROAS improvement in 90 days. The convergence strategy — combining data, automation, and ads — was the differentiator.",
+    name: "James Okonkwo",
+    title: "Founder",
+    company: "Orbit Media",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
   },
 ];
