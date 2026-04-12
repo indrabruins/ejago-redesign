@@ -48,7 +48,7 @@ export default function BigFooterCTA() {
               color: "white",
             }}
           >
-            Ready to Build Something Remarkable?
+            Ready for Compounding Growth?
           </h2>
           <p
             className="text-lg md:text-xl mb-10 max-w-2xl mx-auto"

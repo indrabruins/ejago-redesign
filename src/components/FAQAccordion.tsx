@@ -13,7 +13,7 @@ const faqs = [
   {
     question: "How much does it cost?",
     answer:
-      "Our pricing scales with your ambitions. Website projects typically start at $8K, AI automation at $12K, and full-stack growth packages from $15K/month. We don't believe in one-size-fits-all pricing — every proposal is custom-built around your goals, competitive landscape, and growth targets. Book a call for a detailed breakdown.",
+      "Our pricing scales with your ambitions. Website projects typically start at $8K, AI automation at $12K, and full-stack growth packages from $15K/month. We don't believe in one-size-fits-all pricing — every proposal is custom-built around your goals, competitive landscape, and growth targets. Book a call for a detailed breakdown. Starter from $8.5K/mo. Growth from $15K/mo.",
   },
   {
     question: "What if I already tried AI and it failed?",

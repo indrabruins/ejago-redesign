@@ -167,15 +167,10 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            The only agency that fuses{" "}
+            AI automation + performance ads. One team. One system.{" "}
             <span className="font-semibold" style={{ color: "var(--text)" }}>
-              AI automation
-            </span>{" "}
-            with{" "}
-            <span className="font-semibold" style={{ color: "var(--text)" }}>
-              performance advertising
+              Results that compound.
             </span>
-            . One team. One system. Maximum compounding growth.
           </motion.p>
 
           {/* CTAs */}
