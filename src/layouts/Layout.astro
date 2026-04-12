@@ -30,7 +30,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://ejago.co
     <meta name="description" content={description} />
     <meta name="theme-color" content="#0A0A0E" />
     <link rel="canonical" href={canonicalURL} />
-    <link rel="preload" as="image" href="/ejago-hero-v2.png" />
+    <link rel="preload" as="image" href="/ejago-hero-v2.png" fetchpriority="high" />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
