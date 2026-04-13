@@ -35,6 +35,7 @@ export default function ContactSection() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -59,6 +60,9 @@ export default function ContactSection() {
 
     if (response.ok) {
       setSubmitted(true);
+      setLoading(false);
+    } else {
+      setError("Something went wrong. Please try again or email us directly.");
       setLoading(false);
     }
   };
@@ -145,6 +149,7 @@ export default function ContactSection() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                <input name="website" type="text" tabIndex={-1} autoComplete="off" style={{position:"absolute",left:"-9999px"}} aria-hidden="true" />
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label
@@ -298,6 +303,12 @@ export default function ContactSection() {
                     placeholder="What are you trying to build? What challenges are you facing?"
                   />
                 </div>
+
+                {error && (
+                  <div className="p-4 rounded-lg" style={{backgroundColor: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.3)", color: "#ef4444"}}>
+                    {error}
+                  </div>
+                )}
 
                 <button
                   type="submit"

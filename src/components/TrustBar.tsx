@@ -9,7 +9,7 @@ const trustItems = [
   { icon: Award, label: "LA-Based Agency" },
   { icon: Star, label: "4.9★ on Clutch" },
   { icon: Users, label: "500+ Happy Clients" },
-  { icon: Clock, label: "24/7 Support" },
+  { icon: Clock, label: "99.9% Uptime SLA" },
   { icon: Zap, label: "7-Day Fast Delivery" },
 ];
 

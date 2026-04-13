@@ -181,7 +181,7 @@ export default function Hero() {
             transition={{ delay: 0.6 }}
           >
             <a
-              href="#contact"
+              href="/#contact"
               className="group flex items-center gap-2 px-10 py-5 rounded-xl font-semibold text-lg transition-all w-full sm:w-auto justify-center stitch-spring-btn"
               style={{
                 backgroundColor: "var(--accent)",

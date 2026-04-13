@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { DollarSign, TrendingUp, Clock, ArrowRight } from "lucide-react";
 
@@ -56,13 +56,14 @@ export default function BudgetCalculator() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        
         access_key: import.meta.env.PUBLIC_WEB3FORMS_KEY,
+        subject: `Budget Estimate — ${goal || "General"}`,
         email,
         spend,
         goal,
         estimatedRoasLift: estimates.roasImprovement,
         estimatedRevenueLift: estimates.potentialRevenueLift,
+        website: "",
       }),
     });
 
@@ -273,6 +274,7 @@ export default function BudgetCalculator() {
 
             {!submitted ? (
               <form onSubmit={handleSubmit} className="space-y-4">
+                <input name="website" type="text" tabIndex={-1} autoComplete="off" style={{position:"absolute",left:"-9999px"}} aria-hidden="true" />
                 <input
                   type="email"
                   value={email}

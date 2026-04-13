@@ -8,7 +8,7 @@ const stats = [
   { value: 7, suffix: "-Day", label: "First Delivery" },
   { value: 100, prefix: "$", suffix: "K+", label: "Saved per Client" },
   { value: 240, suffix: "%", label: "Avg ROAS" },
-  { value: 50, suffix: "+", label: "Projects" },
+  { value: 60, suffix: "+", label: "Projects" },
   { value: 98, suffix: "%", label: "Client Retention" },
 ];
 

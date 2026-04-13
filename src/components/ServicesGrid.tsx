@@ -102,6 +102,7 @@ export default function ServicesGrid() {
             <a
               key={service.title}
               href={service.href}
+              aria-label={`Learn more about ${service.title}`}
               className="group block relative p-8 rounded-2xl cursor-pointer transition-all duration-300"
               style={{
                 backgroundColor: "var(--surface)",

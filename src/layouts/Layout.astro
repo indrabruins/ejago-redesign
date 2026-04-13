@@ -77,6 +77,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://ejago.co
         document.documentElement.classList.add('dark');
       } else {
         document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
       }
     </script>
 

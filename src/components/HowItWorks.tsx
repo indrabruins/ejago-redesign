@@ -147,6 +147,11 @@ export default function HowItWorks() {
             ))}
           </div>
         </div>
+
+        {/* CTA Button */}
+        <div className="text-center mt-16">
+          <a href="/#contact" style={{backgroundColor: "var(--accent)", color: "white", padding: "16px 32px", borderRadius: "12px", fontWeight: 600}}>Start Your Project →</a>
+        </div>
       </div>
     </section>
   );

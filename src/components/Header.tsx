@@ -6,7 +6,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
 const navItems = [
-  { label: "Home", href: "#hero" },
+  { label: "Home", href: "/" },
   {
     label: "Services",
     href: "/services",
@@ -21,6 +21,8 @@ const navItems = [
   },
   { label: "Work", href: "/work" },
   { label: "About", href: "/about" },
+    { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "/#contact" },
   { label: "Blog", href: "/blog" },
 ];
 
@@ -134,7 +136,7 @@ export default function Header() {
             <div className="flex items-center gap-4">
               <ThemeToggle />
               <a
-                href="#contact"
+                href="/#contact"
                 className="hidden md:block px-5 py-2.5 rounded-lg text-sm font-semibold transition-all cursor-pointer stitch-spring-btn stitch-nav-cta"
                 style={{
                   backgroundColor: "var(--accent)",
@@ -190,7 +192,7 @@ export default function Header() {
                 </motion.a>
               ))}
               <motion.a
-                href="#contact"
+                href="/#contact"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: navItems.length * 0.05 }}
