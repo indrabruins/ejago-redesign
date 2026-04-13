@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header';
+import BigFooterCTA from '../../components/BigFooterCTA';
+import ContactSection from '../../components/ContactSection';
 import Footer from '../../components/Footer';
 import BackToTop from '../../components/BackToTop';
 
@@ -143,6 +145,8 @@ const offerings = [
     </div>
   </section>
 
+  <BigFooterCTA client:load />
+  <ContactSection client:load />
   <Footer client:load />
   <BackToTop client:load />
 </Layout>

@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import ContactSection from '../components/ContactSection';
+import BackToTop from '../components/BackToTop';
+---
+
+<Layout
+  title="Contact Us | Ejago"
+  description="Get in touch with Ejago. Schedule a free strategy call or send us a message about your project."
+>
+  <Header client:load />
+  <main>
+    <section class="py-24 md:py-32" style="background-color: var(--bg);">
+      <div class="max-w-[85vw] mx-auto">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4" style="font-family: var(--font-display); color: var(--text);">
+          Let's Talk.
+        </h1>
+        <p class="text-xl mb-12" style="color: var(--text-secondary);">
+          Tell us about your project and we'll get back to you within 24 hours.
+        </p>
+        <ContactSection client:load />
+      </div>
+    </section>
+  </main>
+  <Footer client:load />
+  <BackToTop client:load />
+</Layout>
