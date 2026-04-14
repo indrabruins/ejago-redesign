@@ -69,7 +69,7 @@ export default function Hero() {
         className="absolute inset-0 z-1"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(10,10,14,0.85) 0%, rgba(10,10,14,0.4) 40%, rgba(10,10,14,0.75) 100%)",
+            "linear-gradient(to bottom, var(--hero-overlay-1) 0%, var(--hero-overlay-2) 40%, var(--hero-overlay-3) 100%)",
         }}
       />
 
