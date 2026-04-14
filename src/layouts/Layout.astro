@@ -108,7 +108,45 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://ejago.co
         "serviceType": ["Web Development", "Mobile App Development", "AI Automation", "Google Ads", "Meta Ads", "TikTok Ads"]
       }
     </script>
-  </head>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How fast can you deliver?",
+      "acceptedAnswer": { "@type": "Answer", "text": "We move fast without cutting corners. Our typical minimum viable product ships within 2 weeks — not months. Full-scale AI automation systems take 4-8 weeks depending on complexity." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you work with early-stage startups?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — if you have a clear vision and a budget to match it. We don't require a massive runway, but we do require a problem worth solving. We've helped startups across health tech, e-commerce, SaaS, and more." }
+    },
+    {
+      "@type": "Question",
+      "name": "What's included in the first consultation?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A free 30-minute audit of your current tech stack and marketing setup. We'll identify the top 3 opportunities for automation and growth — no obligation." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you measure success?",
+      "acceptedAnswer": { "@type": "Answer", "text": "ROAS, CAC, revenue growth, time saved on manual ops. We track what matters to your business, not vanity metrics." }
+    },
+    {
+      "@type": "Question",
+      "name": "What if we're already working with an agency?",
+      "acceptedAnswer": { "@type": "Answer", "text": "We can run in parallel or replace your current setup. Our onboarding process is designed to hand off cleanly from any existing vendor relationship." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer ongoing support?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. 2-week launch sprint, then monthly retainer for ongoing optimization. Most clients stay on retainer because they see compounding results." }
+    }
+  ]
+}
+</script>
+</head>
   <body class="min-h-screen">
     <slot />
   </body>

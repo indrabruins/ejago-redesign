@@ -61,7 +61,7 @@ export default function ConvergenceEngine() {
   };
 
   return (
-    <section
+    <section aria-label="Technology integrations and convergence engine"
       id="convergence"
       className="py-24 md:py-32 relative overflow-hidden"
       style={{ backgroundColor: "var(--bg)" }}

@@ -26,3 +26,7 @@ pnpm-debug.log*
 # Audit docs
 AUDIT*.md
 fixes-v6.sh
+
+# Temp fix scripts
+fixes-v7.*
+fixes-v6.*
