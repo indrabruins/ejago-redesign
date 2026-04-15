@@ -71,6 +71,19 @@ const caseStudies = [
     color: "#EC4899",
   },
   {
+    slug: "jago-hemat",
+    client: "Jago Hemat",
+    industry: "Marketplace / Sustainability",
+    services: ["Mobile App Development", "AI Automation", "Brand Architecture"],
+    challenge: "Indonesia wastes 23M tonnes of food per year. Every food waste app launched in SE Asia failed because they built for consumers first — empty restaurants, week-two churn.",
+    approach: "WhatsApp-first merchant onboarding (zero app install). Two-sided marketplace connecting Jakarta restaurants with end-of-day surplus to 8M price-conscious diners. Full compliance framework.",
+    result: "18-Day MVP Build",
+    resultSub: "from concept to soft launch",
+    metric1: "80% below-menu prices",
+    metric2: "Live on Play Store & App Store",
+    color: "#22C55E",
+  },
+  {
     slug: "nourishrx",
     client: "NourishRx",
     industry: "Health & Wellness / Digital Health",
@@ -217,7 +230,7 @@ const industries = ["All", "E-commerce", "SaaS", "Health & Wellness", "Fashion &
 
               <!-- CTA -->
               <a
-                href="/#contact"
+                href={`/work/${cs.slug}`}
                 class="flex items-center gap-2 text-sm font-semibold transition-colors group-hover:gap-3"
                 style="color: var(--accent);"
               >

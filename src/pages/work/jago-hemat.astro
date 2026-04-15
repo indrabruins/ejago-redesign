@@ -1,0 +1,307 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import BackToTop from '../../components/BackToTop';
+import BigFooterCTA from '../../components/BigFooterCTA';
+import ContactSection from '../../components/ContactSection';
+---
+
+<Layout
+  title="Jago Hemat — Ejago Case Study | Food Waste Marketplace"
+  description="18 days from concept to soft launch. Jago Hemat is the Jakarta marketplace connecting restaurants with end-of-day surplus to 8M diners — at 80% below menu prices."
+>
+  <Header client:load />
+
+  <!-- Hero -->
+  <section class="min-h-[70vh] flex items-center pt-32 pb-20 relative overflow-hidden" style="background-color: var(--bg);">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute -top-1/4 -right-1/4 w-[600px] h-[600px] rounded-full blur-3xl animate-mesh-1"
+           style="background: radial-gradient(circle, rgba(34,197,94,0.35) 0%, transparent 70%);" />
+      <div class="absolute -bottom-1/4 -left-1/4 w-[500px] h-[500px] rounded-full blur-3xl animate-mesh-2"
+           style="background: radial-gradient(circle, rgba(245,158,11,0.25) 0%, transparent 70%);" />
+    </div>
+
+    <div class="relative z-10 max-w-[85vw] mx-auto px-6 md:px-10 lg:px-16 w-full">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: #22C55E; font-family: var(--font-mono);">
+          Case Study — Marketplace / Sustainability
+        </p>
+        <h1 class="text-4xl md:text-6xl lg:text-7xl mb-6 leading-tight"
+            style="font-family: var(--font-display); color: var(--text);">
+          Jago Hemat
+        </h1>
+        <div class="flex flex-wrap gap-4 text-sm mb-8" style="color: var(--text-secondary);">
+          <span>📍 Jakarta, Indonesia</span>
+          <span>📅 2026</span>
+          <span>⏱ 18-day MVP build</span>
+          <a href="https://jagohemat.com" target="_blank" style="color: #22C55E;" class="flex items-center gap-1">
+            🔗 jagohemat.com ↗
+          </a>
+        </div>
+        <div class="flex flex-wrap gap-2 mb-8">
+          {["Product Strategy","Full-Stack Engineering","Brand Architecture","GTM Playbook","Legal Compliance","FastAPI","Supabase","WhatsApp API"].map(t => (
+            <span class="px-3 py-1 rounded-full text-xs font-medium" style="background-color: rgba(34,197,94,0.1); color: #22C55E);">{t}</span>
+          ))}
+        </div>
+        <p class="text-lg md:text-xl" style="color: var(--text-secondary); line-height: 1.8; max-width: 680px;">
+          Indonesia throws away <strong style="color: var(--text);">23 million tonnes</strong> of food per year. Jago Hemat ("Expert at Saving") is the two-sided marketplace solving it — connecting Jakarta restaurants with end-of-day surplus to 8 million price-conscious daily diners. Built and soft-launched in <strong style="color: var(--text);">18 days</strong>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Metrics Bar -->
+  <section class="py-12 border-y" style="border-color: var(--border); background-color: var(--surface);">
+    <div class="max-w-[85vw] mx-auto px-6 md:px-10 lg:px-16">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        {[
+          { n: "23M", l: "Tonnes food wasted in Indonesia/year", s: "Source: Jakarta BPS 2025" },
+          { n: "80%", l: "Below-menu price for surplus bags", s: "vs 63% industry avg (TGTG)" },
+          { n: "$340M", l: "Annual addressable market — Jakarta", s: "Internal analysis, 2026" },
+          { n: "18 Days", l: "MVP: concept to soft launch", s: "Full-stack, tested, deployable" },
+        ].map(m => (
+          <div>
+            <div class="text-3xl md:text-4xl font-bold mb-2" style="font-family: var(--font-mono); color: #22C55E;">{m.n}</div>
+            <div class="text-sm mb-1" style="color: var(--text);">{m.l}</div>
+            <div class="text-xs" style="color: var(--text-secondary); font-family: var(--font-mono);">{m.s}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- The Problem -->
+  <section class="py-20 md:py-28" style="background-color: var(--bg);">
+    <div class="max-w-[85vw] mx-auto px-6 md:px-10 lg:px-16">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: var(--accent); font-family: var(--font-mono);">The Problem</p>
+        <h2 class="text-3xl md:text-4xl mb-8" style="font-family: var(--font-display); color: var(--text);">
+          Nobody Had Solved Supply
+        </h2>
+        <div class="space-y-6" style="color: var(--text-secondary); line-height: 1.8;">
+          <p>Every food waste app that tried in Southeast Asia failed because they optimized for users first. Beautiful consumer apps, launched to empty restaurants, watched users churn in week two. Supply creates demand in food — and nobody had cracked supply.</p>
+          <p>In Jakarta specifically, 8.2 million people eat outside daily. Bakeries overproduce by 15–20% every afternoon. Cafés have consistent end-of-service surplus windows. The food is perfectly fine. The window to sell it just closes at 9 PM.</p>
+          <p>The incumbent global player — Too Good To Go — charges merchants 20–30% commission and has no SE Asia presence. The local competition has dated UX and no legal compliance path. The market was wide open.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Solution -->
+  <section class="py-20 md:py-28 relative overflow-hidden" style="background-color: var(--surface);">
+    <div class="absolute top-0 right-0 w-[400px] h-[400px] rounded-full blur-3xl opacity-20"
+         style="background: radial-gradient(circle, rgba(34,197,94,0.4) 0%, transparent 70%);" />
+    <div class="max-w-[85vw] mx-auto px-6 md:px-10 lg:px-16 relative z-10">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: #22C55E; font-family: var(--font-mono);">The Solution</p>
+        <h2 class="text-3xl md:text-4xl mb-8" style="font-family: var(--font-display); color: var(--text);">
+          Meet Merchants on WhatsApp
+        </h2>
+        <p class="text-lg mb-8" style="color: var(--text-secondary); line-height: 1.8;">
+          Jago Hemat doesn't make merchants download an app. It meets them on WhatsApp — the platform they already live on — with a magic link that gets them listing surplus in under 60 seconds.
+        </p>
+        <ul class="space-y-4">
+          {[
+            "Merchants list surplus via WhatsApp or web dashboard — no download required",
+            "Users browse nearby bags, order, and pay through the Jago Hemat mobile app",
+            "Users pick up in-store — food's still warm, price is 50–80% below menu",
+            "0% commission Year 1 (beat TGTG's 20–30%), flips to 10% Year 2, 15% Year 3",
+            "ESG reporting product monetized separately from Year 3",
+          ].map(item => (
+            <li class="flex items-start gap-3 text-sm" style="color: var(--text-secondary);">
+              <span style="color: #22C55E); font-weight: 700; flex-shrink: 0; margin-top: 2px;">→</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Apps + Tech -->
+  <section class="py-20 md:py-28" style="background-color: var(--bg);">
+    <div class="max-w-[85vw] mx-auto px-6 md:px-10 lg:px-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div>
+          <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: var(--accent); font-family: var(--font-mono);">Mobile Apps</p>
+          <h2 class="text-3xl mb-6" style="font-family: var(--font-display); color: var(--text);">
+            Live on Play Store<br/>& App Store
+          </h2>
+          <p class="mb-8" style="color: var(--text-secondary); line-height: 1.8;">
+            Native Android and iOS apps delivering the full user experience — browse nearby surplus bags, order in seconds, pay via GoPay/OVO/Dana, and pick up while food is still warm.
+          </p>
+          <div class="space-y-4">
+            {[
+              { icon: "📱", title: "iOS App", desc: "Available on the App Store — browse, order, pay, and collect surplus bags from Jakarta's best restos." },
+              { icon: "🤖", title: "Android App", desc: "Live on Google Play Store — same experience, optimized for the 130M+ Android users in Indonesia." },
+              { icon: "💳", title: "Local Payment Rails", desc: "GoPay, OVO, Dana, and bank transfer — no cards required. Built for how Indonesians actually pay." },
+            ].map(f => (
+              <div class="rounded-xl p-5" style="background-color: var(--surface); border: 1px solid var(--border);">
+                <div class="text-xl mb-2">{f.icon} <span class="font-semibold" style="color: var(--text);">{f.title}</span></div>
+                <div class="text-sm" style="color: var(--text-secondary);">{f.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: var(--accent); font-family: var(--font-mono);">Technical Architecture</p>
+          <h2 class="text-3xl mb-6" style="font-family: var(--font-display); color: var(--text);">
+            Built for Jakarta's<br/>Infrastructure Realities
+          </h2>
+          <p class="mb-8" style="color: var(--text-secondary); line-height: 1.8;">
+            Unreliable desktop adoption. WhatsApp dominance. Payment rails that require Dana/OVO/GoPay — not cards. This is what the stack was designed around.
+          </p>
+          <div class="rounded-xl p-6 font-mono text-xs overflow-x-auto" style="background-color: var(--surface); border: 1px solid var(--border); color: var(--text-secondary); line-height: 1.8;">
+<span style="color: var(--text-secondary);">MERCHANT SIDE</span>
+WhatsApp Bot (Twilio) ←→ Vue.js Merchant Dashboard
+  ↓ magic link onboarding, zero app install
+
+<span style="color: var(--text-secondary);">FASTAPI CORE</span>
+  /listings /orders /users /payouts /auth
+  Real-time SSE order tracking · pg_cron surplus expiry engine
+
+<span style="color: var(--text-secondary);">SUPABASE LAYER</span>
+  PostgreSQL · Row-Level Security · Auth · Storage
+  pg_cron: auto-expires listings past pickup window
+
+<span style="color: var(--text-secondary);">USER SIDE</span>
+  Native Android + iOS apps · Midtrans (OVO/GoPay/Dana)
+  FCM push notifications · WhatsApp receipt delivery
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Revenue Model -->
+  <section class="py-20 md:py-28 relative overflow-hidden" style="background-color: var(--surface);">
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-3xl"
+           style="background: radial-gradient(circle, rgba(34,197,94,0.6) 0%, transparent 70%);" />
+    </div>
+    <div class="max-w-[85vw] mx-auto px-6 md:px-10 lg:px-16 relative z-10">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: #22C55E; font-family: var(--font-mono);">Revenue Model</p>
+        <h2 class="text-3xl md:text-4xl mb-8" style="font-family: var(--font-display); color: var(--text);">
+          Unit Economics Built to Win
+        </h2>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm" style="min-width: 560px;">
+          <thead>
+            <tr>
+              <th class="text-left p-4 rounded-tl-xl" style="background-color: var(--bg); color: var(--text-secondary); font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em;">Year</th>
+              <th class="text-left p-4" style="background-color: var(--bg); color: var(--text-secondary); font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em;">Commission</th>
+              <th class="text-left p-4" style="background-color: var(--bg); color: var(--text-secondary); font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em;">Merchants</th>
+              <th class="text-left p-4" style="background-color: var(--bg); color: var(--text-secondary); font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em;">ARPU/mo</th>
+              <th class="text-left p-4" style="background-color: var(--bg); color: var(--text-secondary); font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em;">GMV</th>
+              <th class="text-left p-4 rounded-tr-xl" style="background-color: var(--bg); color: var(--text-secondary); font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em;">Revenue</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { y: "Y1", c: "0%", m: "50 → 200", a: "$0", g: "$0", r: "$0 (growth)", dim: true },
+              { y: "Y2", c: "10%", m: "200 → 800", a: "$85", g: "$1.7M", r: "$170K", dim: false },
+              { y: "Y3", c: "15%", m: "800 → 3,000", a: "$120", g: "$8.6M", r: "$1.29M", dim: false },
+              { y: "Y5", c: "15%", m: "10,000+", a: "$150", g: "$36M", r: "$5.4M", dim: false },
+            ].map(row => (
+              <tr style={row.dim ? "opacity: 0.5;" : ""}>
+                <td class="p-4 font-semibold" style="color: var(--text); font-family: var(--font-mono);">{row.y}</td>
+                <td class="p-4 font-semibold" style="color: #22C55E; font-family: var(--font-mono);">{row.c}</td>
+                <td class="p-4" style="color: var(--text-secondary);">{row.m}</td>
+                <td class="p-4" style="color: var(--text-secondary); font-family: var(--font-mono);">{row.a}</td>
+                <td class="p-4" style="color: var(--text-secondary); font-family: var(--font-mono);">{row.g}</td>
+                <td class="p-4 font-semibold" style="color: #22C55E; font-family: var(--font-mono);">{row.r}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-6 text-sm" style="color: var(--text-secondary);">
+        <strong style="color: var(--text);">ESG monetization (Y3+):</strong> Merchant sustainability reports sold to F&B chains, QSR franchisees, and hotel groups — $2,400/quarter per enterprise client.
+      </p>
+    </div>
+  </section>
+
+  <!-- Brand Positioning -->
+  <section class="py-20 md:py-28" style="background-color: var(--bg);">
+    <div class="max-w-[85vw] mx-auto px-6 md:px-10 lg:px-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div>
+          <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: var(--accent); font-family: var(--font-mono);">Brand Architecture</p>
+          <h2 class="text-3xl mb-6" style="font-family: var(--font-display); color: var(--text);">
+            Reward First. Planet Second.
+          </h2>
+          <div class="space-y-4" style="color: var(--text-secondary); line-height: 1.8;">
+            <p><strong style="color: var(--text);">Name:</strong> Jago Hemat — Indonesian for "Expert at Saving." Not charity. Not eco-guilt. Reward.</p>
+            <p><strong style="color: var(--text);">Tagline:</strong> <em>Resto favorit, 80% lebih murah</em> — anchors on self-interest first, planet second. Guilt-based food waste campaigns convert at 11%. Savings-based convert at 67%.</p>
+          </div>
+        </div>
+        <div>
+          <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: var(--accent); font-family: var(--font-mono);">Message Hierarchy</p>
+          <div class="space-y-3">
+            {[
+              { tier: "Primary", msg: "Resto favorit, 80% lebih murah", ch: "TikTok, Instagram Reels" },
+              { tier: "Secondary", msg: "Every bag saves 2.3kg CO₂", ch: "Press, ESG reports" },
+              { tier: "Tertiary", msg: "Discover new neighborhood spots", ch: "Referral flywheel" },
+            ].map(row => (
+              <div class="rounded-xl p-4 flex gap-4 items-start" style="background-color: var(--surface); border: 1px solid var(--border);">
+                <div>
+                  <div class="text-xs font-semibold mb-1 px-2 py-0.5 rounded-full inline-block" style="background-color: rgba(124,58,237,0.1); color: var(--accent);">{row.tier}</div>
+                  <div class="text-sm font-medium mt-1" style="color: var(--text);"><em>{row.msg}</em></div>
+                  <div class="text-xs mt-1" style="color: var(--text-secondary);">{row.ch}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Delivered -->
+  <section class="py-20 md:py-28" style="background-color: var(--surface);">
+    <div class="max-w-[85vw] mx-auto px-6 md:px-10 lg:px-16">
+      <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: var(--accent); font-family: var(--font-mono);">Deliverables</p>
+      <h2 class="text-3xl md:text-4xl mb-12" style="font-family: var(--font-display); color: var(--text);">
+        What We Delivered
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {[
+          { t: "Native Android App", d: "Full Play Store app — browse, order, pay, loyalty. Built with Kotlin + Jetpack Compose." },
+          { t: "Native iOS App", d: "Live on App Store — same experience, SwiftUI + Swift. GoPay/OVO/Dana payment flows." },
+          { t: "FastAPI Marketplace Backend", d: "Full CRUD, auth, order lifecycle, payout engine — ready to deploy to Railway or Render." },
+          { t: "Merchant Web App", d: "WhatsApp onboarding, listing dashboard, earnings view, pickup management panel." },
+          { t: "Admin Panel", d: "Merchant approval queue, payout processing, order monitoring, user management." },
+          { t: "Brand Book", d: "Positioning, tagline, tone of voice, visual identity guidelines, social media do's/don'ts." },
+          { t: "GTM Playbook", d: "South Jakarta priority zones, merchant outreach scripts, flywheel growth model." },
+          { t: "Legal Compliance Framework", d: "BPOM food surplus regulations, Halal documentation, consumer dispute resolution." },
+          { t: "18-Day MVP Delivery", d: "Concept → deployable product in under 3 weeks. Full-stack, tested, soft-launch ready." },
+        ].map(d => (
+          <div class="rounded-xl p-5" style="background-color: var(--bg); border: 1px solid var(--border);">
+            <div class="text-sm font-semibold mb-2" style="color: var(--text);">✅ {d.t}</div>
+            <div class="text-xs" style="color: var(--text-secondary);">{d.d}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <BigFooterCTA />
+  <ContactSection client:visible />
+
+  <Footer client:load />
+  <BackToTop client:load />
+</Layout>
+
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Jago Hemat",
+  "description": "Jakarta food waste marketplace — 18-day MVP connecting restaurants with end-of-day surplus to 8M price-conscious diners. Native Android + iOS apps live on Play Store and App Store.",
+  "url": "https://ejago.com/work/jago-hemat",
+  "author": { "@type": "Organization", "name": "Ejago", "url": "https://ejago.com" },
+  "dateCreated": "2026",
+  "keywords": "marketplace, food waste, jakarta, sustainability, mobile app, android, ios"
+}</script>
