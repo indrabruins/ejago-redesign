@@ -11,6 +11,7 @@ interface Props {
   btnText?: string;
   heading?: string;
   subheading?: string;
+  type?: "solid" | "graphic";
 }
 
 export default function BigFooterCTA({
@@ -20,27 +21,75 @@ export default function BigFooterCTA({
   btnText,
   heading = "Ready for Compounding Growth?",
   subheading = "No pitch deck. No vague promises. Just a real conversation about\n            your growth.",
+  type = "solid",
 }: Props) {
   return (
     <section
       className="relative py-24 md:py-32 overflow-hidden"
       style={{ backgroundColor: bgColor ?? "var(--accent)" }}
     >
-      {/* Decorative glow blobs */}
-      <div
-        className="absolute top-0 left-1/4 w-[400px] h-[400px] rounded-full stitch-blob-1"
-        style={{
-          background: "radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%)",
-          filter: "blur(40px)",
-        }}
-      />
-      <div
-        className="absolute bottom-0 right-1/4 w-[300px] h-[300px] rounded-full stitch-blob-2"
-        style={{
-          background: "radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%)",
-          filter: "blur(30px)",
-        }}
-      />
+      {/* ── GRAPHIC MODE: animated morphing blobs ── */}
+      {type === "graphic" && (
+        <>
+          {/* Ambient base glow */}
+          <div
+            className="absolute inset-0 opacity-20"
+            style={{ background: "radial-gradient(ellipse 120% 60% at 50% 0%, rgba(34,197,94,0.4) 0%, transparent 70%)" }}
+          />
+          {/* Big morph blob 1 */}
+          <div
+            className="absolute -top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] stitch-blob-1"
+            style={{
+              background: "radial-gradient(circle, rgba(34,197,94,0.35) 0%, rgba(16,185,129,0.15) 50%, transparent 70%)",
+              filter: "blur(30px)",
+            }}
+          />
+          {/* Blob 2 */}
+          <div
+            className="absolute -bottom-1/4 left-1/4 w-[500px] h-[500px] stitch-blob-2"
+            style={{
+              background: "radial-gradient(circle, rgba(245,158,11,0.25) 0%, transparent 70%)",
+              filter: "blur(40px)",
+            }}
+          />
+          {/* Blob 3 */}
+          <div
+            className="absolute top-1/3 right-1/6 w-[400px] h-[400px] stitch-blob-3"
+            style={{
+              background: "radial-gradient(circle, rgba(34,197,94,0.2) 0%, transparent 70%)",
+              filter: "blur(35px)",
+            }}
+          />
+          {/* Bottom-left accent */}
+          <div
+            className="absolute -bottom-1/6 right-1/4 w-[350px] h-[350px] stitch-blob-1"
+            style={{
+              background: "radial-gradient(circle, rgba(16,185,129,0.3) 0%, transparent 70%)",
+              filter: "blur(50px)",
+            }}
+          />
+        </>
+      )}
+
+      {/* ── SOLID MODE: subtle glow blobs ── */}
+      {type === "solid" && (
+        <>
+          <div
+            className="absolute top-0 left-1/4 w-[400px] h-[400px] rounded-full stitch-blob-1"
+            style={{
+              background: "radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%)",
+              filter: "blur(40px)",
+            }}
+          />
+          <div
+            className="absolute bottom-0 right-1/4 w-[300px] h-[300px] rounded-full stitch-blob-2"
+            style={{
+              background: "radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%)",
+              filter: "blur(30px)",
+            }}
+          />
+        </>
+      )}
 
       {/* Shimmer line */}
       <div
