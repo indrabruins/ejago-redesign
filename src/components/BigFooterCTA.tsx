@@ -4,11 +4,27 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight } from "lucide-react";
 
-export default function BigFooterCTA() {
+interface Props {
+  bgColor?: string;
+  textColor?: string;
+  btnBg?: string;
+  btnText?: string;
+  heading?: string;
+  subheading?: string;
+}
+
+export default function BigFooterCTA({
+  bgColor,
+  textColor = "white",
+  btnBg = "white",
+  btnText,
+  heading = "Ready for Compounding Growth?",
+  subheading = "No pitch deck. No vague promises. Just a real conversation about\n            your growth.",
+}: Props) {
   return (
     <section
       className="relative py-24 md:py-32 overflow-hidden"
-      style={{ backgroundColor: "var(--accent)" }}
+      style={{ backgroundColor: bgColor ?? "var(--accent)" }}
     >
       {/* Decorative glow blobs */}
       <div
@@ -45,24 +61,23 @@ export default function BigFooterCTA() {
             className="text-3xl md:text-5xl lg:text-6xl mb-6"
             style={{
               fontFamily: "var(--font-display)",
-              color: "white",
+              color: textColor,
             }}
           >
-            Ready for Compounding Growth?
+            {heading}
           </h2>
           <p
             className="text-lg md:text-xl mb-10 max-w-2xl mx-auto"
-            style={{ color: "rgba(255, 255, 255, 0.8)" }}
+            style={{ color: textColor === "#111111" ? "rgba(17,17,17,0.7)" : "rgba(255, 255, 255, 0.8)" }}
           >
-            No pitch deck. No vague promises. Just a real conversation about
-            your growth.
+            {subheading}
           </p>
           <a
             href="#contact"
             className="group inline-flex items-center gap-3 px-10 py-5 rounded-xl font-semibold text-lg transition-all stitch-spring-btn"
             style={{
-              backgroundColor: "white",
-              color: "var(--accent)",
+              backgroundColor: btnBg,
+              color: btnText ?? bgColor ?? "var(--accent)",
               boxShadow: "0 8px 32px rgba(0,0,0,0.15)",
             }}
           >
