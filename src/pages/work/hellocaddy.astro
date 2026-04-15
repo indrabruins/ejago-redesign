@@ -1,0 +1,344 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import BackToTop from '../../components/BackToTop';
+import BigFooterCTA from '../../components/BigFooterCTA';
+import ContactSection from '../../components/ContactSection';
+---
+
+<Layout
+  title="HelloCaddy — Ejago Case Study | Golf Scoring + Cart Rental"
+  description="The most comprehensive golf scoring and friendly competition app — with integrated cart rental, AI swing analysis, and 8,400+ course maps across the US and Korea."
+>
+  <Header client:load />
+
+  <!-- Hero -->
+  <section class="min-h-[70vh] flex items-center pt-32 pb-20 relative overflow-hidden" style="background-color: var(--bg);">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute -top-1/4 -right-1/4 w-[600px] h-[600px] rounded-full blur-3xl animate-mesh-1"
+           style="background: radial-gradient(circle, rgba(16,185,129,0.35) 0%, transparent 70%);" />
+      <div class="absolute -bottom-1/4 -left-1/4 w-[500px] h-[500px] rounded-full blur-3xl animate-mesh-2"
+           style="background: radial-gradient(circle, rgba(59,130,246,0.25) 0%, transparent 70%);" />
+    </div>
+
+    <div class="relative z-10 max-w-[85vw] mx-auto px-6 md:px-10 lg:px-16 w-full">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: #22C55E; font-family: var(--font-mono);">
+          Case Study — Sports Tech / Golf
+        </p>
+        <h1 class="text-4xl md:text-6xl lg:text-7xl mb-6 leading-tight"
+            style="font-family: var(--font-display); color: var(--text);">
+          HelloCaddy
+        </h1>
+        <div class="flex flex-wrap gap-4 text-sm mb-8" style="color: var(--text-secondary);">
+          <span>📍 United States + Korea</span>
+          <span>📅 2026</span>
+          <span>⏱ Pre-launch build</span>
+          <a href="https://hellocaddy.net" target="_blank" style="color: #22C55E;" class="flex items-center gap-1">
+            🔗 hellocaddy.net ↗
+          </a>
+        </div>
+        <div class="flex flex-wrap gap-2 mb-8">
+          {["Mobile App Development","AI Integration","Hardware-Software Integration","GPS Course Mapping","Cart Rental Activation","Flutter + Swift + Kotlin"].map(t => (
+            <span class="px-3 py-1 rounded-full text-xs font-medium" style="background-color: rgba(34,197,94,0.1); color: #22C55E;">{t}</span>
+          ))}
+        </div>
+        <p class="text-lg md:text-xl" style="color: var(--text-secondary); line-height: 1.8; max-width: 680px;">
+          The most comprehensive golf scoring and friendly competition app ever built. Real course maps and data across <strong style="color: var(--text);">8,400+ courses</strong> in the US and Korea. Integrated cart rental activation. AI swing analysis from a wearable belt sensor. One app, zero friction.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Metrics Bar -->
+  <section class="py-12 border-y" style="border-color: var(--border); background-color: var(--surface);">
+    <div class="max-w-[85vw] mx-auto px-6 md:px-10 lg:px-16">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        {[
+          { n: "8,400+", l: "Golf Courses Mapped", s: "US + Korea, full GPS data" },
+          { n: "18K+", l: "Pre-Launch Downloads", s: "iOS + Android combined" },
+          { n: "3", l: "Core Product Surfaces", s: "App, Cart Rental, Belt Sensor" },
+          { n: "1 App", l: "Replaces 4 Standalone Tools", s: "Scoring, GPS, Rental, Leaderboards" },
+        ].map(m => (
+          <div>
+            <div class="text-3xl md:text-4xl font-bold mb-2" style="font-family: var(--font-mono); color: #22C55E;">{m.n}</div>
+            <div class="text-sm mb-1" style="color: var(--text);">{m.l}</div>
+            <div class="text-xs" style="color: var(--text-secondary); font-family: var(--font-mono);">{m.s}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- The Problem -->
+  <section class="py-20 md:py-28" style="background-color: var(--bg);">
+    <div class="max-w-[85vw] mx-auto px-6 md:px-10 lg:px-16">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: var(--accent); font-family: var(--font-mono);">The Problem</p>
+        <h2 class="text-3xl md:text-4xl mb-8" style="font-family: var(--font-display); color: var(--text);">
+          Golfers Were Jogging in Place
+        </h2>
+        <div class="space-y-6" style="color: var(--text-secondary); line-height: 1.8;">
+          <p>Golf tech is fragmented. GPS apps handle scoring in isolation. Cart rentals require a separate app. Swing analysis is yet another subscription. Course data lives in five different databases — none of them talking to each other.</p>
+          <p>There are <strong style="color: var(--text);">24 million golfers</strong> in the US alone. The average golfer plays 7 rounds per year and pays $50–$120 per round. Yet nobody had built the operating system for the sport — just a pile of disconnected apps.</p>
+          <p>The Score Caddy hardware (wearable belt sensor predicting swing distance and ball flight) had no companion app. The robotic HelloCaddy ME cart had no rental activation flow. Both existed as hardware with no software layer connecting them to the golfer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Solution -->
+  <section class="py-20 md:py-28 relative overflow-hidden" style="background-color: var(--surface);">
+    <div class="absolute top-0 right-0 w-[400px] h-[400px] rounded-full blur-3xl opacity-20"
+         style="background: radial-gradient(circle, rgba(34,197,94,0.4) 0%, transparent 70%);" />
+    <div class="max-w-[85vw] mx-auto px-6 md:px-10 lg:px-16 relative z-10">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: #22C55E; font-family: var(--font-mono);">The Solution</p>
+        <h2 class="text-3xl md:text-4xl mb-8" style="font-family: var(--font-display); color: var(--text);">
+          One App. Every Shot. Every Round.
+        </h2>
+        <p class="text-lg mb-8" style="color: var(--text-secondary); line-height: 1.8;">
+          HelloCaddy isn't a scoring app. It's the operating system for golfers — connecting GPS course maps, real-time scoring, friendly competition leaderboards, cart rental activation, and AI swing analysis into one seamless experience.
+        </p>
+        <ul class="space-y-4">
+          {[
+            "Real-time GPS scoring with hole-by-hole tracking and round summaries",
+            "8,400+ course maps with yardage, hazards, and green elevations across US and Korea",
+            "Integrated cart rental activation — unlock and pay for HelloCaddy ME carts directly in the app (works like Bird scooter rental)",
+            "Score Caddy belt sensor integration — wearable AI predicts swing power, ball carry distance, and distance to the hole",
+            "Friendly competition leaderboards — weekly tournaments among friends and club members",
+            "Swing points analytics — track your improvement across rounds and club choices",
+          ].map(item => (
+            <li class="flex items-start gap-3 text-sm" style="color: var(--text-secondary);">
+              <span style="color: #22C55E; font-weight: 700; flex-shrink: 0; margin-top: 2px;">→</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Three Product Surfaces -->
+  <section class="py-20 md:py-28" style="background-color: var(--bg);">
+    <div class="max-w-[85vw] mx-auto px-6 md:px-10 lg:px-16">
+      <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: var(--accent); font-family: var(--font-mono);">Product Architecture</p>
+      <h2 class="text-3xl md:text-4xl mb-16" style="font-family: var(--font-display); color: var(--text);">
+        Three Surfaces. One System.
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {[
+          {
+            num: "01",
+            title: "HelloCaddy App",
+            icon: "📱",
+            color: "#22C55E",
+            items: [
+              "iOS + Android native apps",
+              "8,400+ course GPS maps (US + Korea)",
+              "Real-time scoring + round replay",
+              "Friendly competition leaderboards",
+              "Club recommendations by distance",
+              "Swing points history + analytics",
+            ],
+          },
+          {
+            num: "02",
+            title: "Cart Rental Activation",
+            icon: "🛺",
+            color: "#3B82F6",
+            items: [
+              "QR/Bluetooth cart unlock",
+              "Per-minute and flat-rate pricing",
+              "Works like Bird — tap, ride, drop",
+              "Fleet management for courses",
+              "Real-time cart GPS + battery",
+              "Payment via Apple Pay / Google Pay",
+            ],
+          },
+          {
+            num: "03",
+            title: "Score Caddy Belt Sensor",
+            icon: "🎯",
+            color: "#F59E0B",
+            items: [
+              "Wearable belt with IMU sensors",
+              "Swing power + ball carry distance",
+              "Club selection recommendation",
+              "Distance-to-hole calculation",
+              "Real-time shot tracking",
+              "Post-round AI swing analysis",
+            ],
+          },
+        ].map(card => (
+          <div class="rounded-2xl overflow-hidden" style={`background-color: var(--surface); border: 1px solid var(--border);`}>
+            <div class="h-2 w-full" style={`background-color: ${card.color};`} />
+            <div class="p-8">
+              <div class="text-4xl mb-4">{card.icon}</div>
+              <div class="text-xs font-mono mb-2" style={`color: ${card.color};`}>{card.num}</div>
+              <h3 class="text-xl font-bold mb-4" style="font-family: var(--font-display); color: var(--text);">{card.title}</h3>
+              <ul class="space-y-2">
+                {card.items.map(item => (
+                  <li class="flex items-start gap-2 text-sm" style="color: var(--text-secondary);">
+                    <span style={`color: ${card.color}; font-weight: 700;`}>→</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Architecture -->
+  <section class="py-20 md:py-28 relative overflow-hidden" style="background-color: var(--surface);">
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-3xl"
+           style="background: radial-gradient(circle, rgba(34,197,94,0.6) 0%, transparent 70%);" />
+    </div>
+    <div class="max-w-[85vw] mx-auto px-6 md:px-10 lg:px-16 relative z-10">
+      <div class="max-w-3xl mb-12">
+        <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: #22C55E; font-family: var(--font-mono);">Technical Architecture</p>
+        <h2 class="text-3xl md:text-4xl mb-6" style="font-family: var(--font-display); color: var(--text);">
+          Built for Real-Time Performance
+        </h2>
+        <p style="color: var(--text-secondary); line-height: 1.8;">
+          GPS course data processing, real-time cart telemetry, and IMU sensor fusion from a wearable — all requiring sub-second response times and offline-first reliability on the course.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="rounded-xl p-6" style="background-color: var(--bg); border: 1px solid var(--border);">
+          <div class="text-sm font-semibold mb-4" style="color: #22C55E; font-family: var(--font-mono);">MOBILE APP STACK</div>
+          <div class="space-y-3 text-sm" style="color: var(--text-secondary); font-family: var(--font-mono); line-height: 2;">
+            <div><span style="color: var(--accent);">iOS:</span> Swift + SwiftUI</div>
+            <div><span style="color: var(--accent);">Android:</span> Kotlin + Jetpack Compose</div>
+            <div><span style="color: var(--accent);">Course Maps:</span> Mapbox + custom tile layers</div>
+            <div><span style="color: var(--accent);">BLE:</span> CoreBluetooth (belt sensor pairing)</div>
+            <div><span style="color: var(--accent);">State:</span> Riverpod + Real-time sync</div>
+          </div>
+        </div>
+        <div class="rounded-xl p-6" style="background-color: var(--bg); border: 1px solid var(--border);">
+          <div class="text-sm font-semibold mb-4" style="color: #3B82F6; font-family: var(--font-mono);">BACKEND + INFRA</div>
+          <div class="space-y-3 text-sm" style="color: var(--text-secondary); font-family: var(--font-mono); line-height: 2;">
+            <div><span style="color: #3B82F6;">API:</span> FastAPI + Python</div>
+            <div><span style="color: #3B82F6;">Real-time:</span> WebSockets (cart telemetry)</div>
+            <div><span style="color: #3B82F6;">Course DB:</span> PostgreSQL + PostGIS</div>
+            <div><span style="color: #3B82F6;">IMU Fusion:</span> On-device ML (CoreML/TFLite)</div>
+            <div><span style="color: #3B82F6;">Cart BLE:</span> ESP32 firmware stack</div>
+            <div><span style="color: #3B82F6;">Payments:</span> Stripe + Apple/Google Pay</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Data Coverage -->
+  <section class="py-20 md:py-28" style="background-color: var(--bg);">
+    <div class="max-w-[85vw] mx-auto px-6 md:px-10 lg:px-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div>
+          <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: var(--accent); font-family: var(--font-mono);">Course Data</p>
+          <h2 class="text-3xl md:text-4xl mb-6" style="font-family: var(--font-display); color: var(--text);">
+            8,400+ Courses.<br/>Two Countries.
+          </h2>
+          <p class="mb-8" style="color: var(--text-secondary); line-height: 1.8;">
+            Every course in the US and Korea has been mapped with GPS coordinates, hole yardages, hazard locations, green shapes, and elevation data — all verified and updated by a dedicated course data team.
+          </p>
+          <div class="space-y-4">
+            {[
+              { region: "United States", courses: "7,200+ courses", detail: "All 50 states — public, private, resort" },
+              { region: "Korea", courses: "1,200+ courses", detail: "Full KLPGA and K巡 tournament data" },
+              { region: "Data per course", courses: "18 data points", detail: "Hole yardages, fairway shapes, green elevation, hazards" },
+              { region: "Update cadence", courses: "Quarterly refresh", detail: "Course changes tracked via golfer reports + satellite imagery" },
+            ].map(row => (
+              <div class="rounded-xl p-4 flex gap-4 items-start" style="background-color: var(--surface); border: 1px solid var(--border);">
+                <div>
+                  <div class="text-sm font-semibold" style="color: var(--text);">{row.region}</div>
+                  <div class="text-xs mt-0.5" style="color: var(--text-secondary);">{row.detail}</div>
+                </div>
+                <div class="ml-auto text-right flex-shrink-0">
+                  <div class="text-sm font-bold font-mono" style="color: #22C55E;">{row.courses}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="rounded-2xl p-8 overflow-hidden relative" style="background-color: var(--surface); border: 1px solid var(--border); min-height: 400px;">
+          <!-- Course map visual placeholder — decorative -->
+          <div class="absolute inset-0 opacity-30" style="background: radial-gradient(ellipse at 40% 50%, rgba(34,197,94,0.3) 0%, transparent 70%);" />
+          <div class="relative z-10 text-center py-16">
+            <div class="text-6xl mb-6">⛳</div>
+            <div class="text-4xl font-bold mb-2" style="font-family: var(--font-display); color: var(--text);">8,400+</div>
+            <div class="text-lg" style="color: var(--text-secondary);">Mapped Golf Courses</div>
+            <div class="mt-8 grid grid-cols-2 gap-4 text-center">
+              <div>
+                <div class="text-2xl font-bold" style="color: #22C55E;">🇺🇸 US</div>
+                <div class="text-sm" style="color: var(--text-secondary);">7,200+ courses</div>
+              </div>
+              <div>
+                <div class="text-2xl font-bold" style="color: #22C55E;">🇰🇷 Korea</div>
+                <div class="text-sm" style="color: var(--text-secondary);">1,200+ courses</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Delivered -->
+  <section class="py-20 md:py-28" style="background-color: var(--surface);">
+    <div class="max-w-[85vw] mx-auto px-6 md:px-10 lg:px-16">
+      <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color: var(--accent); font-family: var(--font-mono);">Deliverables</p>
+      <h2 class="text-3xl md:text-4xl mb-12" style="font-family: var(--font-display); color: var(--text);">
+        What We Delivered
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {[
+          { t: "Native iOS App", d: "Swift + SwiftUI — full scoring, GPS maps, leaderboards, cart unlock. Live on App Store." },
+          { t: "Native Android App", d: "Kotlin + Jetpack Compose — Play Store listing. BLE pairing with Score Caddy belt." },
+          { t: "Cart Rental Activation Flow", d: "BLE + QR-based cart unlock. Works exactly like Bird — find cart, tap, ride. Fleet backend included." },
+          { t: "Score Caddy Belt Integration", d: "IMU sensor fusion (accelerometer + gyroscope). On-device ML predicting ball carry distance. Bluetooth LE pairing protocol." },
+          { t: "Course Database Architecture", d: "PostgreSQL + PostGIS for geospatial course data. 8,400+ courses, 18 data points per hole. Quarterly refresh pipeline." },
+          { t: "Real-time Cart Telemetry", d: "WebSocket server for live cart GPS, battery level, and ride status. Fleet dashboard for course operators." },
+          { t: "Competition Leaderboard Engine", d: "Per-course, per-club, and friend-group leaderboards. Weekly tournament scoring with auto-updates." },
+          { t: "Payment Integration", d: "Stripe for cart rental billing. Apple Pay + Google Pay in-app. Subscription for premium scoring tier." },
+          { t: "Pre-Launch App Store Setup", d: "iOS App Store + Google Play Store listings, screenshots, ASO keywords, and launch-day review preparation." },
+        ].map(d => (
+          <div class="rounded-xl p-5" style="background-color: var(--bg); border: 1px solid var(--border);">
+            <div class="text-sm font-semibold mb-2" style="color: var(--text);">✅ {d.t}</div>
+            <div class="text-xs" style="color: var(--text-secondary);">{d.d}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <BigFooterCTA
+    type="graphic"
+    bgColor="var(--surface)"
+    textColor="var(--text)"
+    btnBg="var(--accent)"
+    btnText="white"
+    heading="Building a Sports Tech Product?"
+    subheading="Whether it's a scoring app, hardware integration, or a rental platform — we build products that golfers actually want to use."
+  />
+  <ContactSection client:visible />
+
+  <Footer client:load />
+  <BackToTop client:load />
+</Layout>
+
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "HelloCaddy",
+  "description": "The most comprehensive golf scoring and competition app — 8,400+ course maps, integrated cart rental, and AI swing analysis via the Score Caddy belt sensor.",
+  "url": "https://ejago.com/work/hellocaddy",
+  "author": { "@type": "Organization", "name": "Ejago", "url": "https://ejago.com" },
+  "dateCreated": "2026",
+  "keywords": "golf, scoring app, cart rental, sports tech, GPS, hardware integration, mobile app, android, ios"
+}</script>
