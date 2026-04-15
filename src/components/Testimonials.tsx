@@ -179,6 +179,7 @@ export default function Testimonials() {
           <div className="flex items-center justify-center gap-4 mt-8">
             <button
               onClick={prev}
+              aria-label="Previous testimonial"
               className="w-12 h-12 rounded-full flex items-center justify-center cursor-pointer transition-colors"
               style={{
                 backgroundColor: "var(--surface)",
@@ -195,6 +196,7 @@ export default function Testimonials() {
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
+                  aria-label={`Go to testimonial ${index + 1}`}
                   className={`w-2 h-2 rounded-full transition-all cursor-pointer ${
                     index === currentIndex ? "w-6" : ""
                   }`}
@@ -210,6 +212,7 @@ export default function Testimonials() {
 
             <button
               onClick={next}
+              aria-label="Next testimonial"
               className="w-12 h-12 rounded-full flex items-center justify-center cursor-pointer transition-colors"
               style={{
                 backgroundColor: "var(--surface)",

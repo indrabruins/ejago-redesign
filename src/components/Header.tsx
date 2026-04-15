@@ -67,6 +67,7 @@ export default function Header() {
                 <div key={item.label} className="relative">
                   {item.children ? (
                     <button
+                      aria-label="Services menu"
                       onMouseEnter={() => setIsServicesOpen(true)}
                       onMouseLeave={() => setIsServicesOpen(false)}
                       className="flex items-center gap-1 text-sm font-semibold transition-colors cursor-pointer stitch-nav-link"
@@ -151,6 +152,7 @@ export default function Header() {
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 aria-expanded={isMobileMenuOpen}
                 aria-controls="mobile-menu"
+                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
                 style={{
                   color: "var(--text)",
                   backgroundColor: isScrolled ? "var(--surface)" : "transparent",

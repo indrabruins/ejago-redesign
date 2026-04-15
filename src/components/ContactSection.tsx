@@ -225,12 +225,14 @@ export default function ContactSection() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label
+                      htmlFor="service-select"
                       className="block text-sm font-medium mb-2"
                       style={{ color: "var(--text)" }}
                     >
                       Service Interested In *
                     </label>
                     <select
+                      id="service-select"
                       required
                       value={formData.service}
                       onChange={(e) =>
@@ -253,12 +255,14 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <label
+                      htmlFor="budget-select"
                       className="block text-sm font-medium mb-2"
                       style={{ color: "var(--text)" }}
                     >
                       Budget Range
                     </label>
                     <select
+                      id="budget-select"
                       value={formData.budget}
                       onChange={(e) =>
                         setFormData({ ...formData, budget: e.target.value })
