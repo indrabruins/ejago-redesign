@@ -334,6 +334,16 @@ import ContactSection from '../../components/ContactSection';
 
 <script type="application/ld+json">{
   "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ejago.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Work", "item": "https://ejago.com/work"},
+    {"@type": "ListItem", "position": 3, "name": "HelloCaddy", "item": "https://ejago.com/work/hellocaddy"}
+  ]
+}
+</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
   "@type": "CreativeWork",
   "name": "HelloCaddy",
   "description": "The most comprehensive golf scoring and competition app — 8,400+ course maps, integrated cart rental, and AI swing analysis via the Score Caddy belt sensor.",

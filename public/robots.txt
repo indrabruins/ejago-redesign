@@ -4,4 +4,4 @@ Allow: /
 User-agent: Googlebot
 Allow: /
 
-Sitemap: https://indrabruins.github.io/ejago-redesign/sitemap.xml
+Sitemap: https://ejago.com/sitemap.xml
